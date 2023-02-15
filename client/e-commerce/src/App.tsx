@@ -1,11 +1,20 @@
-
+import { ThemeProvider } from 'styled-components'
+import { Router } from './Router/Router'
+import { GlobalStyle } from './styles/global'
+import { defaultTheme } from './styles/themes/default'
+import { ThemeParagraph, ThemeTitle } from './styles/typography'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
-
   return (
-    <div className="App">
-      <h1>teste</h1>
-    </div>
+    <ThemeProvider theme={defaultTheme}>
+      {/* <ThemeTitle tag='h1' titleSize='title1-700' color='blue'>teste</ThemeTitle> */}
+      {/* <ThemeParagraph paragraphSize='body-1-400' color='blue'>teste</ThemeParagraph> */}
+      <BrowserRouter>
+        <Router />
+        <GlobalStyle />
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
 
