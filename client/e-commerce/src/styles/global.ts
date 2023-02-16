@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${(props) => props.theme.grey0};
+    background: ${(props) => props.theme.grey10};
   }
 
   button {
