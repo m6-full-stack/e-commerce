@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../../components/Button'
+import { Card } from '../../components/Card'
 
 export const Login = () => {
   return (
@@ -109,6 +110,7 @@ export const Login = () => {
         Salvar alteração
       </Button>
       */}
+      <Card />
     </div>
   )
 }
