@@ -3,16 +3,35 @@ import styled from 'styled-components'
 export const CardContainer = styled.div`
   width: 100%;
   max-width: 312px;
-  gap: 16px;
-  & > div {
+
+  section {
     gap: 16px;
   }
+
+  section:hover {
+    .content-img {
+      border: 2px solid ${(props) => props.theme.brand1};
+      border-radius: 4px;
+
+      & img {
+        scale: 1.2;
+      }
+    }
+  }
+
   .content-img {
     padding: 0 25px;
     background: ${(props) => props.theme.grey7};
   }
+
   .content-img img {
+    transition: all 0.25s linear;
   }
+
+  .content-description {
+    gap: 16px;
+  }
+
   .content-name {
     flex-direction: row;
     align-items: center;
