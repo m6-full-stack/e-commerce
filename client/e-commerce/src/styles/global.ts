@@ -8,9 +8,18 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Lexend';
   }
+
   body {
+    
     background: ${(props) => props.theme.grey10};
+    min-height: 100%;
   }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+  }
+
   :focus {
     outline: transparent;
     box-shadow: 0 0 0 1.5px ${(props) => props.theme.brand2};;
