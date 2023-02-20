@@ -1,89 +1,53 @@
-import React from 'react'
-
-import { NavbarContainer } from './style'
+import React, { useState } from 'react'
 
 import { Link, NavLink } from 'react-router-dom'
-
+import { NavbarContainer } from './style'
 import Logo from '../../assets/Logo-header.svg'
-import { Paragraph } from '../../styles/typography'
-import Button from '../Button'
 
-import { GiHamburgerMenu } from 'react-icons/gi'
-import { ImCross } from 'react-icons/im'
+const Navbar = () => {
+  const [isMobile, setIsMobile] = useState<boolean>(false)
 
-interface Props {
-  clicked: boolean
-  isClicked: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-export const Navbar = ({ clicked, isClicked }: Props) => {
-  const handleClick = () => {
-    isClicked(!clicked)
-  }
   return (
     <NavbarContainer>
-      <nav className="Nav">
-        <div className="content-logo">
-          <Link to="/">
-            <img className="NavLogo" src={Logo} alt="" />
-          </Link>
+      <nav className="navbar">
+        <img className="logo" src={Logo} alt="imagem do logo" />
+        <div className="teste">
+          <ul
+            className={isMobile ? 'nav-links-mobile' : 'nav-links'}
+            onClick={() => setIsMobile(false)}
+          >
+            <Link to="/" className="home">
+              <li>Carros</li>
+            </Link>
+            <Link to="/" className="about">
+              <li>Motos</li>
+            </Link>
+            <Link to="/" className="skills">
+              <li>Leilão</li>
+            </Link>
+            <hr />
+            <Link to="/" className="contact">
+              <li>Fazer Login</li>
+            </Link>
+            <NavLink to="/" className="signup">
+              <li>Cadastrar</li>
+            </NavLink>
+          </ul>
         </div>
 
-        <div className="content-links-buttons">
-          <div className="content-links">
-            <ul className="NavbarWrapper">
-              <li className="NavElements">
-                <NavLink to="/">
-                  <Paragraph
-                    fontWeight={600}
-                    lineHeight={'28px'}
-                    color={'grey2'}
-                  >
-                    Carros
-                  </Paragraph>
-                </NavLink>
-              </li>
-              <li className="NavElements">
-                <NavLink to="/">
-                  <Paragraph
-                    fontWeight={600}
-                    lineHeight={'28px'}
-                    color={'grey2'}
-                  >
-                    Motos
-                  </Paragraph>
-                </NavLink>
-              </li>
-              <li className="NavElements">
-                <NavLink to="/">
-                  <Paragraph
-                    fontWeight={600}
-                    lineHeight={'28px'}
-                    color={'grey2'}
-                  >
-                    Leilão
-                  </Paragraph>
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-          <div className="content-user">
-            <Paragraph fontWeight={600} lineHeight={'28px'} color={'grey2'}>
-              Fazer Login
-            </Paragraph>
-            <Button variant="transparent" buttonSize="g4h">
-              Cadastrar
-            </Button>
-          </div>
-        </div>
-        <div className="content-burger">
-          {!clicked ? (
-            <GiHamburgerMenu className="Icon" onClick={handleClick} />
+        <button
+          className="mobile-menu-icon"
+          onClick={() => setIsMobile(!isMobile)}
+        >
+          {isMobile ? (
+            <i className="fas fa-times"></i>
           ) : (
-            <ImCross className="Icon" onClick={handleClick} />
+            <i className="fas fa-bars"></i>
           )}
-        </div>
+        </button>
       </nav>
     </NavbarContainer>
   )
 }
+
+export default Navbar

@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
-import { Navbar } from '../Navbar'
 import { Outlet } from 'react-router-dom'
 import { Footer } from '../Footer'
+import Navbar from '../Navbar'
 
 export const DefaultLayout = () => {
-  const [clicked, isClicked] = useState<boolean>(false)
   return (
     <div>
-      <Navbar clicked={clicked} isClicked={isClicked} />
+      <Navbar />
       <Outlet />
       <Footer />
     </div>
