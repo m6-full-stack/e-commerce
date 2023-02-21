@@ -4,10 +4,10 @@ import Navbar from '../Navbar'
 
 export const DefaultLayout = () => {
   return (
-    <div>
+    <>
       <Navbar />
       <Outlet />
       <Footer />
-    </div>
+    </>
   )
 }

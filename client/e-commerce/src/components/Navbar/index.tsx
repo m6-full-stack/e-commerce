@@ -26,10 +26,10 @@ const Navbar = () => {
               <li>Leilão</li>
             </Link>
             <hr />
-            <Link to="/" className="contact">
+            <Link to="/login" className="contact">
               <li>Fazer Login</li>
             </Link>
-            <NavLink to="/" className="signup">
+            <NavLink to="/register" className="signup">
               <li>Cadastrar</li>
             </NavLink>
           </ul>

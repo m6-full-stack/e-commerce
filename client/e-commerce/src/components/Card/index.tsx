@@ -74,6 +74,7 @@ export const Card = () => {
             <div className="content-price">
               <Heading
                 fontWeight={500}
+                level={3}
                 size={'normal'}
                 color={'grey1'}
                 lineHeight={'1.25rem'}
