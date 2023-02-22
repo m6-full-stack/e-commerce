@@ -15,11 +15,6 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100%;
   }
 
-  footer {
-    position: absolute;
-    bottom: 0;
-  }
-
   :focus {
     outline: transparent;
     box-shadow: 0 0 0 1.5px ${(props) => props.theme.brand2};;
