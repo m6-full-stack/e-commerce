@@ -24,6 +24,10 @@ export const FooterContainer = styled.footer`
 
       margin-bottom: 0;
     }
+
+    @media (max-width: 380px) {
+      gap: 24px;
+    }
   }
 
   .border {
