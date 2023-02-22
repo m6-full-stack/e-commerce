@@ -33,12 +33,12 @@ export const LoginContainer = styled.div`
     background: var(--color_white);
     border-radius: 64px 64px 0px 0px;
   }
-  
 
   .title-login {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    margin-bottom: 32px;
   }
 
   .teste {
