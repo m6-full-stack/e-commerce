@@ -16,6 +16,7 @@ export const defaultTheme = {
   grey9: '#F8F9FA',
   grey10: '#FDFDFD',
   whiteFixed: '#FFFFFF',
+  black: '#000000',
 
   alert1: '#CD2B31',
   alert2: '#FDD8D8',

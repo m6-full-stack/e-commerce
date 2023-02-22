@@ -19,6 +19,7 @@ const theme = {
     grey9: '#F8F9FA',
     grey10: '#FDFDFD',
     whiteFixed: '#FFFFFF',
+    black: '#000000',
 
     alert1: '#CD2B31',
     alert2: '#FDD8D8',
@@ -43,9 +44,7 @@ const theme = {
   sizes: {
     small: '0.875rem',
     normal: '1rem',
-    large: '2.4rem',
-    xlarge: '3.2rem',
-    xxlarge: '4rem',
+    large: '1.5rem',
   },
 }
 
