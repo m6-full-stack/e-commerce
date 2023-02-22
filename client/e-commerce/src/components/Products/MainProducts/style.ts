@@ -193,7 +193,7 @@ export const HeaderProductsStyle = styled.header`
   }
 `
 
-export const UserCommentCard = styled.div`
+export const MainProductsStyle = styled.div`
   width: 440px;
   height: 380px;
   margin-top: 35px;

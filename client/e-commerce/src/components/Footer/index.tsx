@@ -9,7 +9,7 @@ import { FaAngleUp } from 'react-icons/fa'
 export const Footer = () => {
   return (
     <FooterContainer>
-      <div>
+      {/* <div>
         <img src={logo} alt="logo marca motors shop" />
         <Paragraph
           fontWeight={400}
@@ -23,7 +23,7 @@ export const Footer = () => {
         <div className="border">
           <FaAngleUp color="white" />
         </div>
-      </div>
+      </div> */}
     </FooterContainer>
   )
 }

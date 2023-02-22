@@ -159,7 +159,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
       case 'g0pvta':
         return css`
           height: 48px;
-          max-width: 210px;
+          max-width: 240px;
           padding: 12px 28px;
           color: ${(props) => props.theme.whiteFixed};
           border: 1.5px solid ${(props) => props.theme.grey0};

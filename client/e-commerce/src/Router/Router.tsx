@@ -4,7 +4,6 @@ import { DefaultLayout } from '../components/layouts/Default.layout'
 import { Product } from '../pages/Product'
 import { Home } from '../pages/Home'
 import { Login } from '../pages/Login'
-import { Product } from '../pages/Product'
 import { ProfileViewUser } from '../pages/ProfileViewUser'
 import { Register } from '../pages/Register'
 

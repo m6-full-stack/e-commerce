@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <NavbarContainer>
-      <nav className="navbar">
+      {/* <nav className="navbar">
         <img className="logo" src={Logo} alt="imagem do logo" />
         <div className="teste">
           <ul
@@ -45,7 +45,7 @@ const Navbar = () => {
             <i className="fas fa-bars"></i>
           )}
         </button>
-      </nav>
+      </nav> */}
     </NavbarContainer>
   )
 }

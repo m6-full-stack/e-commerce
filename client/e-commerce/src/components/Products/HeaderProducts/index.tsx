@@ -1,4 +1,6 @@
 import car1 from '../../../assets/images/car_1.svg'
+import { Heading } from '../../../styles/typography'
+import Button from '../../Button'
 import { HeaderProductsStyle } from './style'
 
 export const HeaderProducts = () => {
@@ -6,37 +8,39 @@ export const HeaderProducts = () => {
     <HeaderProductsStyle className="headerMain">
       <section>
         <figure>
-          <img src={car1} alt="IMAGEM 1" />
+          <img src={car1} className="principalImage" alt="IMAGEM 1" />
           <figcaption hidden> Imagem Principal </figcaption>
         </figure>
         <br />
         <div className="productInformation">
-          <h3>Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200 </h3>
-          <div className="sectionDivHeaderMain">
+          <Heading fontWeight={600} className="productTitle" color={'grey1'}>
+            Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200{' '}
+          </Heading>
+          <div className="divYearPrice">
             <div className="divYear">
-              <span>2013</span>
-              <span>0 KM</span>
+              <span className="spanPriceYear">2013</span>
+              <span className="spanPriceYear">0 KM</span>
             </div>
             <div className="divPrice">
               <p>R$ 89.000,00</p>
             </div>
           </div>
-          <button className="buy">Comprar</button>
+          <Button buttonSize="b1pc">Comprar</Button>
         </div>
         <br />
-        <div className="descriptionProduct">
-          <h4>Descrição</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea quos
-            exercitationem placeat temporibus sunt, nemo magni consequuntur
-            minus tempora reprehenderit. Consequuntur est ratione, quibusdam
-            sequi sed officia pariatur?
+        <div className="divDescriptionProduct description">
+          <Heading level={4}>Descrição</Heading>
+          <p className="descriptionProduct description">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industrys standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
           </p>
         </div>
       </section>
       <aside>
         <div className="imagesContainer">
-          <h4 className="titleImages">Fotos</h4>
+          <Heading className="titleImages">Fotos</Heading>
           <div className="imagesDivs">
             <img className="otherImages" src={car1} alt="" />
             <img className="otherImages" src={car1} alt="" />
@@ -46,9 +50,20 @@ export const HeaderProducts = () => {
             <img className="otherImages" src={car1} alt="" />
           </div>
         </div>
-        {/* <div className="userContainer">
-          
-        </div> */}
+        <div className="userContainer">
+          <Heading size="large" className="userImage">
+            SL
+          </Heading>
+          <Heading size={'normal'} className="userName" color={'grey1'}>
+            {' '}
+            Samuel Leão{' '}
+          </Heading>
+          <p className="descriptionUser description">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry.
+          </p>
+          <button className="buttonSeeAll">Ver todos os anúncios</button>
+        </div>
       </aside>
     </HeaderProductsStyle>
   )
