@@ -86,7 +86,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           max-width: 315px;
           padding: 12px 28px;
           color: ${(props) => props.theme.grey0};
-          border: 1.5px solid ${(props) => props.theme.grey0};
+          border: 1.5px solid ${(props) => props.theme.grey4};
         `
 
       // button login azul entrar
