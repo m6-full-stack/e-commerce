@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom'
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      {/* <ThemeTitle tag='h1' titleSize='title1-700' color='blue'>teste</ThemeTitle> */}
+      {/* <ThemeTkitle tag='h1' titleSize='title1-700' color='blue'>teste</ThemeTkitle> */}
       {/* <ThemeParagraph paragraphSize='body-1-400' color='blue'>teste</ThemeParagraph> */}
       <BrowserRouter>
         <Router />
