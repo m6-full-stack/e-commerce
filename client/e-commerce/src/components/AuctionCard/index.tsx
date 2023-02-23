@@ -4,7 +4,7 @@ import { AuctionCardContainer } from './style'
 export const AuctionCard = () => {
   return (
     <AuctionCardContainer>
-      <div>teste</div>
+      <div className="content-auction">teste</div>
     </AuctionCardContainer>
   )
 }
