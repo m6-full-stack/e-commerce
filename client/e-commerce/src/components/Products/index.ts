@@ -2,12 +2,11 @@ import styled from 'styled-components'
 
 export const HeaderProductsStyle = styled.header`
   width: 100%;
-  height: 850px;
+  height: 140rem;
+  margin-top: 65px;
   background-color: gray;
   display: flex;
   justify-content: center;
-  overflow-x: auto;
-  margin-bottom: 50px;
 
   section {
     width: 50%;
@@ -93,6 +92,7 @@ export const HeaderProductsStyle = styled.header`
   .descriptionProduct {
     padding: 20px 0px;
     font-size: small;
+    text-align: justify;
   }
 
   .divDescriptionProduct {
@@ -100,6 +100,23 @@ export const HeaderProductsStyle = styled.header`
     padding: 35px;
     border-radius: 4px;
     font-family: Inter;
+  }
+
+  .titleDescription {
+    font-size: 20px;
+  }
+
+  .divCommentsProduct {
+    margin-top: 25px;
+    background-color: #fdfdfd;
+    padding: 35px;
+    border-radius: 4px;
+  }
+
+  .titleComments {
+    margin-top: 10px;
+    margin-bottom: -20px;
+    font-size: 20px;
   }
 
   .divCommentsProduct {
@@ -124,19 +141,20 @@ export const HeaderProductsStyle = styled.header`
 
   .imagesContainer {
     width: 440px;
-    height: 340px;
+    height: 320px;
     margin-top: 35px;
     background-color: #fdfdfd;
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 25px;
   }
 
   .imagesDivs {
     width: 90%;
-    height: 70%;
-    margin-top: 35px;
+    height: 90%;
+    margin-top: 15px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -149,6 +167,7 @@ export const HeaderProductsStyle = styled.header`
     max-height: 108px;
     padding: 27px 7px;
     background-color: #e9ecef;
+    margin-top: 15px;
   }
 
   .userContainer {
@@ -162,47 +181,6 @@ export const HeaderProductsStyle = styled.header`
     justify-content: space-around;
     padding: 35px 45px;
   }
-
-  .userImage {
-    width: 100px;
-    height: 100px;
-    background-color: #4529e6;
-    color: #fdfdfd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-  }
-
-  .userName {
-    font-size: 20px;
-  }
-
-  .descriptionUser {
-    padding: 20px 0px;
-    font-size: small;
-    text-align: center;
-  }
-
-  .buttonSeeAll {
-    background-color: #0b0d0d;
-    color: #fdfdfd;
-    padding: 12px 28px;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-`
-
-export const MainProductsStyle = styled.div`
-  width: 440px;
-  height: 380px;
-  margin-top: 35px;
-  background-color: #fdfdfd;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 35px 45px;
 
   .userImage {
     width: 100px;
