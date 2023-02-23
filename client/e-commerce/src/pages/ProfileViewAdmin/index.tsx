@@ -10,9 +10,8 @@ export const ProfileViewUser = () => {
     <ProfileContainer>
       <div className="blue"></div>
       <div className="content">
-        <Card />
-        <Card />
-        <Card />
+        <CreateAdCard />
+        <AuctionCard />
       </div>
     </ProfileContainer>
   )
