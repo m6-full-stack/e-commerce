@@ -10,6 +10,7 @@ export const ProfileContainer = styled.div`
   }
 
   .content {
+    margin: 0 auto;
     margin-top: -100px;
   }
 `

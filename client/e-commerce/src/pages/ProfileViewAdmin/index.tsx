@@ -5,14 +5,16 @@ import { CreateAdCard } from '../../components/CreateAdCard'
 
 import { ProfileContainer } from './style'
 
-export const ProfileViewUser = () => {
+export const ProfileViewAdm = () => {
   return (
     <ProfileContainer>
-      <div className="blue"></div>
-      <div className="content">
-        <CreateAdCard />
-        <AuctionCard />
-      </div>
+      <section className="teste">
+        <div className="blue"></div>
+        <div className="content">
+          <CreateAdCard />
+          <AuctionCard />
+        </div>
+      </section>
     </ProfileContainer>
   )
 }

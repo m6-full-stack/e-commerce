@@ -11,5 +11,6 @@ export const ProfileContainer = styled.div`
 
   .content {
     margin-top: -100px;
+    margin: 0 auto;
   }
 `
