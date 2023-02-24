@@ -98,5 +98,8 @@ export const AuctionCardContainer = styled.div`
     width: 100%;
     height: 62px;
     background-color: ${(props) => props.theme.brand1};
+    @media (max-width: 315px) {
+      padding-left: 8px;
+    }
   }
 `
