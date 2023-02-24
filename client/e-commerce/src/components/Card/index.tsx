@@ -12,15 +12,15 @@ export const Card = ({ isProfileView }: CardProps) => {
 
   return (
     <CardContainer>
-      <div className="content-img">
+      <div className='content-img'>
         {isProfileView && (
           <span style={{ backgroundColor: isActive ? '#4529E6' : '#ADB5BD' }}>
             {isActive ? 'Ativo' : 'Inativo'}
           </span>
         )}
-        <img src={car} alt="foto de carro" />
+        <img src={car} alt='foto de carro' />
       </div>
-      <div className="content-description">
+      <div className='content-description'>
         <Heading level={3} fontWeight={600} color={'grey1'} lineHeight={'20px'}>
           Product title stays here - max 1 line
         </Heading>
@@ -33,8 +33,8 @@ export const Card = ({ isProfileView }: CardProps) => {
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem...
         </Paragraph>
-        <div className="content-name">
-          <div className="content-border">
+        <div className='content-name'>
+          <div className='content-border'>
             <Paragraph
               fontWeight={500}
               size={'small'}
@@ -53,9 +53,9 @@ export const Card = ({ isProfileView }: CardProps) => {
             Samuel Leão
           </Paragraph>
         </div>
-        <section className="content-year-and-price">
-          <div className="content-year">
-            <div className="border">
+        <section className='content-year-and-price'>
+          <div className='content-year'>
+            <div className='border'>
               <Paragraph
                 fontWeight={500}
                 size={'small'}
@@ -65,7 +65,7 @@ export const Card = ({ isProfileView }: CardProps) => {
                 0 KM
               </Paragraph>
             </div>
-            <div className="border">
+            <div className='border'>
               <Paragraph
                 fontWeight={500}
                 size={'small'}
@@ -76,7 +76,7 @@ export const Card = ({ isProfileView }: CardProps) => {
               </Paragraph>
             </div>
           </div>
-          <div className="content-price">
+          <div className='content-price'>
             <Heading
               fontWeight={500}
               level={3}

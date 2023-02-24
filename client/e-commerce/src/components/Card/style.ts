@@ -1,17 +1,18 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CardContainer = styled.div`
-  width: 100%;
+  width: 312px;
   max-width: 312px;
   min-width: 312px;
 
   section {
     gap: 16px;
+    max-height: 347px;
   }
 
   section:hover {
     .content-img {
-      border: 2px solid ${props => props.theme.brand1};
+      border: 2px solid ${(props) => props.theme.brand1};
       border-radius: 4px;
 
       & img {
@@ -22,7 +23,7 @@ export const CardContainer = styled.div`
 
   .content-img {
     padding: 0 25px;
-    background: ${props => props.theme.grey7};
+    background: ${(props) => props.theme.grey7};
     position: relative;
   }
 
@@ -32,7 +33,7 @@ export const CardContainer = styled.div`
     color: #ffffff;
     font-family: 'Inter';
 
-    background-color: #4529E6;
+    background-color: #4529e6;
     padding: 1px 8px;
 
     position: absolute;
@@ -59,7 +60,7 @@ export const CardContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: ${props => props.theme.brand1};
+    background: ${(props) => props.theme.brand1};
     width: 100%;
     max-width: 32px;
     height: 32px;
@@ -80,10 +81,10 @@ export const CardContainer = styled.div`
     height: 32px;
     padding: 4px 8px;
     gap: 10px;
-    background: ${props => props.theme.brand4};
+    background: ${(props) => props.theme.brand4};
     border-radius: 4px;
   }
   .content-price {
     align-items: flex-end;
   }
-`;
+`

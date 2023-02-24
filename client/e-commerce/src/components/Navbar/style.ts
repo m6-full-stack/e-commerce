@@ -2,16 +2,17 @@ import styled from 'styled-components'
 
 export const NavbarContainer = styled.div`
   width: 100%;
+  height: 80px;
   background: red;
   z-index: 10;
-
+  position: fixed;
+  top: 0;
   .navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     padding: 0 60px;
-    position: fixed;
 
     height: 80px;
     width: 100%;
