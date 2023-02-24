@@ -4,7 +4,7 @@ export const SectionProductsStyle = styled.section`
   width: 50%;
   display: flex;
   align-items: center;
-  margin-top: -585px;
+  margin-top: -515px;
 
   figure {
     width: 100%;

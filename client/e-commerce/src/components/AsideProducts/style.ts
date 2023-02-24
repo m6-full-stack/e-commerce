@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const AsideProductsStyle = styled.aside`
   width: 30%;
   margin-left: 30px;
-  margin-top: -620px;
+  margin-top: -550px;
 
   .titleImages {
     width: 80%;

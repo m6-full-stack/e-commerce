@@ -324,6 +324,19 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           }
         `
 
+      // button profile modal criar anuncio criar anuncio
+      case 'b4profmodca':
+        return css`
+          height: 48px;
+          padding: 12px 28px;
+          max-width: 159px;
+          color: ${(props) => props.theme.grey0};
+          border: 1px solid ${(props) => props.theme.brand2};
+          @media (min-width: 1024px) {
+            max-width: 193px;
+          }
+        `
+
       // button profile modal delete anuncio Cancelar
       case 'g6profmodvac':
         return css`
