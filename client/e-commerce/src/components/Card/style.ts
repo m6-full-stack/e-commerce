@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
 export const CardContainer = styled.div`
-  width: 100%;
+  width: 312px;
   max-width: 312px;
 
   section {
     gap: 16px;
+    max-height: 347px;
   }
 
   section:hover {
@@ -22,6 +23,7 @@ export const CardContainer = styled.div`
   .content-img {
     padding: 0 25px;
     background: ${(props) => props.theme.grey7};
+    height: 150px;
   }
 
   .content-img img {
