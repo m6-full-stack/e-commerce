@@ -159,7 +159,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
       case 'g0pvta':
         return css`
           height: 48px;
-          max-width: 210px;
+          max-width: 240px;
           padding: 12px 28px;
           color: ${(props) => props.theme.whiteFixed};
           border: 1.5px solid ${(props) => props.theme.grey0};
@@ -329,6 +329,19 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           max-width: 159px;
           color: ${(props) => props.theme.brand4};
           border: 1.5px solid ${(props) => props.theme.brand3};
+          @media (min-width: 1024px) {
+            max-width: 193px;
+          }
+        `
+
+      // button profile modal criar anuncio criar anuncio
+      case 'b4profmodca':
+        return css`
+          height: 48px;
+          padding: 12px 28px;
+          max-width: 159px;
+          color: ${(props) => props.theme.grey0};
+          border: 1px solid ${(props) => props.theme.brand2};
           @media (min-width: 1024px) {
             max-width: 193px;
           }

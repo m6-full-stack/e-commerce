@@ -11,7 +11,7 @@ import { Heading, Paragraph } from '../../styles/typography'
 import { validationLogin } from '../../validators/validationLogin'
 
 export const Login = () => {
-  function onSubmit(data) {
+  function onSubmit(data: FieldValues) {
     console.log(data)
   }
 
