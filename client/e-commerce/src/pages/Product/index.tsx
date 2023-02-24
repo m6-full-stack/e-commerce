@@ -12,12 +12,12 @@ export const Product = () => {
       <div>
         <CreateAnnouncementModal />
         <div className="divBlue"></div>
-        <HeaderProductsStyle>
+        {/* <HeaderProductsStyle>
           <SectionProducts />
           <AsideProducts />
         </HeaderProductsStyle>
         <MainProducts />
-        <FooterProducts />
+        <FooterProducts /> */}
       </div>
     </ProductContainer>
   )
