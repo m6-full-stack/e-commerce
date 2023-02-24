@@ -70,4 +70,9 @@ export const CardContainer = styled.div`
   .content-price {
     align-items: flex-end;
   }
+
+  .content-buttons {
+    flex-direction: row;
+    gap: 16px;
+  }
 `
