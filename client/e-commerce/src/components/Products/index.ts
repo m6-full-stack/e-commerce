@@ -1,10 +1,24 @@
 import styled from 'styled-components'
 
+export const ProductContainer = styled.div`
+  width: 100%;
+
+  .divBlue {
+    height: 411px;
+    width: 100%;
+    background: ${(props) => props.theme.brand1};
+  }
+
+  .content {
+    margin-top: -100px;
+    z-index: 1;
+  }
+`
+
 export const HeaderProductsStyle = styled.header`
   width: 100%;
   height: 140rem;
-  margin-top: 65px;
-  background-color: gray;
+  background-color: #f1f3f5;
   display: flex;
   justify-content: center;
 
