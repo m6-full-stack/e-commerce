@@ -1,9 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm, FieldValues } from 'react-hook-form'
 import { validationUserAnnouncement } from '../../validators/validationUserAnnouncement'
-import Button from '../Button'
-import Input from '../Input'
-import { Section } from './style'
+import Input, { Input2, TextArea } from '../Input'
+import { ButtonBlue, ButtonTransp, Section } from './style'
 
 export const CreateAnnouncementModal = () => {
   const onSubmit = (data: FieldValues) => {
@@ -34,27 +33,23 @@ export const CreateAnnouncementModal = () => {
         <form onClick={handleSubmit(onSubmit)}>
           <h4 className="titles">Tipo de anuncio</h4>
           <div className="buttonsAnnouncementType">
-            <Button
-              variant="blue"
-              buttonSize="b3profmodca"
+            <ButtonBlue
               onClick={() => {
                 console.log('Tipo Venda')
               }}
             >
               Venda
-            </Button>
-            <Button
-              variant="transparent"
-              buttonSize="b4profmodca"
+            </ButtonBlue>
+            <ButtonTransp
               onClick={() => {
                 console.log('Tipo Leilão')
               }}
             >
               Leilão
-            </Button>
+            </ButtonTransp>
           </div>
           <h4 className="titles">Informações do veículo</h4>
-          <Input
+          <Input2
             label="Título"
             placeholder="Digitar título"
             name="title"
@@ -62,14 +57,14 @@ export const CreateAnnouncementModal = () => {
             errosMessage={errors.username?.message?.toString()}
           />
           <div className="inputGroup">
-            <Input
+            <Input2
               label="Ano"
               placeholder="Digitar ano"
               name="year"
               register={register}
               errosMessage={errors.year?.message?.toString()}
             />
-            <Input
+            <Input2
               className="inputSpacement"
               label="Quilometragem"
               placeholder="0"
@@ -77,7 +72,7 @@ export const CreateAnnouncementModal = () => {
               register={register}
               errosMessage={errors.mileage?.message?.toString()}
             />
-            <Input
+            <Input2
               label="Preço"
               placeholder="Digitar preço"
               name="price"
@@ -85,68 +80,69 @@ export const CreateAnnouncementModal = () => {
               errosMessage={errors.price?.message?.toString()}
             />
           </div>
+          <TextArea
+            label="Descrição"
+            placeholder="Lorem Ipsum is simply dummy text of the printing"
+            name="title"
+            register={register}
+            errosMessage={errors.username?.message?.toString()}
+          />
           <h4 className="titles">Tipo de veículo</h4>
           <div className="buttonsAnnouncementType">
-            <Button
-              variant="blue"
-              buttonSize="b3profmodca"
+            <ButtonBlue
               onClick={() => {
                 console.log('Carro')
               }}
             >
               Carro
-            </Button>
-            <Button
-              variant="transparent"
-              buttonSize="b4profmodca"
+            </ButtonBlue>
+            <ButtonTransp
               onClick={() => {
                 console.log('Moto')
               }}
             >
               Moto
-            </Button>
+            </ButtonTransp>
           </div>
-          <Input
+          <Input2
             label="Imagem da capa"
             placeholder="Inserir URL da imagem"
             name="cover_image"
             register={register}
             errosMessage={errors.cover_image?.message?.toString()}
           />
-          <Input
+          <Input2
             label="1ª Imagem da galeria"
             placeholder="Inserir URL da imagem"
             name="cover_image"
             register={register}
             errosMessage={errors.cover_image?.message?.toString()}
           />
-          <button
-            id="buttonAddImage"
-            onClick={() => {
-              console.log('Adicionar mais campo de imagem')
-            }}
-          >
-            Adicionar campo para imagem da galeria
-          </button>
-          <div className="buttonsAnnouncementCancelOrAccept">
-            <Button
-              variant="blue"
-              buttonSize="b3profmodca"
+          <div className="createAnnuncement">
+            <button
+              id="buttonAddImage"
               onClick={() => {
-                console.log('Tipo Venda')
+                console.log('Adicionar mais campo de imagem')
               }}
             >
-              Criar Anúncio
-            </Button>
-            <Button
-              variant="transparent"
-              buttonSize="b4profmodca"
-              onClick={() => {
-                console.log('Tipo Leilão')
-              }}
-            >
-              Cancelar
-            </Button>
+              Adicionar campo para imagem da galeria
+            </button>
+            <div className="buttonsAnnouncementCancelOrAccept">
+              <ButtonBlue
+                onClick={() => {
+                  console.log('Tipo Venda')
+                }}
+              >
+                Criar Anúncio
+              </ButtonBlue>
+              <ButtonTransp
+                onClick={() => {
+                  console.log('Cancelar')
+                }}
+              >
+                Cancelar
+              </ButtonTransp>
+            </div>
           </div>
         </form>
       </div>

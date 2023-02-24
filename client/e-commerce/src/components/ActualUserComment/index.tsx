@@ -31,7 +31,6 @@ export const ActualUserComment = () => {
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputText
-            type="textarea"
             placeholder="Carro muito confortável, foi uma ótima experiência de compra..."
             {...register('comment')}
           />
