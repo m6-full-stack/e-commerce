@@ -1,12 +1,12 @@
-import React from 'react'
-import { AuctionCard } from '../../components/AuctionCard'
+import React from "react";
+import { AuctionCard } from "../../components/AuctionCard";
 
-import { CardAdm } from '../../components/Card/CardAdm'
+import { CardAdm } from "../../components/Card/CardAdm";
 
-import { CreateAdCard } from '../../components/CreateAdCard'
-import { Heading } from '../../styles/typography'
+import { CreateAdCard } from "../../components/CreateAdCard";
+import { Heading } from "../../styles/typography";
 
-import { ProfileContainer } from './style'
+import { ProfileContainer } from "./style";
 
 export const ProfileViewAdm = () => {
   return (
@@ -14,14 +14,14 @@ export const ProfileViewAdm = () => {
       <div className="blue"></div>
 
       <div className="content">
-        <CreateAdCard />
+        <CreateAdCard isAdmin={true} />
         <Heading
           className="title"
           level={2}
           fontWeight={600}
-          size={'plus'}
-          color={'black'}
-          lineHeight={'30px'}
+          size={"plus"}
+          color={"black"}
+          lineHeight={"30px"}
         >
           Leilão
         </Heading>
@@ -35,9 +35,9 @@ export const ProfileViewAdm = () => {
           className="title-car-motorbike"
           level={2}
           fontWeight={600}
-          size={'plus'}
-          color={'black'}
-          lineHeight={'30px'}
+          size={"plus"}
+          color={"black"}
+          lineHeight={"30px"}
         >
           Carros
         </Heading>
@@ -53,9 +53,9 @@ export const ProfileViewAdm = () => {
           className="title-car-motorbike"
           level={2}
           fontWeight={600}
-          size={'plus'}
-          color={'black'}
-          lineHeight={'30px'}
+          size={"plus"}
+          color={"black"}
+          lineHeight={"30px"}
         >
           Motos
         </Heading>
@@ -68,5 +68,5 @@ export const ProfileViewAdm = () => {
         </div>
       </div>
     </ProfileContainer>
-  )
-}
+  );
+};
