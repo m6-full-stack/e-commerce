@@ -198,6 +198,16 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
             max-width: 80px;
           }
         `
+      // button profile criar anuncio
+      case 'tprofca':
+        return css`
+          height: 48px;
+          max-width: 160px;
+          padding: 12px 20px;
+          font-size: 0.875rem;
+          color: ${(props) => props.theme.brand1};
+          border: 1.5px solid ${(props) => props.theme.brand1};
+        `
 
       // button profile ver como
       case 'tprofvc':

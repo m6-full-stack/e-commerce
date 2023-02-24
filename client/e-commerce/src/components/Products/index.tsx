@@ -3,6 +3,7 @@ import { Heading } from '../../styles/typography'
 import Button from '../../components/Button'
 import { CommentsCards } from '../CommentCards'
 import { ActualUserComment } from '../../components/ActualUserComment'
+import { HeaderProductsStyle } from '../HeaderProducts/style'
 
 export const HeaderProducts = () => {
   return (

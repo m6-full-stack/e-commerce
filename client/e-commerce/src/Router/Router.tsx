@@ -1,10 +1,11 @@
 import { Home } from '../pages/Home'
 import { Login } from '../pages/Login'
 import { Product } from '../pages/Product'
-import { Register } from '../pages/Register'
-import { Routes, Route } from 'react-router-dom'
+import { ProfileViewAdm } from '../pages/ProfileViewAdmin'
 import { ProfileViewUser } from '../pages/ProfileViewUser'
 import { DefaultLayout } from '../components/layouts/Default.layout'
+import { Route, Routes } from 'react-router-dom'
+import { Register } from '../pages/Register'
 
 export const Router = () => {
   return (
@@ -15,6 +16,7 @@ export const Router = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/product" element={<Product />} />
         <Route path="/profileview" element={<ProfileViewUser />} />
+        <Route path="/profileviewAdm" element={<ProfileViewAdm />} />
       </Route>
     </Routes>
   )
