@@ -4,6 +4,8 @@ import { Product } from '../pages/Product'
 import { ProfileViewAdm } from '../pages/ProfileViewAdmin'
 import { ProfileViewUser } from '../pages/ProfileViewUser'
 import { DefaultLayout } from '../components/layouts/Default.layout'
+import { Route, Routes } from 'react-router-dom'
+import { Register } from '../pages/Register'
 
 export const Router = () => {
   return (
