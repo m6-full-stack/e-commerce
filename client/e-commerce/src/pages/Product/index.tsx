@@ -10,7 +10,7 @@ export const Product = () => {
   return (
     <ProductContainer>
       <div>
-        {/* <CreateAnnouncementModal /> */}
+        <CreateAnnouncementModal />
         <div className="divBlue"></div>
         <HeaderProductsStyle>
           <SectionProducts />
