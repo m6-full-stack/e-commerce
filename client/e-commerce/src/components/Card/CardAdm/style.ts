@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const CardContainer = styled.div`
   width: 100%;
+  min-width: 312px;
   max-width: 312px;
 
   section {

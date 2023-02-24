@@ -1,8 +1,8 @@
-import { Card } from "../../components/Card";
-import { CreateAdCard } from "../../components/CreateAdCard";
-import { Heading } from "../../styles/typography";
+import { Card } from '../../components/Card'
+import { CreateAdCard } from '../../components/CreateAdCard'
+import { Heading } from '../../styles/typography'
 
-import { ProfileContainer } from "./style";
+import { ProfileContainer } from './style'
 
 export const ProfileViewUser = () => {
   return (
@@ -14,9 +14,9 @@ export const ProfileViewUser = () => {
           className="title"
           level={2}
           fontWeight={600}
-          size={"plus"}
-          color={"black"}
-          lineHeight={"30px"}
+          size={'plus'}
+          color={'black'}
+          lineHeight={'30px'}
         >
           Carros
         </Heading>
@@ -35,9 +35,9 @@ export const ProfileViewUser = () => {
           className="title"
           level={2}
           fontWeight={600}
-          size={"plus"}
-          color={"black"}
-          lineHeight={"30px"}
+          size={'plus'}
+          color={'black'}
+          lineHeight={'30px'}
         >
           Motos
         </Heading>
@@ -54,5 +54,5 @@ export const ProfileViewUser = () => {
         </div>
       </div>
     </ProfileContainer>
-  );
-};
+  )
+}
