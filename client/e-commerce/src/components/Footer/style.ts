@@ -12,6 +12,10 @@ export const FooterContainer = styled.footer`
 
   padding: 45px 59px;
 
+  position: relative;
+  bottom: 0;
+  left: 0;
+
   div {
     justify-content: center;
     align-items: center;

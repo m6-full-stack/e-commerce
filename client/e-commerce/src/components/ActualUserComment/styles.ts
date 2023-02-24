@@ -45,6 +45,17 @@ export const UserCommentInput = styled.div`
     flex-direction: column;
     align-items: flex-end;
   }
+
+  .errors {
+    width: 100%;
+    font-weight: 100;
+    font-family: Inter;
+    font-size: 13px;
+    color: ${(props) => props.theme.alert1};
+    margin-top: -20px;
+    margin-bottom: 20px;
+    margin-left: -200px;
+  }
 `
 
 export const InputText = styled.input`
@@ -59,11 +70,10 @@ export const InputText = styled.input`
   display: flex;
   margin-top: 15px;
   margin-bottom: 25px;
-  /* gap: 10px; */
   height: 7rem;
   min-height: 3rem;
   border: 1.5px solid #e9ecef;
   border-radius: 4px;
   color: #868e96;
-  padding: 0 1rem;
+  padding: 10px;
 `

@@ -31,12 +31,12 @@ export const ActualUserComment = () => {
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputText
-            type="text"
+            type="textarea"
             placeholder="Carro muito confortável, foi uma ótima experiência de compra..."
             {...register('comment')}
           />
-          <p>{errors.comment?.message?.toString()}</p>
-          <Button className="buttonComent" variant="blue" buttonSize="b1pcom">
+          <p className="errors">{errors.comment?.message?.toString()}</p>
+          <Button variant="blue" buttonSize="b1pcom">
             Comentar
           </Button>
         </form>
