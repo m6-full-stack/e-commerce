@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const MainProductsStyle = styled.main`
   width: 100%;
   background-color: ${(props) => props.theme.brand4};
-  margin-top: -1980px;
+  margin-top: -2035px;
 
   .divCommentsProduct {
     width: 50%;

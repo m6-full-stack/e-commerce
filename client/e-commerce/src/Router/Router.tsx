@@ -1,11 +1,10 @@
-import { Routes, Route } from 'react-router-dom'
-import { DefaultLayout } from '../components/layouts/Default.layout'
-
-import { Product } from '../pages/Product'
 import { Home } from '../pages/Home'
 import { Login } from '../pages/Login'
-import { ProfileViewUser } from '../pages/ProfileViewUser'
+import { Product } from '../pages/Product'
 import { Register } from '../pages/Register'
+import { Routes, Route } from 'react-router-dom'
+import { ProfileViewUser } from '../pages/ProfileViewUser'
+import { DefaultLayout } from '../components/layouts/Default.layout'
 
 export const Router = () => {
   return (
