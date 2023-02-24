@@ -44,7 +44,9 @@ const theme = {
   sizes: {
     small: '0.875rem',
     normal: '1rem',
+    plus: '1.25rem',
     large: '1.5rem',
+    xlarge: '2.25rem',
   },
 }
 
