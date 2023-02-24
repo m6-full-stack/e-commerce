@@ -1,10 +1,10 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm, FieldValues } from 'react-hook-form'
 import { validationUserAnnouncement } from '../../validators/validationUserAnnouncement'
-import Input, { Input2, TextArea } from '../Input'
+import { Input2, TextArea } from '../Input'
 import { ButtonBlue, ButtonTransp, Section } from './style'
 
-export const CreateAnnouncementModal = () => {
+export const EditOrDeleteAnnouncementModal = () => {
   const onSubmit = (data: FieldValues) => {
     console.log(data)
   }
@@ -20,7 +20,7 @@ export const CreateAnnouncementModal = () => {
     <Section>
       <div className="divCreateAnnouncement">
         <div className="titleClose">
-          <h4 className="titlesCloseText">Criar anuncio</h4>
+          <h4 className="titlesCloseText">Editar anuncio</h4>
           <p
             className="closeModal"
             onClick={() => {
@@ -51,7 +51,7 @@ export const CreateAnnouncementModal = () => {
           <h4 className="titles">Informações do veículo</h4>
           <Input2
             label="Título"
-            placeholder="Digitar título"
+            placeholder="Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200"
             name="title"
             register={register}
             errosMessage={errors.username?.message?.toString()}
@@ -59,7 +59,7 @@ export const CreateAnnouncementModal = () => {
           <div className="inputGroup">
             <Input2
               label="Ano"
-              placeholder="Digitar ano"
+              placeholder="2018"
               name="year"
               register={register}
               errosMessage={errors.year?.message?.toString()}
@@ -74,7 +74,7 @@ export const CreateAnnouncementModal = () => {
             />
             <Input2
               label="Preço"
-              placeholder="Digitar preço"
+              placeholder="50.000,00"
               name="price"
               register={register}
               errosMessage={errors.price?.message?.toString()}
@@ -83,9 +83,9 @@ export const CreateAnnouncementModal = () => {
           <TextArea
             label="Descrição"
             placeholder="Lorem Ipsum is simply dummy text of the printing"
-            name="title"
+            name="description"
             register={register}
-            errosMessage={errors.username?.message?.toString()}
+            errosMessage={errors.description?.message?.toString()}
           />
           <h4 className="titles">Tipo de veículo</h4>
           <div className="buttonsAnnouncementType">
@@ -103,6 +103,23 @@ export const CreateAnnouncementModal = () => {
             >
               Moto
             </ButtonTransp>
+          </div>
+          <h4 className="titles">Publicado</h4>
+          <div className="buttonsAnnouncementType">
+            <ButtonTransp
+              onClick={() => {
+                console.log('Carro')
+              }}
+            >
+              Sim
+            </ButtonTransp>
+            <ButtonBlue
+              onClick={() => {
+                console.log('Moto')
+              }}
+            >
+              Não
+            </ButtonBlue>
           </div>
           <Input2
             label="Imagem da capa"
@@ -140,7 +157,7 @@ export const CreateAnnouncementModal = () => {
                   console.log('Cancelar')
                 }}
               >
-                Cancelar
+                Excluir anúncio
               </ButtonTransp>
             </div>
           </div>

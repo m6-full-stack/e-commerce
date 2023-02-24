@@ -11,7 +11,7 @@ export const Section = styled.section`
 
   .divCreateAnnouncement {
     width: 460px;
-    height: 95%;
+    height: 100%;
     background-color: #ffffff;
     border-radius: 8px;
     display: flex;
@@ -40,7 +40,7 @@ export const Section = styled.section`
   }
 
   .titles {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     font-size: 14px;
     font-weight: 500;
     font-family: Inter;
@@ -75,7 +75,7 @@ export const Section = styled.section`
   }
 
   #buttonAddImage {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     height: 38px;
     border: 1.5px solid #edeafd;
     padding: 8px 20px;
@@ -84,10 +84,11 @@ export const Section = styled.section`
   }
 
   .buttonsAnnouncementCancelOrAccept {
-    padding: 24px;
+    padding: 18px;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
+    margin-bottom: -5px;
   }
 `
 
@@ -101,6 +102,7 @@ export const ButtonBlue = styled.button`
   padding: 12px 28px;
   border-radius: 4px;
   font-size: 16px;
+  font-family: Inter;
   margin-bottom: 15px;
   margin-top: -8px;
 
@@ -119,6 +121,7 @@ export const ButtonTransp = styled.button`
   padding: 12px 28px;
   border-radius: 4px;
   font-size: 16px;
+  font-family: Inter;
   margin-bottom: 15px;
   margin-top: -8px;
 

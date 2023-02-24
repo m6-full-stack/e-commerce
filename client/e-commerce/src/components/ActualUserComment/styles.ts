@@ -58,7 +58,7 @@ export const UserCommentInput = styled.div`
   }
 `
 
-export const InputText = styled.input`
+export const InputText = styled.textarea`
   width: 100%;
   row-gap: initial;
   font-family: 'Inter';
@@ -76,4 +76,23 @@ export const InputText = styled.input`
   border-radius: 4px;
   color: #868e96;
   padding: 10px;
+  resize: none;
+`
+
+export const InputText2 = styled.textarea`
+  width: 100%;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: initial;
+  line-height: 0;
+  display: flex;
+  height: 4rem;
+  min-height: 3rem;
+  border: 1.5px solid #e9ecef;
+  border-radius: 4px;
+  color: #868e96;
+  padding: 10px;
+  resize: none;
 `
