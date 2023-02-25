@@ -28,10 +28,17 @@ export const GlobalStyle = createGlobalStyle`
         list-style: none;
         
     }
+
+    textarea::placeholder {
+      padding: 8px;
+    }
     
   a {
 		text-decoration: none;
 		cursor: pointer;
+    :focus{
+      box-shadow: none;
+    }
 	}
   img {
         max-width: 100%;
