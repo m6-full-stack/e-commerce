@@ -15,10 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     background: ${(props) => props.theme.grey8};
     min-height: 100%;
   }
-  :focus {
-    outline: transparent;
-    box-shadow: 0 0 0 1.5px ${(props) => props.theme.brand2};;
-}
+
   button {
 		cursor: pointer;
     border: 0;
@@ -28,10 +25,17 @@ export const GlobalStyle = createGlobalStyle`
         list-style: none;
         
     }
+
+    textarea::placeholder {
+      padding: 8px;
+    }
     
   a {
 		text-decoration: none;
 		cursor: pointer;
+    :focus{
+      box-shadow: none;
+    }
 	}
   img {
         max-width: 100%;

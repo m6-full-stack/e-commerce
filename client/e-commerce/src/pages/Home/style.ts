@@ -79,9 +79,9 @@ export const ContainerHome = styled.main`
     scroll-snap-align: start;
   }
   .carrossel::-webkit-scrollbar {
-    height: 10px;
+    width: 0px;
   }
-
+/* 
   .carrossel::-webkit-scrollbar-track {
     background: #ffffff;
   }
@@ -95,7 +95,7 @@ export const ContainerHome = styled.main`
     background-color: ${(props) => props.theme.grey2};
     border-radius: 10px;
     border: 3px solid #ffffff;
-  }
+  } */
 
   .swiper-slide {
     display: flex;
