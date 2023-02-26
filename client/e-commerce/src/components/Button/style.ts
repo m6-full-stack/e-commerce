@@ -102,7 +102,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
       case 'b1comp':
         return css`
           height: 48px;
-          padding: 12px 28px;
+          padding: 12px 0px;
           color: ${(props) => props.theme.whiteFixed};
           border: 1.5px solid ${(props) => props.theme.brand1};
           @media (min-width: 1024px) {
@@ -114,7 +114,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
       case 'g4anu':
         return css`
           height: 48px;
-          padding: 12px 28px;
+          padding: 12px 0px;
           color: ${(props) => props.theme.grey0};
           border: 1.5px solid ${(props) => props.theme.grey4};
           @media (min-width: 1024px) {
@@ -127,6 +127,8 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
         return css`
           height: 48px;
           padding: 12px 28px;
+          line-height: 20px;
+          
           color: ${(props) => props.theme.whiteFixed};
           border: 1.5px solid ${(props) => props.theme.brand1};
           @media (min-width: 1024px) {

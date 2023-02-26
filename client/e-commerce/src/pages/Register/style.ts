@@ -31,19 +31,36 @@ export const RegisterContainer = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    
+
     width: 100%;
     max-width: 412px;
-    
+
     border-radius: 64px 64px 0px 0px;
+  }
+
+  .content-p {
+    margin-bottom: 1rem;
   }
 
   .title-register {
     display: flex;
     
-    /* margin-bottom: 32px; */
 
+    /* margin-bottom: 32px; */
   }
 
+  .content-of-two {
+    flex-direction: row;
+    gap: 9px;
+  }
 
+  .content-buttons {
+    flex-direction: row;
+    gap: 9px;
+    margin-bottom: 1rem;
+    
+    @media (max-width: 374px) {
+      flex-direction: column;
+    }
+  }
 `

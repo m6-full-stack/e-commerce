@@ -78,6 +78,8 @@ export const TextArea = ({
       <div>
         <label htmlFor={name}>{label}</label>
         <textarea
+          cols={20}
+          rows={3}
           id={name.toLowerCase()}
           placeholder={placeholder}
           {...register(name)}

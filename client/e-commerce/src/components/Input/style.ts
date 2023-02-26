@@ -42,6 +42,11 @@ export const InputContainer = styled.div`
       color: ${(props) => props.theme.grey3};
 
       padding: 0 1rem;
+
+      :focus {
+      outline: transparent;
+      box-shadow: 0 0 0 1.5px ${(props) => props.theme.brand2};
+      }
     }
 
     > textarea {
@@ -56,7 +61,7 @@ export const InputContainer = styled.div`
 
       color: ${(props) => props.theme.grey3};
 
-      padding: 1rem;
+      padding: 0.5rem;
 
       font-family: 'Inter';
       font-style: normal;
@@ -64,6 +69,10 @@ export const InputContainer = styled.div`
       font-size: 16px;
 
       resize: none;
+      :focus {
+      outline: transparent;
+      box-shadow: 0 0 0 1.5px ${(props) => props.theme.brand2};
+      }
     }
   }
   > p {

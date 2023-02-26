@@ -40,15 +40,17 @@ export const Register = () => {
           Cadastro
         </Heading>
         <form>
-          <div className='teste12'>
+          <div className="content-p">
             <Paragraph
               fontWeight={500}
               size={'small'}
-              color={'grey2'}
+              color={'black'}
               lineHeight={'24px'}
             >
               Informações pessoais
             </Paragraph>
+            </div>
+
             <Input
               label="Nome"
               placeholder="Ex: Samuel Leão"
@@ -91,6 +93,16 @@ export const Register = () => {
               register={register}
               errosMessage={errors.description?.message?.toString()}
             />
+
+          <div className="content-p">
+            <Paragraph
+              fontWeight={500}
+              size={'small'}
+              color={'black'}
+              lineHeight={'24px'}
+            >
+              Infomações de endereço
+            </Paragraph>
           </div>
 
           <Input
@@ -100,6 +112,84 @@ export const Register = () => {
             register={register}
             errosMessage={errors.cep?.message?.toString()}
           />
+
+          <div className="content-of-two">
+            <Input
+              label="Estado"
+              placeholder="Digitar Estado"
+              name="state"
+              register={register}
+              errosMessage={errors.state?.message?.toString()}
+            />
+            <Input
+              label="Cidade"
+              placeholder="Digitar cidade"
+              name="city"
+              register={register}
+              errosMessage={errors.city?.message?.toString()}
+            />
+          </div>
+          <Input
+            label="Rua"
+            placeholder="Digitar rua"
+            name="street"
+            register={register}
+            errosMessage={errors.street?.message?.toString()}
+          />
+
+          <div className="content-of-two">
+            <Input
+              label="Número"
+              placeholder="Digitar número"
+              name="number"
+              register={register}
+              errosMessage={errors.number?.message?.toString()}
+            />
+            <Input
+              label="Complemento"
+              placeholder="Ex: apart 307"
+              name="complement"
+              register={register}
+              errosMessage={errors.complement?.message?.toString()}
+            />
+          </div>
+
+          <div className="content-p">
+            <Paragraph
+              fontWeight={500}
+              size={'small'}
+              color={'black'}
+              lineHeight={'24px'}
+            >
+              Tipo de conta
+            </Paragraph>
+          </div>
+
+          <div className="content-buttons">
+            <Button variant="blue" buttonSize="b1comp">
+              Comprador
+            </Button>
+            <Button variant="transparent" buttonSize="g4anu">
+              Anunciante
+            </Button>
+          </div>
+          <Input
+              label="Senha"
+              placeholder="Digite senha"
+              name="password"
+              register={register}
+              errosMessage={errors.password?.message?.toString()}
+            />
+          <Input
+              label="Confirmar senha"
+              placeholder="Digite senha"
+              name="password"
+              register={register}
+              errosMessage={errors.password?.message?.toString()}
+            />
+            <Button variant="blue" buttonSize="b1fcad">
+              Finalizar cadastro
+            </Button>
         </form>
       </div>
     </RegisterContainer>
