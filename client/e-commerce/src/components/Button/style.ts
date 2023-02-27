@@ -309,6 +309,10 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
 
           color: ${(props) => props.theme.brand4};
           border: 1.5px solid ${(props) => props.theme.brand3};
+
+          white-space: nowrap;
+          overflow: hidden;
+
           @media (min-width: 1024px) {
             max-width: 193px;
           }

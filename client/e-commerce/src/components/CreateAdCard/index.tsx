@@ -9,7 +9,7 @@ interface adCardProps {
 }
 
 export const CreateAdCard = ({ isAdmin }: adCardProps) => {
-  const { setIsModel } = useContext(ModalContext)
+  const { setIsModelCreate } = useContext(ModalContext)
   return (
     <CardContainer>
       <div className="content">
@@ -62,7 +62,7 @@ export const CreateAdCard = ({ isAdmin }: adCardProps) => {
           <Button
             variant="transparent"
             buttonSize="tprofca"
-            onClick={() => setIsModel(true)}
+            onClick={() => setIsModelCreate(true)}
           >
             Criar Anuncio
           </Button>
