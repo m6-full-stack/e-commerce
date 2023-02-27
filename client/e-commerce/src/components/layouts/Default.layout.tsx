@@ -5,13 +5,14 @@ import { Footer } from '../Footer'
 
 import { ModalCreate } from '../ModalCreate'
 import { ModalEdit } from '../ModalEdit'
+import { ModalEditAddress } from '../ModalEditAddress'
 import Navbar from '../Navbar'
 import NavbarLogged from '../Navbar/NavbarLogged'
 import { LayoutContainer } from './style'
 
 
 export const DefaultLayout = () => {
-  const { isModelCreate, isModelEdit } = useContext(ModalContext);
+  const { isModelCreate, isModelEdit, isModelEditAddress } = useContext(ModalContext);
   const [loggen, setLoggen] = useState(true)
  
 
@@ -20,6 +21,7 @@ export const DefaultLayout = () => {
       {loggen ? <NavbarLogged /> : <Navbar />}
       {isModelCreate && <ModalCreate />}
       {isModelEdit && <ModalEdit />}
+      {isModelEditAddress && <ModalEditAddress />}
       
       <Outlet />
       <Footer />

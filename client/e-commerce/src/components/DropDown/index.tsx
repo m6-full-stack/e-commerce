@@ -3,7 +3,7 @@ import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 import { MenuContainer } from './style'
 
 const DropDrown = () => {
-  const { setIsModelEdit } = useContext(ModalContext)
+  const { setIsModelEdit, setIsModelEditAddress } = useContext(ModalContext)
   return (
     <MenuContainer>
       <ul>
@@ -21,7 +21,9 @@ const DropDrown = () => {
               </a>
             </li>
             <li>
-              <a href="#">Editar endereço</a>
+              <a href="#" onClick={() => setIsModelEditAddress(true)}>
+                Editar endereço
+              </a>
             </li>
             <li>
               <a href="#">Minhas Compras</a>
