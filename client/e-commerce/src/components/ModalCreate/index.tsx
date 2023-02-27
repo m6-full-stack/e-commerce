@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Heading, Paragraph } from '../../styles/typography'
 import { validationUserAnnouncement } from '../../validators/validationUserAnnouncement'
 
@@ -7,8 +7,11 @@ import { useForm, FieldValues } from 'react-hook-form'
 import Button from '../Button'
 import Input, { TextArea } from '../Input'
 import { ModalContainer } from './style'
+import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 
 export const ModalCreate = () => {
+  const { setIsModel } = useContext(ModalContext)
+
   const onSubmit = (data: FieldValues) => {
     console.log(data)
   }
@@ -33,12 +36,7 @@ export const ModalCreate = () => {
           >
             Criar anúncio
           </Heading>
-          <p
-            className="closeModal"
-            onClick={() => {
-              console.log('Fechar Modal')
-            }}
-          >
+          <p className="closeModal" onClick={() => setIsModel(false)}>
             x
           </p>
         </div>
