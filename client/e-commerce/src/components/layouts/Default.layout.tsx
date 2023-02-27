@@ -12,7 +12,7 @@ export const DefaultLayout = () => {
       { loggen ? <NavbarLogged /> : <Navbar />}
       
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </LayoutContainer>
   )
 }
