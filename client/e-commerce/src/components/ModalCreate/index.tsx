@@ -8,7 +8,7 @@ import Button from '../Button'
 import Input, { TextArea } from '../Input'
 import { ModalContainer } from './style'
 
-export const Modal = () => {
+export const ModalCreate = () => {
   const onSubmit = (data: FieldValues) => {
     console.log(data)
   }
@@ -56,7 +56,7 @@ export const Modal = () => {
             <Button variant="blue" buttonSize="b1profmodv">
               Venda
             </Button>
-            <Button variant="blue" buttonSize="b1profmodedv">
+            <Button variant="transparent" buttonSize="tprofmodl">
               Leilão
             </Button>
           </div>
@@ -117,11 +117,11 @@ export const Modal = () => {
             Tipo de veículo
           </Paragraph>
 
-          <div className="content-buttons-car-motor">
+          <div className="content-buttons">
             <Button variant="blue" buttonSize="b1profmodv">
               Carro
             </Button>
-            <Button variant="blue" buttonSize="b1profmodedv">
+            <Button variant="transparent" buttonSize="tprofmodl">
               Moto
             </Button>
           </div>
@@ -152,7 +152,7 @@ export const Modal = () => {
             Adicionar campo para imagem da galeria
           </Button>
 
-          <div className="content-buttons-car-motor">
+          <div className="content-buttons-create">
             <Button variant="grey6" buttonSize="g6profmodcc">
               Cancelar
             </Button>

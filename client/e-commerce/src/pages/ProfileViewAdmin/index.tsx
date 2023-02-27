@@ -4,6 +4,7 @@ import { AuctionCard } from '../../components/AuctionCard'
 import { CardAdm } from '../../components/Card/CardAdm'
 
 import { CreateAdCard } from '../../components/CreateAdCard'
+
 import { Heading } from '../../styles/typography'
 
 import { ProfileContainer } from './style'
