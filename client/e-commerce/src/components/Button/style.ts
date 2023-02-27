@@ -379,7 +379,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           height: 48px;
           padding: 12px 28px;
           color: ${(props) => props.theme.grey2};
-          border: 1.5px solid ${(props) => props.theme.brand3};
+          border: 1.5px solid ${(props) => props.theme.grey6};
           @media (min-width: 1024px) {
             max-width: 126px;
           }
@@ -391,8 +391,9 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           height: 48px;
           max-width: 214px;
           padding: 12px 28px;
-          color: ${(props) => props.theme.grey2};
-          border: 1.5px solid ${(props) => props.theme.brand3};
+          color: ${(props) => props.theme.alert1};
+          border: 1.5px solid ${(props) => props.theme.alert2};
+          line-height: 20px;
         `
 
       // button profile modal editar anuncio Cancelar
