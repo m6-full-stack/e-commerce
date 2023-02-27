@@ -49,50 +49,50 @@ export const Register = () => {
             >
               Informações pessoais
             </Paragraph>
-            </div>
+          </div>
 
-            <Input
-              label="Nome"
-              placeholder="Ex: Samuel Leão"
-              name="name"
-              register={register}
-              errosMessage={errors.name?.message?.toString()}
-            />
-            <Input
-              label="Email"
-              placeholder="Ex: samuel@kenzie.com.br"
-              name="email"
-              register={register}
-              errosMessage={errors.email?.message?.toString()}
-            />
-            <Input
-              label="CPF"
-              placeholder="000.000.000-00"
-              name="cpf"
-              register={register}
-              errosMessage={errors.cpf?.message?.toString()}
-            />
-            <Input
-              label="Celular"
-              placeholder="(DDD) 90000-0000"
-              name="phone"
-              register={register}
-              errosMessage={errors.phone?.message?.toString()}
-            />
-            <Input
-              label="Data de nascimento"
-              placeholder="00/00/00"
-              name="phone"
-              register={register}
-              errosMessage={errors.phone?.message?.toString()}
-            />
-            <TextArea
-              label="Descrição"
-              placeholder="Digitar descrição"
-              name="description"
-              register={register}
-              errosMessage={errors.description?.message?.toString()}
-            />
+          <Input
+            label="Nome"
+            placeholder="Ex: Samuel Leão"
+            name="name"
+            register={register}
+            errosMessage={errors.name?.message?.toString()}
+          />
+          <Input
+            label="Email"
+            placeholder="Ex: samuel@kenzie.com.br"
+            name="email"
+            register={register}
+            errosMessage={errors.email?.message?.toString()}
+          />
+          <Input
+            label="CPF"
+            placeholder="000.000.000-00"
+            name="cpf"
+            register={register}
+            errosMessage={errors.cpf?.message?.toString()}
+          />
+          <Input
+            label="Celular"
+            placeholder="(DDD) 90000-0000"
+            name="phone"
+            register={register}
+            errosMessage={errors.phone?.message?.toString()}
+          />
+          <Input
+            label="Data de nascimento"
+            placeholder="00/00/00"
+            name="phone"
+            register={register}
+            errosMessage={errors.phone?.message?.toString()}
+          />
+          <TextArea
+            label="Descrição"
+            placeholder="Digitar descrição"
+            name="description"
+            register={register}
+            errosMessage={errors.description?.message?.toString()}
+          />
 
           <div className="content-p">
             <Paragraph
@@ -174,22 +174,22 @@ export const Register = () => {
             </Button>
           </div>
           <Input
-              label="Senha"
-              placeholder="Digite senha"
-              name="password"
-              register={register}
-              errosMessage={errors.password?.message?.toString()}
-            />
+            label="Senha"
+            placeholder="Digite senha"
+            name="password"
+            register={register}
+            errosMessage={errors.password?.message?.toString()}
+          />
           <Input
-              label="Confirmar senha"
-              placeholder="Digite senha"
-              name="password"
-              register={register}
-              errosMessage={errors.password?.message?.toString()}
-            />
-            <Button variant="blue" buttonSize="b1fcad">
-              Finalizar cadastro
-            </Button>
+            label="Confirmar senha"
+            placeholder="Digite senha"
+            name="password"
+            register={register}
+            errosMessage={errors.password?.message?.toString()}
+          />
+          <Button variant="blue" buttonSize="b1fcad">
+            Finalizar cadastro
+          </Button>
         </form>
       </div>
     </RegisterContainer>
