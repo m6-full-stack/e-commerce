@@ -10,7 +10,7 @@ import { ModalContainer } from './style'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 
 export const ModalCreate = () => {
-  const { setIsModel } = useContext(ModalContext)
+  const { setIsModelCreate } = useContext(ModalContext)
 
   const onSubmit = (data: FieldValues) => {
     console.log(data)
@@ -36,7 +36,7 @@ export const ModalCreate = () => {
           >
             Criar anúncio
           </Heading>
-          <p className="closeModal" onClick={() => setIsModel(false)}>
+          <p className="closeModal" onClick={() => setIsModelCreate(false)}>
             x
           </p>
         </div>
