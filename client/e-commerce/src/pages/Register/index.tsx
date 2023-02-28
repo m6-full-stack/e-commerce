@@ -39,7 +39,7 @@ export const Register = () => {
         >
           Cadastro
         </Heading>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="content-p">
             <Paragraph
               fontWeight={500}
@@ -75,16 +75,16 @@ export const Register = () => {
           <Input
             label="Celular"
             placeholder="(DDD) 90000-0000"
-            name="phone"
+            name="cellphone"
             register={register}
-            errosMessage={errors.phone?.message?.toString()}
+            errosMessage={errors.cellphone?.message?.toString()}
           />
           <Input
             label="Data de nascimento"
             placeholder="00/00/00"
-            name="phone"
+            name="birthday"
             register={register}
-            errosMessage={errors.phone?.message?.toString()}
+            errosMessage={errors.birthday?.message?.toString()}
           />
           <TextArea
             label="Descrição"
@@ -183,9 +183,9 @@ export const Register = () => {
           <Input
             label="Confirmar senha"
             placeholder="Digite senha"
-            name="password"
+            name="confirmPassword"
             register={register}
-            errosMessage={errors.password?.message?.toString()}
+            errosMessage={errors.confirmPassword?.message?.toString()}
           />
           <Button variant="blue" buttonSize="b1fcad">
             Finalizar cadastro
