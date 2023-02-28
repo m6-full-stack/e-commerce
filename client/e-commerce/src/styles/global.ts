@@ -21,6 +21,11 @@ export const GlobalStyle = createGlobalStyle`
     border: 0;
     background: transparent;
 	}
+
+  textarea::-webkit-scrollbar {
+    width: 0;
+  }
+  
   ul, ol, li{
         list-style: none;
         

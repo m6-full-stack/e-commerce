@@ -105,7 +105,11 @@ export const ModalEditAddress = () => {
           </div>
 
           <div className="content-buttons-create">
-            <Button variant="grey6" buttonSize="g6profmodcc">
+            <Button
+              variant="grey6"
+              buttonSize="g6profmodcc"
+              onClick={() => setIsModelEditAddress(false)}
+            >
               Cancelar
             </Button>
             <Button variant="brand3" buttonSize="b3profmodca">
