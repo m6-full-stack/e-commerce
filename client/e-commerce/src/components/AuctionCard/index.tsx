@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { AuctionCardContainer } from './style'
 
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import Button from '../Button'
 import { Heading, Paragraph } from '../../styles/typography'
+import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 
 export const AuctionCard = () => {
+  const { setIsModelEditAnnouncement } = useContext(ModalContext)
   return (
     <AuctionCardContainer>
       <div className="content-auction">
@@ -49,7 +51,7 @@ export const AuctionCard = () => {
         </section>
 
         <footer>
-          <Button variant="transparent" buttonSize="tprofe">
+          <Button variant="transparent" buttonSize="tprofe" onClick={() => setIsModelEditAnnouncement(true) }>
             Editar
           </Button>
           <Button variant="transparent" buttonSize="tprofvc">

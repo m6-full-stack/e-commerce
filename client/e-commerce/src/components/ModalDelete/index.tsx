@@ -10,8 +10,7 @@ import { ModalContainer } from './style'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 
 export const ModalDelete = () => {
-  const { setIsModelDelete } =
-    useContext(ModalContext)
+  const { setIsModelDelete } = useContext(ModalContext)
 
   const onSubmit = (data: FieldValues) => {
     console.log(data)
@@ -37,14 +36,14 @@ export const ModalDelete = () => {
           >
             Excluir anúncio
           </Heading>
-          
+
           <p className="closeModal" onClick={() => setIsModelDelete(false)}>
             x
           </p>
         </div>
 
         <form>
-        <Heading
+          <Heading
             level={2}
             fontWeight={500}
             size={'normal'}
@@ -60,12 +59,16 @@ export const ModalDelete = () => {
             color={'grey2'}
             lineHeight={'28px'}
           >
-            Essa ação não pode ser desfeita. Isso excluirá permanentemente sua conta e removerá seus dados de nossos servidores.
-
+            Essa ação não pode ser desfeita. Isso excluirá permanentemente sua
+            conta e removerá seus dados de nossos servidores.
           </Paragraph>
 
           <div className="content-buttons-create">
-            <Button variant="grey6" buttonSize="g6profmodvac">
+            <Button
+              variant="grey6"
+              buttonSize="g6profmodvac"
+              onClick={() => setIsModelDelete(false)}
+            >
               Cancelar
             </Button>
             <Button variant="alert1" buttonSize="a1profmodvse">

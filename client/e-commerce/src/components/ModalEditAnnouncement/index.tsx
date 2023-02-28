@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Heading, Paragraph } from '../../styles/typography'
 import { validationUserAnnouncement } from '../../validators/validationUserAnnouncement'
 
@@ -9,19 +9,25 @@ import Input, { TextArea } from '../Input'
 import { ModalContainer } from './style'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 
-export const ModalCreate = () => {
+export const ModalEditAnnouncement = () => {
   const {
-    setIsModelCreate,
+    setIsModelDelete,
+    setIsModelEditAnnouncement,
     typeOfVehicle,
     setTypeOfVehicle,
     announcementType,
     setAnnouncementType,
   } = useContext(ModalContext)
 
+  const [publishedYesOrNo, setPublishedYesOrNo] = useState('no')
+
   const onSubmit = (data: FieldValues) => {
-    console.log(data)
+    console.log({ ...data, announcementType })
   }
 
+  const closeModalEditannouncement = () => {
+    setIsModelEditAnnouncement(false)
+  }
   const {
     register,
     handleSubmit,
@@ -40,9 +46,12 @@ export const ModalCreate = () => {
             color={'grey1'}
             lineHeight={'20px'}
           >
-            Criar anúncio
+            Editar anúncio
           </Heading>
-          <p className="closeModal" onClick={() => setIsModelCreate(false)}>
+          <p
+            className="closeModal"
+            onClick={() => closeModalEditannouncement()}
+          >
             x
           </p>
         </div>
@@ -82,7 +91,7 @@ export const ModalCreate = () => {
           </Paragraph>
           <Input
             label="Título"
-            placeholder="Digitar título"
+            placeholder="Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200"
             name="username"
             register={register}
             errosMessage={errors.username?.message?.toString()}
@@ -113,7 +122,7 @@ export const ModalCreate = () => {
             />
             <TextArea
               label="Descrição"
-              placeholder="Digitar descrição"
+              placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
               name="description"
               register={register}
               errosMessage={errors.description?.message?.toString()}
@@ -146,6 +155,33 @@ export const ModalCreate = () => {
             </Button>
           </div>
 
+          <Paragraph
+            fontWeight={500}
+            size={'small'}
+            color={'black'}
+            lineHeight={'24px'}
+          >
+            Publicado
+          </Paragraph>
+
+          <div className="content-buttons">
+            <Button
+              variant="transparent"
+              buttonSize="tprofmodl"
+              onClick={() => setPublishedYesOrNo('yes')}
+            >
+              Sim
+            </Button>
+
+            <Button
+              variant="blue"
+              buttonSize="b1profmodv"
+              onClick={() => setPublishedYesOrNo('no')}
+            >
+              Não
+            </Button>
+          </div>
+
           <Input
             label="Imagem da capa"
             placeholder="https://image.com"
@@ -175,13 +211,16 @@ export const ModalCreate = () => {
           <div className="content-buttons-create">
             <Button
               variant="grey6"
-              buttonSize="g6profmodcc"
-              onClick={() => setIsModelCreate(false)}
+              buttonSize="g6profmodea"
+              onClick={() => {
+                setIsModelDelete(true)
+                closeModalEditannouncement()
+              }}
             >
-              Cancelar
+              Excluir anúncio
             </Button>
-            <Button variant="brand3" buttonSize="b3profmodca">
-              Criar anúncio
+            <Button variant="brand3" buttonSize="b3profmodsa">
+              Salvar alterações
             </Button>
           </div>
         </form>
