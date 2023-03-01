@@ -6,6 +6,8 @@ import Button from '../Button'
 import { Heading, Paragraph } from '../../styles/typography'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 
+import countDownTimer from '../../utils/countDown'
+
 export const AuctionCard = () => {
   const { setIsModelEditAnnouncement } = useContext(ModalContext)
   return (
@@ -14,7 +16,7 @@ export const AuctionCard = () => {
         <section className="content-auction-title">
           <div className="container-clocker">
             <AiOutlineClockCircle className="Icons" />
-            <span>01:58:00</span>
+            <time>{countDownTimer('00:00:10')}</time>
           </div>
           <Heading
             level={2}
@@ -51,7 +53,11 @@ export const AuctionCard = () => {
         </section>
 
         <footer>
-          <Button variant="transparent" buttonSize="tprofe" onClick={() => setIsModelEditAnnouncement(true) }>
+          <Button
+            variant="transparent"
+            buttonSize="tprofe"
+            onClick={() => setIsModelEditAnnouncement(true)}
+          >
             Editar
           </Button>
           <Button variant="transparent" buttonSize="tprofvc">
