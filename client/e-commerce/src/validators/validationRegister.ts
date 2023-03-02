@@ -10,9 +10,9 @@ export const validationRegister = yup.object().shape({
 
   cpf: yup.string().required(' Cpf é obrigatório '),
 
-  cellphone: yup.string().required(' número é obrigatório '),
+  phone: yup.string().required(' número é obrigatório '),
 
-  birthday: yup.string().required(' Data de nascimento é obrigatório '),
+  birthdate: yup.string().required(' Data de nascimento é obrigatório '),
 
   description: yup.string().required(' A descrição é obrigatória '),
 
