@@ -1,9 +1,13 @@
 import React, { useContext } from 'react'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
+import { UserContext } from '../../contexts/UserProvider/UserProvider'
+
+
 import { MenuContainer } from './style'
 
 const DropDrown = () => {
   const { setIsModelEdit, setIsModelEditAddress } = useContext(ModalContext)
+  const { handleLogout } = useContext(UserContext)
   return (
     <MenuContainer>
       <ul>
@@ -29,7 +33,7 @@ const DropDrown = () => {
               <a href="#">Minhas Compras</a>
             </li>
             <li>
-              <a href="#">Sair</a>
+              <a href="#" onClick={handleLogout}>Sair</a>
             </li>
           </ul>
         </li>

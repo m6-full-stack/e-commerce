@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { Link, NavLink } from 'react-router-dom'
 import { NavbarContainer } from './style'
 import Logo from '../../../assets/Logo-header.svg'
 import DropDrown from '../../DropDown'
 
+
 const NavbarLogged = () => {
+  
   const [isMobile, setIsMobile] = useState<boolean>(false)
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -9,11 +9,10 @@ import { LoginContainer } from './style'
 import Button from '../../components/Button'
 import { Heading, Paragraph } from '../../styles/typography'
 import { validationLogin } from '../../validators/validationLogin'
+import { UserContext } from '../../contexts/UserProvider/UserProvider'
 
 export const Login = () => {
-  function onSubmit(data: FieldValues) {
-    console.log(data)
-  }
+  const { handleLogin } = useContext(UserContext)
 
   const {
     register,
@@ -26,7 +25,7 @@ export const Login = () => {
   return (
     <LoginContainer>
       <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit((data) => handleLogin(data))}>
           <div className="title-login">
             <Heading
               level={2}
