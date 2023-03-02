@@ -82,9 +82,9 @@ export const Register = () => {
           <Input
             label="Data de nascimento"
             placeholder="00/00/00"
-            name="phone"
+            name="birthdate"
             register={register}
-            errosMessage={errors.phone?.message?.toString()}
+            errosMessage={errors.birthdate?.message?.toString()}
           />
           <TextArea
             label="Descrição"

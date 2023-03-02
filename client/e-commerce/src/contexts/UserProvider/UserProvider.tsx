@@ -53,6 +53,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
     setIsUserLoggedIn(false)
   }
 
+  
 
   return (
     <UserContext.Provider
