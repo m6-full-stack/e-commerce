@@ -25,7 +25,6 @@ export const Product = () => {
         <MainProducts />
         <FooterProducts />
       </div>
-      )
     </ProductContainer>
   )
 }

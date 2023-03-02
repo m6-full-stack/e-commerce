@@ -96,4 +96,13 @@ export const SectionProductsStyle = styled.section`
   .titleDescription {
     font-size: 20px;
   }
+
+  @media (max-width: 1024px) {
+    width: 80%;
+    margin-left: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+  }
 `

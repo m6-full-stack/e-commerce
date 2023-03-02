@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const AsideProductsStyle = styled.aside`
+export const AsideProductsStyle = styled.div`
   width: 30%;
   margin-left: 30px;
   margin-top: -550px;
@@ -91,5 +91,69 @@ export const AsideProductsStyle = styled.aside`
     padding: 12px 28px;
     border-radius: 4px;
     font-size: 16px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 0;
+
+    .titleImages {
+      width: 80%;
+      text-align: left;
+      margin-top: -60px;
+      margin-bottom: -20px;
+      font-size: 20px;
+    }
+
+    .imagesContainer {
+      width: 90%;
+      height: 480px;
+      margin-top: 35px;
+      background-color: #fdfdfd;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 25px;
+    }
+
+    .imagesDivs {
+      width: 60%;
+      height: 70%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+
+    .userContainer {
+      width: 90%;
+      height: 380px;
+    }
+
+    .otherImages {
+      max-width: 40%;
+      max-height: auto;
+      padding: 27px 7px;
+      background-color: #e9ecef;
+      margin-top: 15px;
+      border-radius: 6px;
+    }
+
+    .userImage {
+      width: 100px;
+      height: 100px;
+      background-color: #4529e6;
+      color: #fdfdfd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
   }
 `
