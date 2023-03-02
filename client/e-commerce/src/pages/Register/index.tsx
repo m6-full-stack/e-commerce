@@ -1,19 +1,22 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import Input, { TextArea } from '../../components/Input'
 
-// import Button from '../../components/Button'
 import Button from '../../components/Button'
 
 import { Heading, Paragraph } from '../../styles/typography'
 import { validationRegister } from '../../validators/validationRegister'
 
 import { RegisterContainer } from './style'
+import { UserContext } from '../../contexts/UserProvider/UserProvider'
 
 export const Register = () => {
+  const { handleRegister } = useContext(UserContext)
+  const [advertiserOrBuyer, setAdvertiserOrBuyer] = useState<boolean>(false)
+
   function onSubmit(data: FieldValues) {
     console.log(data)
   }
@@ -39,7 +42,7 @@ export const Register = () => {
         >
           Cadastro
         </Heading>
-        <form>
+        <form onSubmit={handleSubmit((data) => handleRegister(data))}>
           <div className="content-p">
             <Paragraph
               fontWeight={500}
@@ -82,9 +85,9 @@ export const Register = () => {
           <Input
             label="Data de nascimento"
             placeholder="00/00/00"
-            name="phone"
+            name="birthdate"
             register={register}
-            errosMessage={errors.phone?.message?.toString()}
+            errosMessage={errors.birthdate?.message?.toString()}
           />
           <TextArea
             label="Descrição"
@@ -129,6 +132,13 @@ export const Register = () => {
               errosMessage={errors.city?.message?.toString()}
             />
           </div>
+            <Input
+              label="Bairro"
+              placeholder="Digitar bairro"
+              name="district"
+              register={register}
+              errosMessage={errors.district?.message?.toString()}
+            />
           <Input
             label="Rua"
             placeholder="Digitar rua"
@@ -166,10 +176,18 @@ export const Register = () => {
           </div>
 
           <div className="content-buttons">
-            <Button variant="blue" buttonSize="b1comp">
+            <Button
+              variant="blue"
+              buttonSize="b1comp"
+              onClick={() => setAdvertiserOrBuyer(false)}
+            >
               Comprador
             </Button>
-            <Button variant="transparent" buttonSize="g4anu">
+            <Button
+              variant="transparent"
+              buttonSize="g4anu"
+              onClick={() => setAdvertiserOrBuyer(true)}
+            >
               Anunciante
             </Button>
           </div>
@@ -187,7 +205,11 @@ export const Register = () => {
             register={register}
             errosMessage={errors.password?.message?.toString()}
           />
-          <Button variant="blue" buttonSize="b1fcad">
+          <Button
+            variant="blue"
+            buttonSize="b1fcad"
+            type='submit'
+          >
             Finalizar cadastro
           </Button>
         </form>
