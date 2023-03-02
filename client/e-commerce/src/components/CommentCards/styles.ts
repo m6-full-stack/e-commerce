@@ -76,4 +76,12 @@ export const UserCommentCard = styled.div`
     font-family: Inter;
     text-align: justify;
   }
+
+  @media (max-width: 1024px) {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+  }
 `

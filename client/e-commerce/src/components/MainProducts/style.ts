@@ -23,4 +23,12 @@ export const MainProductsStyle = styled.main`
     padding: 35px;
     border-radius: 4px;
   }
+
+  @media (max-width: 1024px) {
+    width: 142%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+  }
 `

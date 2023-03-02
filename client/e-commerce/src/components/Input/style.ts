@@ -76,7 +76,7 @@ export const InputContainer2 = styled.div`
       font-family: 'Inter';
       font-style: normal;
       font-weight: 400;
-      font-size: 16px;
+      font-size: 14px;
       line-height: 0;
       display: flex;
       /* gap: 10px; */
@@ -86,7 +86,7 @@ export const InputContainer2 = styled.div`
       border-radius: 4px;
       color: ${(props) => props.theme.grey3};
       color: var(--color_1);
-      padding: 0 1rem;
+      padding: 5px;
     }
   }
   > p {
