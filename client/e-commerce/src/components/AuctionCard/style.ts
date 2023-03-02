@@ -12,21 +12,25 @@ export const AuctionCardContainer = styled.div`
   }
 
   .content-auction {
-    width: 100%;
-    min-width: 375px;
-    max-width: 725px;
+  width: 100%;
+  min-width: 375px;
+  max-width: 725px;
 
-    justify-content: space-between;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%),
-      url(${car});
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 4px 4px 0px 0px;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%),
+    url(${car});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 4px 4px 0px 0px;
+  margin-top: 40px;
+  margin-bottom: 32px;
 
-    margin-top: 40px;
-    margin-bottom: 32px;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.71);
+    transition: background-color 0.8s ease;
   }
+}
 
   .content-auction-title {
     padding: 33px 31px 33px 22px;

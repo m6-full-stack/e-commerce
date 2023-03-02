@@ -57,4 +57,17 @@ export const LoginContainer = styled.div`
 
     gap: 21px;
   }
+
+  .color-button {
+    color: ${(props) => props.theme.grey0};
+  }
+
+  .button-hover:hover {
+    background: ${(props) => props.theme.grey1};
+
+    border-radius: 4px;
+    .color-button {
+      color: ${(props) => props.theme.grey10};
+    }
+  }
 `
