@@ -117,6 +117,11 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           padding: 12px 0px;
           color: ${(props) => props.theme.grey0};
           border: 1.5px solid ${(props) => props.theme.grey4};
+
+          :hover {
+            background: ${(props) => props.theme.grey1};
+            color: ${(props) => props.theme.grey10};
+          }
           @media (min-width: 1024px) {
             max-width: 152px;
           }
@@ -209,6 +214,9 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           font-size: 0.875rem;
           color: ${(props) => props.theme.brand1};
           border: 1.5px solid ${(props) => props.theme.brand1};
+          :hover{
+            background: ${props => props.theme.brand4};
+          }
         `
 
       // button profile ver como
@@ -234,6 +242,10 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           font-size: 0.875rem;
           color: ${(props) => props.theme.grey1};
           border: 1.5px solid ${(props) => props.theme.grey1};
+          :hover {
+            background: ${props => props.theme.brand2};
+
+          }
         `
 
       // button profile ver como small
@@ -245,6 +257,10 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           font-size: 0.875rem;
           color: ${(props) => props.theme.grey1};
           border: 1.5px solid ${(props) => props.theme.grey1};
+          :hover {
+            background: ${props => props.theme.brand2};
+
+          }
         `
 
       // button profile modal editar anuncio venda

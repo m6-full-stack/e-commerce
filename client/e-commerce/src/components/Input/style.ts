@@ -42,10 +42,14 @@ export const InputContainer = styled.div`
       color: ${(props) => props.theme.grey3};
 
       padding: 0 1rem;
+      cursor: pointer;
 
       :focus {
-      outline: transparent;
-      box-shadow: 0 0 0 1.5px ${(props) => props.theme.brand2};
+        outline: transparent;
+        box-shadow: 0 0 0 1.5px ${(props) => props.theme.brand2};
+      }
+      :hover {
+        background: ${(props) => props.theme.grey8};
       }
     }
 
@@ -70,8 +74,11 @@ export const InputContainer = styled.div`
 
       resize: none;
       :focus {
-      outline: transparent;
-      box-shadow: 0 0 0 1.5px ${(props) => props.theme.brand2};
+        outline: transparent;
+        box-shadow: 0 0 0 1.5px ${(props) => props.theme.brand2};
+      }
+      :hover {
+        background: ${(props) => props.theme.grey8};
       }
     }
   }
