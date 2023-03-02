@@ -26,6 +26,7 @@ export const ContainerHome = styled.main`
     display: flex;
     gap: 40px;
     justify-content: center;
+    flex-direction: column;
     color: ${(props) => props.theme.grey10};
     align-items: center;
   }
@@ -58,6 +59,11 @@ export const ContainerHome = styled.main`
     display: flex;
     gap: 80px;
   }
+  .list-auction h1 {
+    user-select: none;
+    color: black;
+    padding-left: 20px;
+  }
   .list-car h1 {
     user-select: none;
     color: black;
@@ -67,6 +73,21 @@ export const ContainerHome = styled.main`
     user-select: none;
     color: black;
     padding-left: 20px;
+  }
+  .content-carrossel {
+    height: 520px;
+    display: flex;
+    overflow-x: scroll;
+    padding: 20px;
+    margin-left: -60px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+
+    scroll-snap-align: start;
+  }
+  .content-carrossel::-webkit-scrollbar {
+    width: 0px;
   }
   .carrossel {
     height: 400px;
@@ -111,10 +132,15 @@ export const ContainerHome = styled.main`
       width: 380px;
     }
   }
-  @media (min-width: 900px) {
+  @media (min-width: 1024px) {
     margin-top: 80px;
     .select-announcement {
       height: 60vh;
+    .select-buttons {
+      display: flex;
+      flex-direction: row;
+      width: 90%;
+  }
     }
   }
 `

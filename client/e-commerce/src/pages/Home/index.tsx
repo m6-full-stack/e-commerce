@@ -1,6 +1,9 @@
 import { ContainerHome } from './style'
 import { Card } from '../../components/Card'
 import { useState } from 'react'
+import { CreateAdCard } from '../../components/CreateAdCard'
+import { Heading } from '../../styles/typography'
+import { AuctionCard } from '../../components/AuctionCard'
 
 export const Home = () => {
   return (
@@ -19,36 +22,48 @@ export const Home = () => {
         </div>
       </div>
       <div className='announcements'>
+      <div className='list-auction'>  
+        <h1>Leilão</h1>
+        <div className="content-carrossel">
+          <AuctionCard />
+          <AuctionCard />
+          <AuctionCard />
+          <AuctionCard />
+          <AuctionCard />
+          <AuctionCard />
+        </div>
+      </div>
         <div id='car' className='list-car'>
           <h1>Carros</h1>
           <div className='carrossel'>
-            <Card name='Teste 1' />
+            <Card />
 
-            <Card name='Teste 2' />
+            <Card />
 
-            <Card name='Teste 3' />
+            <Card />
 
-            <Card name='Teste 1' />
+            <Card />
 
-            <Card name='Teste 2' />
+            <Card />
 
-            <Card name='Teste 3' />
+            <Card />
           </div>
         </div>
         <div id='motorcycle' className='list-motorcycle'>
           <h1>Motos</h1>
           <div className='carrossel'>
-            <Card name='Teste 1' />
+          <Card />
 
-            <Card name='Teste 2' />
+          <Card />
 
-            <Card name='Teste 3' />
+          <Card />
+          
+          <Card />
 
-            <Card name='Teste 1' />
+          <Card />
 
-            <Card name='Teste 2' />
+          <Card />
 
-            <Card name='Teste 3' />
           </div>
         </div>
       </div>
