@@ -66,7 +66,7 @@ export const InputText = styled.textarea`
   font-weight: 400;
   font-size: 16px;
   text-align: initial;
-  line-height: 0;
+  line-height: 20px;
   display: flex;
   margin-top: 15px;
   margin-bottom: 25px;
@@ -86,7 +86,7 @@ export const InputText2 = styled.textarea`
   font-weight: 400;
   font-size: 16px;
   text-align: initial;
-  line-height: 0;
+  line-height: 20px;
   display: flex;
   height: 4rem;
   min-height: 3rem;
