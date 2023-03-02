@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 import { Heading, Paragraph } from '../../styles/typography'
 import Button from '../Button'
 import { CardContainer } from './style'
 
-export const CreateAdCard = () => {
+interface adCardProps {
+  isAdmin: Boolean
+}
+
+export const CreateAdCard = ({ isAdmin }: adCardProps) => {
+  const { setIsModelCreate } = useContext(ModalContext)
   return (
     <CardContainer>
       <div className="content">
@@ -52,9 +58,15 @@ export const CreateAdCard = () => {
             ever since the 1500s
           </Paragraph>
         </div>
-        <Button variant="transparent" buttonSize="tprofca">
-          Criar Anuncio
-        </Button>
+        {isAdmin && (
+          <Button
+            variant="transparent"
+            buttonSize="tprofca"
+            onClick={() => setIsModelCreate(true)}
+          >
+            Criar Anuncio
+          </Button>
+        )}
       </div>
     </CardContainer>
   )

@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import car from '../../../assets/car.svg'
 import Button from '../../Button'
 import { Heading, Paragraph } from '../../../styles/typography'
 import { CardContainer } from './style'
+import { ModalContext } from '../../../contexts/ModalProvider/ModalProvider'
 
 export const CardAdm = () => {
+  const { setIsModelEditAnnouncement } = useContext(ModalContext)
   return (
     <CardContainer>
       <section>
@@ -86,7 +88,7 @@ export const CardAdm = () => {
           </section>
         </div>
         <div className="content-buttons">
-          <Button variant="transparent" buttonSize="tprofesm">
+          <Button variant="transparent" buttonSize="tprofesm" onClick={() => setIsModelEditAnnouncement(true) }>
             Editar
           </Button>
           <Button variant="transparent" buttonSize="tprofvcsm">

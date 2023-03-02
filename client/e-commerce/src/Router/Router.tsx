@@ -11,9 +11,9 @@ export const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
+        <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
         <Route path="/product" element={<Product />} />
         <Route path="/profileview" element={<ProfileViewUser />} />
         <Route path="/profileviewAdm" element={<ProfileViewAdm />} />

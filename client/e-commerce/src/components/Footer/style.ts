@@ -1,8 +1,10 @@
+/* eslint-disable prettier/prettier */
 import styled from 'styled-components'
 
 export const FooterContainer = styled.footer`
   width: 100%;
   max-width: 100%;
+  bottom: 0;
 
   background: ${(props) => props.theme.grey0};
 

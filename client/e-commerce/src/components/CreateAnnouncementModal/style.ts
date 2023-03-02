@@ -1,17 +1,17 @@
 import styled from 'styled-components'
 
 export const Section = styled.section`
-  height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  position: fixed;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .divCreateAnnouncement {
     width: 460px;
-    height: 95%;
+    /* height: 95%; */
     background-color: #ffffff;
     border-radius: 8px;
     display: flex;

@@ -102,7 +102,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
       case 'b1comp':
         return css`
           height: 48px;
-          padding: 12px 28px;
+          padding: 12px 0px;
           color: ${(props) => props.theme.whiteFixed};
           border: 1.5px solid ${(props) => props.theme.brand1};
           @media (min-width: 1024px) {
@@ -114,7 +114,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
       case 'g4anu':
         return css`
           height: 48px;
-          padding: 12px 28px;
+          padding: 12px 0px;
           color: ${(props) => props.theme.grey0};
           border: 1.5px solid ${(props) => props.theme.grey4};
           @media (min-width: 1024px) {
@@ -127,6 +127,8 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
         return css`
           height: 48px;
           padding: 12px 28px;
+          line-height: 20px;
+
           color: ${(props) => props.theme.whiteFixed};
           border: 1.5px solid ${(props) => props.theme.brand1};
           @media (min-width: 1024px) {
@@ -277,6 +279,10 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           font-size: 0.875rem;
           color: ${(props) => props.theme.brand1};
           border: 1.5px solid ${(props) => props.theme.brand4};
+          line-height: 0px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
           @media (min-width: 1024px) {
             max-width: 335px;
           }
@@ -303,8 +309,25 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
 
           color: ${(props) => props.theme.brand4};
           border: 1.5px solid ${(props) => props.theme.brand3};
+
+          white-space: nowrap;
+          overflow: hidden;
+
           @media (min-width: 1024px) {
             max-width: 193px;
+          }
+        `
+
+      // button profile modal criar anuncio Vemda
+      case 'b1profmodv':
+        return css`
+          height: 48px;
+          padding: 12px 28px;
+
+          color: ${(props) => props.theme.brand4};
+          border: 1.5px solid ${(props) => props.theme.brand3};
+          @media (min-width: 1024px) {
+            max-width: 228px;
           }
         `
 
@@ -329,6 +352,9 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           max-width: 159px;
           color: ${(props) => props.theme.brand4};
           border: 1.5px solid ${(props) => props.theme.brand3};
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
           @media (min-width: 1024px) {
             max-width: 193px;
           }
@@ -353,7 +379,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           height: 48px;
           padding: 12px 28px;
           color: ${(props) => props.theme.grey2};
-          border: 1.5px solid ${(props) => props.theme.brand3};
+          border: 1.5px solid ${(props) => props.theme.grey6};
           @media (min-width: 1024px) {
             max-width: 126px;
           }
@@ -365,8 +391,9 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           height: 48px;
           max-width: 214px;
           padding: 12px 28px;
-          color: ${(props) => props.theme.grey2};
-          border: 1.5px solid ${(props) => props.theme.brand3};
+          color: ${(props) => props.theme.alert1};
+          border: 1.5px solid ${(props) => props.theme.alert2};
+          line-height: 20px;
         `
 
       // button profile modal editar anuncio Cancelar

@@ -4,6 +4,7 @@ import { AuctionCard } from '../../components/AuctionCard'
 import { CardAdm } from '../../components/Card/CardAdm'
 
 import { CreateAdCard } from '../../components/CreateAdCard'
+
 import { Heading } from '../../styles/typography'
 
 import { ProfileContainer } from './style'
@@ -14,7 +15,7 @@ export const ProfileViewAdm = () => {
       <div className="blue"></div>
 
       <div className="content">
-        <CreateAdCard />
+        <CreateAdCard isAdmin={true} />
         <Heading
           className="title"
           level={2}
@@ -48,6 +49,8 @@ export const ProfileViewAdm = () => {
           <CardAdm />
           <CardAdm />
           <CardAdm />
+          <CardAdm />
+          <CardAdm />
         </div>
         <Heading
           className="title-car-motorbike"
@@ -60,6 +63,8 @@ export const ProfileViewAdm = () => {
           Motos
         </Heading>
         <div className="content-carousel">
+          <CardAdm />
+          <CardAdm />
           <CardAdm />
           <CardAdm />
           <CardAdm />
