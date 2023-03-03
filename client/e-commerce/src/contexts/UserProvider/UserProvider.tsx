@@ -11,9 +11,10 @@ import {
   IUser,
   IAddress,
   IloginData,
+  IMail,
 } from '../../interfaces/LoginInterface'
 
-import { useNavigate } from 'react-router-dom'
+import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
 
 import { decodeToken } from 'react-jwt'
@@ -26,6 +27,10 @@ interface UserContextType {
   handleLogin: (data: IloginData) => void
   handleLogout: () => void
   handleRegister: (data: IloginData) => void
+  navigate: NavigateFunction
+  sendMailRecoverPassword: (data: IMail) => void
+  tokenRecoverPassword: string | null
+  changePassword: (password: string) => void
 }
 
 export const UserContext = createContext({} as UserContextType)
@@ -36,6 +41,9 @@ interface UserContextProviderProps {
 
 export function UserContextProvider({ children }: UserContextProviderProps) {
   const [token, setToken] = useState<string | null>(null)
+  const [tokenRecoverPassword, setTokenRecoverPassword] = useState<
+    string | null
+  >(null)
   const [user, setUser] = useState<IUser | null>(null)
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
   const navigate = useNavigate()
@@ -99,12 +107,33 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
           district: data.district,
           street: data.street,
           number: data.number,
-          complement: data.complement
-      }
-        
+          complement: data.complement,
+        },
       })
       .then(() => {
         navigate('login', { replace: true })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  function sendMailRecoverPassword(data: IMail) {
+    api
+      .post('users/sendTokenPassword', data)
+      .then((response) => {
+        setTokenRecoverPassword(response.data.token)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  function changePassword(password: string) {
+    api
+      .post('users/recoverPassword', { password })
+      .then((response) => {
+        navigate('login')
       })
       .catch((error) => {
         console.log(error)
@@ -115,12 +144,16 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
     <UserContext.Provider
       value={{
         token,
+        tokenRecoverPassword,
         user,
+        changePassword,
+        navigate,
         handleLogin,
         isUserLoggedIn,
         setIsUserLoggedIn,
         handleLogout,
-        handleRegister
+        handleRegister,
+        sendMailRecoverPassword,
       }}
     >
       {children}
