@@ -42,7 +42,6 @@ export function AnnouncementContextProvider({
   children,
 }: AnnouncementContextProviderProps) {
   const [announcementInfo, setAnnouncementInfo] = useState<AnnouncementData>({
-    comments: [],
   } as AnnouncementData);
 
   const token = () => {
