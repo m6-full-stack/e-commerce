@@ -14,7 +14,7 @@ import {
 } from '../../interfaces/LoginInterface'
 
 import { useNavigate } from 'react-router-dom'
-import { api } from '../../services/api'
+import { api, getUserProfile } from '../../services/api'
 
 import { decodeToken } from 'react-jwt'
 
@@ -38,16 +38,23 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
   const [token, setToken] = useState<string | null>(null)
   const [user, setUser] = useState<IUser | null>(null)
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false);
   const navigate = useNavigate()
 
   useEffect(() => {
     const storedToken = localStorage.getItem('@MOTORS-TOKEN')
+
     if (storedToken) {
-      setToken(storedToken)
-      setIsUserLoggedIn(true)
       const decodedToken = decodeToken(storedToken) as Record<string, any>
       const userId = decodedToken.id
       localStorage.setItem('@MOTORS-USER-ID', userId)
+
+      getUserProfile(storedToken, userId)
+        .then((user) => console.log(user))
+        .catch((error) => console.error(error))
+
+      setToken(storedToken)
+      setIsUserLoggedIn(true)
     }
   }, [])
 
@@ -57,6 +64,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
       .then((response) => {
         const token = response.data
         setToken(token)
+
         localStorage.setItem('@MOTORS-TOKEN', token)
         setIsUserLoggedIn(true)
 
@@ -99,9 +107,8 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
           district: data.district,
           street: data.street,
           number: data.number,
-          complement: data.complement
-      }
-        
+          complement: data.complement,
+        },
       })
       .then(() => {
         navigate('login', { replace: true })
@@ -120,7 +127,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         isUserLoggedIn,
         setIsUserLoggedIn,
         handleLogout,
-        handleRegister
+        handleRegister,
       }}
     >
       {children}

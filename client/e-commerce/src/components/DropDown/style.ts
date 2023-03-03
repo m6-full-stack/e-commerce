@@ -73,7 +73,7 @@ export const MenuContainer = styled.ul`
     display: none;
 
     width: 100%;
-    height: 282px;
+    height: auto;
 
     position: absolute;
     top: 70px;
