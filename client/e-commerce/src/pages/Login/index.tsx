@@ -40,11 +40,11 @@ export const Login = () => {
           </div>
           <div className='container__info'>
             <Input
-              label='Usuário'
-              placeholder='Digitar usuário'
-              name='username'
+              label='Email'
+              placeholder='Digitar email'
+              name='email'
               register={register}
-              errosMessage={errors.username?.message?.toString()}
+              errosMessage={errors.email?.message?.toString()}
             />
             <Input
               label='Senha'
