@@ -7,6 +7,7 @@ const Button = ({
   variant = 'blue',
   buttonSize,
   disabled = false,
+  type
 }: IProps) => {
   return (
     <ButtonContainer
@@ -14,6 +15,7 @@ const Button = ({
       buttonSize={buttonSize}
       disabled={disabled}
       onClick={onClick}
+      type={type}
     >
       {children}
     </ButtonContainer>

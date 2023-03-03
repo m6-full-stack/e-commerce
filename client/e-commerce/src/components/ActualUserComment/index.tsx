@@ -1,22 +1,27 @@
-import { Heading } from '../../styles/typography'
-import { InputText, UserCommentInput } from './styles'
-import { FieldValues, useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { validationUserComment } from '../../validators/validationUserComment'
-import Button from '../Button'
+import { Heading } from "../../styles/typography";
+import { InputText, UserCommentInput } from "./styles";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { validationUserComment } from "../../validators/validationUserComment";
+import Button from "../Button";
+import { useContext } from "react";
+import { CommentContext, CommentData } from "../../contexts/CommentProvider/CommentProvider";
 
 export const ActualUserComment = () => {
+  const { createComment } = useContext(CommentContext);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FieldValues>({
+  } = useForm<CommentData>({
     resolver: yupResolver(validationUserComment),
-  })
+  });
 
-  const onSubmit = (data: FieldValues) => {
-    console.log(data)
-  }
+  const onSubmit = (data: CommentData) => {
+    console.log("teste")
+    createComment(data, "c9953fe0-5728-41a7-a0f7-8abfdddf625b")
+  };
 
   return (
     <UserCommentInput>
@@ -25,21 +30,21 @@ export const ActualUserComment = () => {
           <Heading size="small" className="userCommentsImage">
             SL
           </Heading>
-          <Heading className="userCommentsName" color={'grey1'}>
+          <Heading className="userCommentsName" color={"grey1"}>
             Samuel Leão
           </Heading>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputText
-            placeholder="Carro muito confortável, foi uma ótima experiência de compra..."
-            {...register('comment')}
+            placeholder="Escreva aqui seu comentário!"
+            {...register("content")}
           />
-          <p className="errors">{errors.comment?.message?.toString()}</p>
-          <Button variant="blue" buttonSize="b1pcom">
+          <p className="errors">{errors.content?.message?.toString()}</p>
+          <Button variant="blue" buttonSize="b1pcom" type="submit">
             Comentar
           </Button>
         </form>
       </div>
     </UserCommentInput>
-  )
-}
+  );
+};
