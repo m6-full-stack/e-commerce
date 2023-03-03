@@ -25,6 +25,10 @@ export const GlobalStyle = createGlobalStyle`
   textarea::-webkit-scrollbar {
     width: 0;
   }
+
+  time {
+    color: ${props => props.theme.black};
+  }
   
   ul, ol, li{
         list-style: none;

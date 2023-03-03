@@ -9,12 +9,11 @@ import Input, { TextArea } from '../Input'
 import { ModalContainer } from './style'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 
-export const ModalEdit = () => {
-  const { setIsModelCreate, setIsModelEdit } = useContext(ModalContext)
+import { IUser } from '../../interfaces/LoginInterface'
+import { UserContext } from '../../contexts/UserProvider/UserProvider'
 
-  const onSubmit = (data: FieldValues) => {
-    console.log(data)
-  }
+export const ModalEdit = () => {
+  const { setIsModelEdit, updateProfile } = useContext(ModalContext)
 
   const {
     register,
@@ -23,6 +22,12 @@ export const ModalEdit = () => {
   } = useForm<FieldValues>({
     resolver: yupResolver(validationUserAnnouncement),
   })
+
+  const onSubmit = (data: FieldValues) => {
+    console.log(data)
+    updateProfile(data)
+  }
+
   return (
     <ModalContainer>
       <div className="content">
@@ -36,12 +41,17 @@ export const ModalEdit = () => {
           >
             Editar perfil
           </Heading>
-          <p className="closeModal" onClick={() => setIsModelEdit(false)}>
+          <p
+            className="closeModal"
+            onClick={() => {
+              setIsModelEdit(false)
+            }}
+          >
             x
           </p>
         </div>
 
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Paragraph
             fontWeight={500}
             size={'small'}
@@ -54,11 +64,11 @@ export const ModalEdit = () => {
           <Input
             label="Nome"
             placeholder="Ex: Samuel Leão"
-            name="username"
+            name="name"
             register={register}
-            errosMessage={errors.username?.message?.toString()}
+            errosMessage={errors.name?.message?.toString()}
           />
-          
+
           <Input
             label="Email"
             placeholder="samuel@kenzie.com.br"
@@ -78,9 +88,9 @@ export const ModalEdit = () => {
           <Input
             label="Celular"
             placeholder="(084) 90909-9092"
-            name="cellphone"
+            name="phone"
             register={register}
-            errosMessage={errors.cellphone?.message?.toString()}
+            errosMessage={errors.phone?.message?.toString()}
           />
 
           <Input
@@ -100,10 +110,16 @@ export const ModalEdit = () => {
           />
 
           <div className="content-buttons-create">
-            <Button variant="grey6" buttonSize="g6profmodcc">
+            <Button
+              variant="grey6"
+              buttonSize="g6profmodcc"
+              onClick={() => {
+                setIsModelEdit(false)
+              }}
+            >
               Cancelar
             </Button>
-            <Button variant="blue" buttonSize="b3profmodsa">
+            <Button variant="blue" buttonSize="b3profmodsa" type="submit">
               Salvar alterações
             </Button>
           </div>
