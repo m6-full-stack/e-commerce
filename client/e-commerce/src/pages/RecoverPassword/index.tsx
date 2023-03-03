@@ -28,7 +28,7 @@ export const RecoverPassword = () => {
     resolver: yupResolver(
       tokenRecoverPassword === null
         ? validationMail
-        : validationRecoverPassword
+        : haveAcess
         ? validationRecoverPassword
         : validationCode
     ),
@@ -36,7 +36,6 @@ export const RecoverPassword = () => {
   useEffect(() => {}, [tokenRecoverPassword])
 
   const onSubmit = (data: any) => {
-    console.log(data)
     if (data.code === tokenRecoverPassword) {
       setHaveAccess(true)
     }
@@ -109,14 +108,13 @@ export const RecoverPassword = () => {
             <h2>
               Insira o <span>código de recuperação!</span>
             </h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit((data) => onSubmit(data))}>
               <Input
                 label=''
                 placeholder='Digite o código de verificação'
                 name='code'
-                defaultValue=''
                 register={register}
-                errosMessage={errors.code?.message?.toString()}
+                errosMessage={errors?.code?.message?.toString()}
               />
               <Button variant='blue' buttonSize='b1e'>
                 Enviar
