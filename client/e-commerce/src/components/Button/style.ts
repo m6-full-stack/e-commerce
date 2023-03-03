@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
 
 type ButtonVariant =
   | 'transparent'
@@ -29,6 +30,37 @@ const buttonVariants = {
   grey6: '#DEE2E6',
   grey10: '#FDFDFD',
 }
+
+export const ButtonNavLogin = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 100%;
+
+  border-radius: 4px;
+
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+
+  line-height: 0;
+
+  height: 48px;
+  max-width: 315px;
+
+  padding: 12px 28px;
+  color: ${(props) => props.theme.grey0};
+  border: 1.5px solid ${(props) => props.theme.grey4};
+
+  &:hover {
+    color: ${props => props.theme.whiteFixed};
+    border: none;
+
+  }
+`
 
 export const ButtonContainer = styled.button<ButtonContainerProps>`
   display: flex;
@@ -74,16 +106,6 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
         return css`
           height: 48px;
           max-width: 133px;
-          padding: 12px 28px;
-          color: ${(props) => props.theme.grey0};
-          border: 1.5px solid ${(props) => props.theme.grey4};
-        `
-
-      // button login cadastrar
-      case 'g4c':
-        return css`
-          height: 48px;
-          max-width: 315px;
           padding: 12px 28px;
           color: ${(props) => props.theme.grey0};
           border: 1.5px solid ${(props) => props.theme.grey4};
@@ -214,8 +236,8 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           font-size: 0.875rem;
           color: ${(props) => props.theme.brand1};
           border: 1.5px solid ${(props) => props.theme.brand1};
-          :hover{
-            background: ${props => props.theme.brand4};
+          :hover {
+            background: ${(props) => props.theme.brand4};
           }
         `
 
@@ -243,8 +265,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           color: ${(props) => props.theme.grey1};
           border: 1.5px solid ${(props) => props.theme.grey1};
           :hover {
-            background: ${props => props.theme.brand2};
-
+            background: ${(props) => props.theme.brand2};
           }
         `
 
@@ -258,8 +279,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           color: ${(props) => props.theme.grey1};
           border: 1.5px solid ${(props) => props.theme.grey1};
           :hover {
-            background: ${props => props.theme.brand2};
-
+            background: ${(props) => props.theme.brand2};
           }
         `
 

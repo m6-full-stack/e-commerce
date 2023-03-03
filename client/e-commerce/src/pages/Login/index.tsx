@@ -11,6 +11,7 @@ import { Heading, Paragraph } from '../../styles/typography'
 import { validationLogin } from '../../validators/validationLogin'
 import { UserContext } from '../../contexts/UserProvider/UserProvider'
 import { Link } from 'react-router-dom'
+import { ButtonNavLogin } from '../../components/Button/style'
 
 export const Login = () => {
   const { handleLogin, navigate } = useContext(UserContext)
@@ -80,11 +81,7 @@ export const Login = () => {
                 Ainda não possui conta?
               </Paragraph>
               <div className='button-hover'>
-                <Button variant='transparent' buttonSize='g4c'>
-                  <Link className='color-button' to='/register'>
-                    Cadastrar
-                  </Link>
-                </Button>
+              <ButtonNavLogin to="/register">Cadastrar</ButtonNavLogin>
               </div>
             </div>
           </div>
