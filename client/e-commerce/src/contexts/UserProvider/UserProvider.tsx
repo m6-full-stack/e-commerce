@@ -30,7 +30,7 @@ interface UserContextType {
   navigate: NavigateFunction
   sendMailRecoverPassword: (data: IMail) => void
   tokenRecoverPassword: string | null
-  changePassword: (password: string) => void
+  changePassword: (token: string, password: string) => void
 }
 
 export const UserContext = createContext({} as UserContextType)
@@ -66,8 +66,8 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
     }
   }, [])
 
-  function handleLogin(data: IloginData): Promise<string> {
-    return api
+  async function handleLogin(data: IloginData): Promise<string> {
+    return await api
       .post('login', { ...data })
       .then((response) => {
         const token = response.data
@@ -137,10 +137,11 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
       })
   }
 
-  function changePassword(password: string) {
+  function changePassword(token: string, password: string) {
     api
-      .post('users/recoverPassword', { password })
+      .post('users/recoverPassword', { tokenResetPassword: token, password })
       .then((response) => {
+        console.log()
         navigate('login')
       })
       .catch((error) => {

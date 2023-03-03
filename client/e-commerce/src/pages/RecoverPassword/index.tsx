@@ -77,7 +77,9 @@ export const RecoverPassword = () => {
               <span>código de recuperação!</span>
             </h2>
             <form
-              onSubmit={handleSubmit((data) => changePassword(data.password))}
+              onSubmit={handleSubmit((data) =>
+                changePassword(tokenRecoverPassword, data.password)
+              )}
             >
               <Input
                 label='Senha'
