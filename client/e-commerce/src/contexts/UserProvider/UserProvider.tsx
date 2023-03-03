@@ -40,6 +40,17 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
   const navigate = useNavigate()
 
+  useEffect(() => {
+    const storedToken = localStorage.getItem('@MOTORS-TOKEN')
+    if (storedToken) {
+      setToken(storedToken)
+      setIsUserLoggedIn(true)
+      const decodedToken = decodeToken(storedToken) as Record<string, any>
+      const userId = decodedToken.id
+      localStorage.setItem('@MOTORS-USER-ID', userId)
+    }
+  }, [])
+
   function handleLogin(data: IloginData): Promise<string> {
     return api
       .post('login', { ...data })
@@ -48,6 +59,10 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         setToken(token)
         localStorage.setItem('@MOTORS-TOKEN', token)
         setIsUserLoggedIn(true)
+
+        const decodedToken = decodeToken(token) as Record<string, any>
+        const userId = decodedToken.id
+        localStorage.setItem('@MOTORS-USER-ID', userId)
 
         navigate('/', { replace: true })
 
