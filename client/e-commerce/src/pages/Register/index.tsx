@@ -14,12 +14,8 @@ import { RegisterContainer } from './style'
 import { UserContext } from '../../contexts/UserProvider/UserProvider'
 
 export const Register = () => {
-  const { handleRegister } = useContext(UserContext)
-  const [advertiserOrBuyer, setAdvertiserOrBuyer] = useState<boolean>(false)
-
-  function onSubmit(data: FieldValues) {
-    console.log(data)
-  }
+  const { handleRegister, setAdvertiserOrBuyer } =
+    useContext(UserContext)
 
   const {
     register,
@@ -132,13 +128,13 @@ export const Register = () => {
               errosMessage={errors.city?.message?.toString()}
             />
           </div>
-            <Input
-              label="Bairro"
-              placeholder="Digitar bairro"
-              name="district"
-              register={register}
-              errosMessage={errors.district?.message?.toString()}
-            />
+          <Input
+            label="Bairro"
+            placeholder="Digitar bairro"
+            name="district"
+            register={register}
+            errosMessage={errors.district?.message?.toString()}
+          />
           <Input
             label="Rua"
             placeholder="Digitar rua"
@@ -179,6 +175,7 @@ export const Register = () => {
             <Button
               variant="blue"
               buttonSize="b1comp"
+              type="button"
               onClick={() => setAdvertiserOrBuyer(false)}
             >
               Comprador
@@ -186,6 +183,7 @@ export const Register = () => {
             <Button
               variant="transparent"
               buttonSize="g4anu"
+              type="button"
               onClick={() => setAdvertiserOrBuyer(true)}
             >
               Anunciante
@@ -205,11 +203,7 @@ export const Register = () => {
             register={register}
             errosMessage={errors.password?.message?.toString()}
           />
-          <Button
-            variant="blue"
-            buttonSize="b1fcad"
-            type='submit'
-          >
+          <Button variant="blue" buttonSize="b1fcad" type="submit">
             Finalizar cadastro
           </Button>
         </form>

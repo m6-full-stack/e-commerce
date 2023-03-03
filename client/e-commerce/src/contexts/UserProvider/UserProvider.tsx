@@ -23,14 +23,16 @@ interface UserContextType {
   token: string | null
   isUserLoggedIn: boolean | null
   user: IUser | null // atualizado
+  advertiserOrBuyer: boolean | null
+  tokenRecoverPassword: string | null
   setIsUserLoggedIn: Dispatch<SetStateAction<boolean>>
   handleLogin: (data: IloginData) => void
   handleLogout: () => void
   handleRegister: (data: IloginData) => void
   navigate: NavigateFunction
   sendMailRecoverPassword: (data: IMail) => void
-  tokenRecoverPassword: string | null
   changePassword: (token: string, password: string) => void
+  setAdvertiserOrBuyer: Dispatch<SetStateAction<boolean>>
 }
 
 export const UserContext = createContext({} as UserContextType)
@@ -47,6 +49,8 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
   const [user, setUser] = useState<IUser | null>(null)
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [advertiserOrBuyer, setAdvertiserOrBuyer] = useState<boolean>(false)
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -107,6 +111,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         phone: data.phone,
         description: data.description,
         birthdate: data.birthdate,
+
         cpf: data.cpf,
         address: {
           cep: data.cep,
@@ -117,6 +122,8 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
           number: data.number,
           complement: data.complement,
         },
+
+        is_seller: advertiserOrBuyer
       })
       .then(() => {
         navigate('login', { replace: true })
@@ -163,6 +170,8 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         setIsUserLoggedIn,
         handleLogout,
         handleRegister,
+        advertiserOrBuyer,
+        setAdvertiserOrBuyer,
       }}
     >
       {children}
