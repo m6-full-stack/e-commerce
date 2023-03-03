@@ -25,6 +25,7 @@ export const CardContainer = styled.div`
     padding: 0 25px;
     background: ${(props) => props.theme.grey7};
     position: relative;
+    height: 150px;
   }
 
   .content-img span {

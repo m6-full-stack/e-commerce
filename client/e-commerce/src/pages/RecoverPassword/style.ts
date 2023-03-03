@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const LoginContainer = styled.div`
+export const RecoverContainer = styled.div`
   display: flex;
   width: 100%;
 
@@ -27,44 +27,15 @@ export const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 483px;
+    height: 193px;
     width: 100%;
     max-width: 412px;
     background: var(--color_white);
     border-radius: 64px 64px 0px 0px;
   }
-  .password {
-    user-select: none;
+  span {
+    color: ${(props) => props.theme.alert1};
   }
-  .password:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-
-  .title-login {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-bottom: 32px;
-  }
-
-  .teste {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    text-align: end;
-    gap: 21px;
-    margin-bottom: 21px;
-  }
-
-  .teste1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    gap: 21px;
-  }
-
   .color-button {
     color: ${(props) => props.theme.grey0};
   }
