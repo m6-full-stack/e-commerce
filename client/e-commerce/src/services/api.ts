@@ -1,5 +1,5 @@
-import axios from 'axios'
-import { IloginData, IResponseLogin, IUser } from '../interfaces/LoginInterface'
+import axios, { AxiosResponse } from 'axios'
+import { IloginData, IResponseLogin, IUser, UpdateProfileData } from '../interfaces/LoginInterface'
 
 export const api = axios.create({
   baseURL: 'https://fullstack-project-qi7p.onrender.com/',
@@ -16,3 +16,5 @@ export function getUserProfile(token: string, userId: string): Promise<IUser> {
       throw error
     })
 }
+
+

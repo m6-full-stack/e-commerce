@@ -39,3 +39,13 @@ export interface IAddress {
 export interface IMail {
   email: string
 }
+
+
+export interface UpdateProfileData {
+  name?: string
+  email?: string
+  cpf?: string
+  phone?: string
+  birthday?: string
+  description?: string
+}

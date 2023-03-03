@@ -1,5 +1,8 @@
+import { AxiosResponse } from 'axios'
 import { createContext, Dispatch, SetStateAction, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { UpdateProfileData } from '../../interfaces/LoginInterface'
+import { api } from '../../services/api'
 
 interface ModalContextType {
   isModelCreate: boolean
@@ -16,6 +19,7 @@ interface ModalContextType {
   setIsModelDelete: Dispatch<SetStateAction<boolean>>
   setAnnouncementType: Dispatch<SetStateAction<string>>
   setTypeOfVehicle: Dispatch<SetStateAction<string>>
+  updateProfile: (data: UpdateProfileData) => void
 }
 
 interface ModalProviderProps {
@@ -37,6 +41,7 @@ export const ModalContext = createContext<ModalContextType>({
   setIsModelDelete: () => {},
   setAnnouncementType: () => {},
   setTypeOfVehicle: () => {},
+  updateProfile: () => {}
 })
 
 export function ModalProvider({ children }: ModalProviderProps) {
@@ -48,6 +53,25 @@ export function ModalProvider({ children }: ModalProviderProps) {
 
   const [announcementType, setAnnouncementType] = useState('sale')
   const [typeOfVehicle, setTypeOfVehicle] = useState('car')
+
+  const updateProfile = async (data: UpdateProfileData): Promise<void> => {
+    const storedUserId = localStorage.getItem('@MOTORS-USER-ID')
+    const token = localStorage.getItem('token')
+    const headers = { Authorization: `Bearer ${token}` }
+
+    try {
+      const response: AxiosResponse = await api.patch(
+        `users/${storedUserId}`,
+        data,
+        {
+          headers,
+        }
+      )
+      setIsModelEdit(false)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <ModalContext.Provider
@@ -66,6 +90,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
         setIsModelDelete,
         setAnnouncementType,
         setTypeOfVehicle,
+        updateProfile
       }}
     >
       {children}
