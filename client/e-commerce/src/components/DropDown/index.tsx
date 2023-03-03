@@ -1,22 +1,34 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 import { UserContext } from '../../contexts/UserProvider/UserProvider'
-
-
+import { getUserProfile } from '../../services/api'
 import { MenuContainer } from './style'
 
 const DropDrown = () => {
   const { setIsModelEdit, setIsModelEditAddress } = useContext(ModalContext)
-  const { handleLogout } = useContext(UserContext)
+  const { token, handleLogout } = useContext(UserContext)
+  const [username, setUsername] = useState('')
+
+  useEffect(() => {
+    if (token) {
+      const storedUserId = localStorage.getItem('@MOTORS-USER-ID')
+      if (storedUserId) {
+        getUserProfile(token, storedUserId)
+          .then((user) => setUsername(user.name))
+          .catch((error) => console.error(error))
+      }
+    }
+  }, [token])
+
   return (
     <MenuContainer>
       <ul>
         <li>
           <div className="content-username">
             <div className="border-name">
-              <span>SL</span>
+              <span>{username.substring(0, 2).toUpperCase()}</span>
             </div>
-            <a href="#">Samuel Leão</a>
+            <a href="#">{username}</a>
           </div>
           <ul className="dropdown">
             <li>

@@ -30,6 +30,7 @@ export const AuctionCardContainer = styled.div`
     background-color: rgba(0, 0, 0, 0.71);
     transition: background-color 0.8s ease;
   }
+  transition: background-color 0.8s ease;
 }
 
   .content-auction-title {
