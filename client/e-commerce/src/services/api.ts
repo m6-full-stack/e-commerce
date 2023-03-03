@@ -2,7 +2,7 @@ import axios from 'axios'
 import { IloginData, IResponseLogin, IUser } from '../interfaces/LoginInterface'
 
 export const api = axios.create({
-  baseURL: 'http://localhost:3333/',
+  baseURL: 'https://fullstack-project-qi7p.onrender.com/',
   timeout: 5000,
 })
 
@@ -16,4 +16,3 @@ export function getUserProfile(token: string, userId: string): Promise<IUser> {
       throw error
     })
 }
-

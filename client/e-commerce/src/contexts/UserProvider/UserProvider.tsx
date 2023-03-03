@@ -11,9 +11,10 @@ import {
   IUser,
   IAddress,
   IloginData,
+  IMail,
 } from '../../interfaces/LoginInterface'
 
-import { useNavigate } from 'react-router-dom'
+import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { api, getUserProfile } from '../../services/api'
 
 import { decodeToken } from 'react-jwt'
@@ -26,6 +27,10 @@ interface UserContextType {
   handleLogin: (data: IloginData) => void
   handleLogout: () => void
   handleRegister: (data: IloginData) => void
+  navigate: NavigateFunction
+  sendMailRecoverPassword: (data: IMail) => void
+  tokenRecoverPassword: string | null
+  changePassword: (password: string) => void
 }
 
 export const UserContext = createContext({} as UserContextType)
@@ -36,9 +41,12 @@ interface UserContextProviderProps {
 
 export function UserContextProvider({ children }: UserContextProviderProps) {
   const [token, setToken] = useState<string | null>(null)
+  const [tokenRecoverPassword, setTokenRecoverPassword] = useState<
+    string | null
+  >(null)
   const [user, setUser] = useState<IUser | null>(null)
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -118,11 +126,37 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
       })
   }
 
+  function sendMailRecoverPassword(data: IMail) {
+    api
+      .post('users/sendTokenPassword', data)
+      .then((response) => {
+        setTokenRecoverPassword(response.data.token)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  function changePassword(password: string) {
+    api
+      .post('users/recoverPassword', { password })
+      .then((response) => {
+        navigate('login')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   return (
     <UserContext.Provider
       value={{
         token,
+        tokenRecoverPassword,
+        sendMailRecoverPassword,
         user,
+        changePassword,
+        navigate,
         handleLogin,
         isUserLoggedIn,
         setIsUserLoggedIn,
