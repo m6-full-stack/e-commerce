@@ -49,3 +49,18 @@ export interface UpdateProfileData {
   birthday?: string
   description?: string
 }
+
+export interface UpdateAddresData {
+  name?: string
+  email?: string
+  cpf?: string
+  phone?: string
+  birthday?: string
+  description?: string
+  cep?: string
+  street?: string
+  state?: string
+  city?: string
+  number?: string
+  complement?: string
+}

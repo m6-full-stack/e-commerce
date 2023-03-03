@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios'
 import { createContext, Dispatch, SetStateAction, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { UpdateProfileData } from '../../interfaces/LoginInterface'
+import { UpdateAddresData, UpdateProfileData } from '../../interfaces/LoginInterface'
 import { api } from '../../services/api'
 
 interface ModalContextType {
@@ -20,6 +20,7 @@ interface ModalContextType {
   setAnnouncementType: Dispatch<SetStateAction<string>>
   setTypeOfVehicle: Dispatch<SetStateAction<string>>
   updateProfile: (data: UpdateProfileData) => void
+  updateAddress: (data: UpdateAddresData) => void
 }
 
 interface ModalProviderProps {
@@ -41,7 +42,8 @@ export const ModalContext = createContext<ModalContextType>({
   setIsModelDelete: () => {},
   setAnnouncementType: () => {},
   setTypeOfVehicle: () => {},
-  updateProfile: () => {}
+  updateProfile: () => {},
+  updateAddress: () => {}
 })
 
 export function ModalProvider({ children }: ModalProviderProps) {
@@ -73,6 +75,41 @@ export function ModalProvider({ children }: ModalProviderProps) {
     }
   }
 
+
+  const updateAddress = async (data: UpdateAddresData): Promise<void> => {
+    const storedUserId = localStorage.getItem('@MOTORS-USER-ID')
+    const token = localStorage.getItem('token')
+    const headers = { Authorization: `Bearer ${token}` }
+  
+    const requestData = {
+      address: {
+        cep: data.cep,
+        state: data.state,
+        city: data.city,
+        street: data.street,
+        number: data.number,
+        complement: data.complement,
+      },
+    }
+  
+    try {
+      const response: AxiosResponse = await api.patch(
+        `users/${storedUserId}`,
+        requestData,
+        {
+          headers,
+        }
+      )
+      console.log(storedUserId)
+      setIsModelEdit(false)
+      setIsModelEditAddress(false)
+
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  
+
   return (
     <ModalContext.Provider
       value={{
@@ -90,7 +127,8 @@ export function ModalProvider({ children }: ModalProviderProps) {
         setIsModelDelete,
         setAnnouncementType,
         setTypeOfVehicle,
-        updateProfile
+        updateProfile,
+        updateAddress
       }}
     >
       {children}
