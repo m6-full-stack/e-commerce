@@ -4,11 +4,23 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validationUserComment } from "../../validators/validationUserComment";
 import Button from "../Button";
-import { useContext } from "react";
-import { CommentContext, CommentData } from "../../contexts/CommentProvider/CommentProvider";
+import { useContext, useEffect, useState } from "react";
+import {
+  CommentContext,
+  CommentData,
+} from "../../contexts/CommentProvider/CommentProvider";
+import { getProfile } from "../../services/api";
+import { AdvertiserData } from "../../contexts/AnnouncementProvider/AnnouncementProvide";
 
 export const ActualUserComment = () => {
   const { createComment } = useContext(CommentContext);
+  const [infoUserComment, setInfoUserComment] = useState<AdvertiserData>(
+    {} as AdvertiserData
+  );
+
+  useEffect(() => {
+    getProfile().then(res => setInfoUserComment(res.data));
+  }, []);
 
   const {
     register,
@@ -19,8 +31,7 @@ export const ActualUserComment = () => {
   });
 
   const onSubmit = (data: CommentData) => {
-    console.log("teste")
-    createComment(data, "c9953fe0-5728-41a7-a0f7-8abfdddf625b")
+    createComment(data, "c9953fe0-5728-41a7-a0f7-8abfdddf625b");
   };
 
   return (
@@ -28,10 +39,10 @@ export const ActualUserComment = () => {
       <div className="divCommentContainer">
         <div className="divTopComments">
           <Heading size="small" className="userCommentsImage">
-            SL
+            {infoUserComment.name && infoUserComment.name[0]}
           </Heading>
           <Heading className="userCommentsName" color={"grey1"}>
-            Samuel Leão
+            {infoUserComment.name && infoUserComment.name}
           </Heading>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>

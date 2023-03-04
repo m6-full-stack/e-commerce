@@ -9,16 +9,16 @@ const DropDrown = () => {
   const { token, handleLogout } = useContext(UserContext)
   const [username, setUsername] = useState('')
 
-  useEffect(() => {
-    if (token) {
-      const storedUserId = localStorage.getItem('@MOTORS-USER-ID')
-      if (storedUserId) {
-        getUserProfile(token, storedUserId)
-          .then((user) => setUsername(user.name))
-          .catch((error) => console.error(error))
-      }
-    }
-  }, [token])
+  // useEffect(() => {
+  //   if (token) {
+  //     const storedUserId = localStorage.getItem('@MOTORS-USER-ID')
+  //     if (storedUserId) {
+  //       getUserProfile(token, storedUserId)
+  //         .then((user) => setUsername(user.name))
+  //         .catch((error) => console.error(error))
+  //     }
+  //   }
+  // }, [token])
 
   return (
     <MenuContainer>

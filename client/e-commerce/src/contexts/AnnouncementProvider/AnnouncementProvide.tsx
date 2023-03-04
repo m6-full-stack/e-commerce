@@ -11,6 +11,30 @@ interface ImageData {
   image_url: string;
 }
 
+interface AddressAdvertiser {
+  id: string;
+  cep: string;
+  state: string;
+  city: string;
+  street: string;
+  number: string;
+  complement: string;
+}
+
+export interface AdvertiserData {
+  created_at: string;
+  updated_at: string;
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  cpf: string;
+  birthdate: string;
+  description: string;
+  is_seller: boolean;
+  address: AddressAdvertiser;
+}
+
 interface AnnouncementData {
   createdAt: string;
   id: string;
@@ -26,6 +50,7 @@ interface AnnouncementData {
   advertiserId: string;
   comments: CommentDataRecive[];
   images_list: ImageData[];
+  advertiser: AdvertiserData;
 }
 
 interface AnnouncementContextType {
@@ -41,12 +66,13 @@ export const AnnouncementContext = createContext<AnnouncementContextType>(
 export function AnnouncementContextProvider({
   children,
 }: AnnouncementContextProviderProps) {
-  const [announcementInfo, setAnnouncementInfo] = useState<AnnouncementData>({
-  } as AnnouncementData);
+  const [announcementInfo, setAnnouncementInfo] = useState<AnnouncementData>(
+    {} as AnnouncementData
+  );
 
   const token = () => {
     const token = localStorage.getItem("@MOTORS-TOKEN");
-    return token 
+    return token;
   };
 
   const getRetriveAnnouncement = (id: string) => {
