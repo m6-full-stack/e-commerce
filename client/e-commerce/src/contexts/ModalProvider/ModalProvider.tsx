@@ -10,8 +10,11 @@ interface ModalContextType {
   isModelEditAddress: boolean
   isModelEditAnnouncement: boolean
   isModelDelete: boolean
+  isModelPhoto: boolean
+
   announcementType: string
   typeOfVehicle: string
+  
   setIsModelCreate: Dispatch<SetStateAction<boolean>>
   setIsModelEdit: Dispatch<SetStateAction<boolean>>
   setIsModelEditAddress: Dispatch<SetStateAction<boolean>>
@@ -19,6 +22,8 @@ interface ModalContextType {
   setIsModelDelete: Dispatch<SetStateAction<boolean>>
   setAnnouncementType: Dispatch<SetStateAction<string>>
   setTypeOfVehicle: Dispatch<SetStateAction<string>>
+  setIsModelPhoto: Dispatch<SetStateAction<boolean>>
+
   updateProfile: (data: UpdateProfileData) => void
   updateAddress: (data: UpdateAddresData) => void
 }
@@ -35,6 +40,8 @@ export const ModalContext = createContext<ModalContextType>({
   isModelDelete: false,
   announcementType: 'sale',
   typeOfVehicle: 'car',
+  isModelPhoto: false,
+
   setIsModelCreate: () => {},
   setIsModelEdit: () => {},
   setIsModelEditAddress: () => {},
@@ -42,6 +49,8 @@ export const ModalContext = createContext<ModalContextType>({
   setIsModelDelete: () => {},
   setAnnouncementType: () => {},
   setTypeOfVehicle: () => {},
+  setIsModelPhoto: () => {},
+
   updateProfile: () => {},
   updateAddress: () => {}
 })
@@ -52,6 +61,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
   const [isModelEditAddress, setIsModelEditAddress] = useState(false)
   const [isModelEditAnnouncement, setIsModelEditAnnouncement] = useState(false)
   const [isModelDelete, setIsModelDelete] = useState(false)
+  const [isModelPhoto, setIsModelPhoto] = useState(false)
 
   const [announcementType, setAnnouncementType] = useState('sale')
   const [typeOfVehicle, setTypeOfVehicle] = useState('car')
@@ -109,8 +119,11 @@ export function ModalProvider({ children }: ModalProviderProps) {
         isModelEditAddress,
         isModelEditAnnouncement,
         isModelDelete,
+        isModelPhoto,
+
         announcementType,
         typeOfVehicle,
+
         setIsModelCreate,
         setIsModelEdit,
         setIsModelEditAddress,
@@ -118,6 +131,8 @@ export function ModalProvider({ children }: ModalProviderProps) {
         setIsModelDelete,
         setAnnouncementType,
         setTypeOfVehicle,
+        setIsModelPhoto,
+
         updateProfile,
         updateAddress
       }}

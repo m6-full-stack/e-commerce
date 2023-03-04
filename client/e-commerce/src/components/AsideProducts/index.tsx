@@ -1,19 +1,55 @@
+import { useContext } from 'react'
 import car1 from '../../assets/images/car_1.svg'
+import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 import { Heading } from '../../styles/typography'
 import { AsideProductsStyle } from './style'
 
 export const AsideProducts = () => {
+  const { setIsModelPhoto } = useContext(ModalContext)
   return (
     <AsideProductsStyle>
       <div className="imagesContainer">
         <Heading className="titleImages">Fotos</Heading>
         <div className="imagesDivs">
-          <img className="otherImages" src={car1} alt="" />
-          <img className="otherImages" src={car1} alt="" />
-          <img className="otherImages" src={car1} alt="" />
-          <img className="otherImages" src={car1} alt="" />
-          <img className="otherImages" src={car1} alt="" />
-          <img className="otherImages" src={car1} alt="" />
+          <img
+            className="otherImages"
+            src={car1}
+            alt="Imagem do veículo clicado"
+            onClick={() => {
+              setIsModelPhoto(true)
+            }}
+      
+          />
+          <img
+            className="otherImages"
+            src={car1}
+            alt="Imagem do veículo clicado"
+            onClick={() => setIsModelPhoto(true)}
+          />
+          <img
+            className="otherImages"
+            src={car1}
+            alt="Imagem do veículo clicado"
+            onClick={() => setIsModelPhoto(true)}
+          />
+          <img
+            className="otherImages"
+            src={car1}
+            alt="Imagem do veículo clicado"
+            onClick={() => setIsModelPhoto(true)}
+          />
+          <img
+            className="otherImages"
+            src={car1}
+            alt="Imagem do veículo clicado"
+            onClick={() => setIsModelPhoto(true)}
+          />
+          <img
+            className="otherImages"
+            src={car1}
+            alt="Imagem do veículo clicado"
+            onClick={() => setIsModelPhoto(true)}
+          />
         </div>
       </div>
       <div className="userContainer">
