@@ -81,21 +81,12 @@ export function ModalProvider({ children }: ModalProviderProps) {
     const token = localStorage.getItem('token')
     const headers = { Authorization: `Bearer ${token}` }
   
-    const requestData = {
-      address: {
-        cep: data.cep,
-        state: data.state,
-        city: data.city,
-        street: data.street,
-        number: data.number,
-        complement: data.complement,
-      },
-    }
+    
   
     try {
       const response: AxiosResponse = await api.patch(
-        `users/${storedUserId}`,
-        requestData,
+        `users/address/${storedUserId}`,
+        data,
         {
           headers,
         }
