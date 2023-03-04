@@ -53,22 +53,22 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
 
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   const storedToken = localStorage.getItem('@MOTORS-TOKEN')
+  useEffect(() => {
+    const storedToken = localStorage.getItem('@MOTORS-TOKEN')
 
-  //   if (storedToken) {
-  //     const decodedToken = decodeToken(storedToken) as Record<string, any>
-  //     const userId = decodedToken.id
-  //     localStorage.setItem('@MOTORS-USER-ID', userId)
+    if (storedToken) {
+      const decodedToken = decodeToken(storedToken) as Record<string, any>
+      const userId = decodedToken.id
+      localStorage.setItem('@MOTORS-USER-ID', userId)
 
-  //     getUserProfile(storedToken, userId)
-  //       .then((user) => console.log(user))
-  //       .catch((error) => console.error(error))
+      getUserProfile(storedToken, userId)
+        .then((user) => console.log(user))
+        .catch((error) => console.error(error))
 
-  //     setToken(storedToken)
-  //     setIsUserLoggedIn(true)
-  //   }
-  // }, [])
+      setToken(storedToken)
+      setIsUserLoggedIn(true)
+    }
+  }, [])
 
   async function handleLogin(data: IloginData): Promise<string> {
     return await api
