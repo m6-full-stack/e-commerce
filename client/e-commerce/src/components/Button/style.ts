@@ -187,11 +187,14 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
       // button product ver todos anuncios
       case 'g0pvta':
         return css`
-          height: 48px;
+          height: 24px;
           max-width: 240px;
           padding: 12px 28px;
           color: ${(props) => props.theme.whiteFixed};
           border: 1.5px solid ${(props) => props.theme.grey0};
+          @media (min-width: 1024px) {
+            height: 48px;
+          }
         `
 
       // button product comentar
