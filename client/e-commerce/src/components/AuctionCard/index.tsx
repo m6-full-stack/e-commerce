@@ -19,7 +19,7 @@ export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
   const [ actualImageBackground, setActualImageBackground ] = useState(string)
 
   return (
-    <AuctionCardContainer>
+    <AuctionCardContainer vehicle={vehicle}>
       <div className="content-auction">
         <section className="content-auction-title">
           <div className="container-clocker">
