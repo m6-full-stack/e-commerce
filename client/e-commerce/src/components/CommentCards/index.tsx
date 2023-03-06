@@ -10,7 +10,7 @@ export const CommentsCards = () => {
     <UserCommentCard>
       {announcementInfo.comments &&
         announcementInfo.comments.map(elem => (
-          <div className="divCommentContainer">
+          <div className="divCommentContainer" key={elem.id}>
             <div className="divTopComments">
               <Heading size="small" className="userCommentsImage">
                 {elem.user.name[0]}
