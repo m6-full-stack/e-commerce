@@ -1,22 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ModalContext } from "../../contexts/ModalProvider/ModalProvider";
-import { UserContext } from "../../contexts/UserProvider/UserProvider";
-import { MenuContainer } from "./style";
+import React, { useContext, useEffect, useState } from 'react'
+import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
+import { UserContext } from '../../contexts/UserProvider/UserProvider'
+import { MenuContainer } from './style'
 
 const DropDrown = () => {
-  const { setIsModelEdit, setIsModelEditAddress } = useContext(ModalContext);
-  const { handleLogout, getProfile } = useContext(UserContext);
-  const [username, setUsername] = useState("");
-  const [seller, setSeller] = useState(false);
+  const { setIsModelEdit, setIsModelEditAddress } = useContext(ModalContext)
+  const { handleLogout, getProfile } = useContext(UserContext)
+  const [username, setUsername] = useState('')
+  const [seller, setSeller] = useState(false)
 
   useEffect(() => {
     getProfile()
-      .then(user => {
-        setUsername(user.name);
-        setSeller(user.is_seller);
+      .then((user) => {
+        setUsername(user.name)
+        setSeller(user.is_seller)
       })
-      .catch(error => console.error(error));
-  }, []);
+      .catch((error) => console.error(error))
+  }, [])
   return (
     <MenuContainer>
       <ul>
@@ -24,6 +24,7 @@ const DropDrown = () => {
           <div className="content-username">
             <div className="border-name">
               <span>{username.substring(0, 2).toUpperCase()}</span>
+              
             </div>
             <a href="#">{username}</a>
           </div>
@@ -76,7 +77,7 @@ const DropDrown = () => {
         </li>
       </ul>
     </MenuContainer>
-  );
-};
+  )
+}
 
-export default DropDrown;
+export default DropDrown

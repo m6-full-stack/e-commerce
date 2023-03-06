@@ -1,5 +1,6 @@
 import React from 'react'
 import car from '../../assets/car.svg'
+import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 import { Heading, Paragraph } from '../../styles/typography'
 import { CardContainer } from './style'
 
@@ -7,76 +8,90 @@ interface CardProps {
   isProfileView?: Boolean
 }
 
-export const Card = ({ isProfileView }: CardProps) => {
+interface AuctionCardProps {
+  vehicle: AnnouncementData
+}
+
+export const Card = (
+  { vehicle }: AuctionCardProps,
+  { isProfileView }: CardProps
+) => {
   const isActive: boolean = false
 
   return (
     <CardContainer>
-      <div className='content-img'>
+      <div className="content-img">
         {isProfileView && (
-          <span style={{ backgroundColor: isActive ? '#4529E6' : '#ADB5BD' }}>
-            {isActive ? 'Ativo' : 'Inativo'}
+          <span
+            style={{
+              backgroundColor: vehicle.is_active ? '#4529E6' : '#ADB5BD',
+            }}
+          >
+            {vehicle.is_active ? 'Ativo' : 'Inativo'}
           </span>
         )}
-        <img src={car} alt='foto de carro' />
+        <img src={vehicle.cover_image} alt="foto de carro" />
       </div>
-      <div className='content-description'>
+      <div className="content-description">
         <Heading level={3} fontWeight={600} color={'grey1'} lineHeight={'20px'}>
-          Product title stays here - max 1 line
+          {vehicle.title}
         </Heading>
-        <Paragraph
-          fontWeight={400}
-          size={'small'}
-          color={'grey2'}
-          lineHeight={'24px'}
-        >
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem...
-        </Paragraph>
-        <div className='content-name'>
-          <div className='content-border'>
+        <div className="content-desc">
+          <Paragraph
+            fontWeight={400}
+            size={'small'}
+            color={'grey2'}
+            lineHeight={'24px'}
+          >
+            {vehicle.description}
+          </Paragraph>
+        </div>
+        <div className="content-name">
+          <div className="content-border">
             <Paragraph
               fontWeight={500}
               size={'small'}
               color={'whiteFixed'}
               lineHeight={'0'}
             >
-              SL
+              {vehicle.advertiser.name.split(' ')[0][0].toUpperCase()}
+              {vehicle.advertiser.name?.split(' ')[1] &&
+                vehicle.advertiser.name?.split(' ')[1][0].toUpperCase()}
             </Paragraph>
           </div>
           <Paragraph
-            fontWeight={500}
+            fontWeight={700}
             size={'small'}
             color={'grey2'}
             lineHeight={'1.5rem'}
           >
-            Samuel Leão
+            {vehicle.advertiser.name}
           </Paragraph>
         </div>
-        <section className='content-year-and-price'>
-          <div className='content-year'>
-            <div className='border'>
+        <section className="content-year-and-price">
+          <div className="content-year">
+            <div className="border">
               <Paragraph
                 fontWeight={500}
                 size={'small'}
                 color={'brand1'}
                 lineHeight={'1.5rem'}
               >
-                0 KM
+                {vehicle.mileage} Km
               </Paragraph>
             </div>
-            <div className='border'>
+            <div className="border">
               <Paragraph
                 fontWeight={500}
                 size={'small'}
                 color={'brand1'}
                 lineHeight={'1.5rem'}
               >
-                2019
+                {vehicle.year}
               </Paragraph>
             </div>
           </div>
-          <div className='content-price'>
+          <div className="content-price">
             <Heading
               fontWeight={500}
               level={3}
@@ -84,7 +99,7 @@ export const Card = ({ isProfileView }: CardProps) => {
               color={'grey1'}
               lineHeight={'1.25rem'}
             >
-              R$ 00.000,00
+              R$ {vehicle.price},00
             </Heading>
           </div>
         </section>

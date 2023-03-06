@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { AuctionCardContainer } from './style'
 
 import { AiOutlineClockCircle } from 'react-icons/ai'
@@ -7,16 +7,24 @@ import { Heading, Paragraph } from '../../styles/typography'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 
 import countDownTimer from '../../utils/countDown'
+import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
+import { string } from 'yup'
 
-export const AuctionCard = () => {
+interface AuctionCardProps {
+  vehicle: AnnouncementData
+}
+
+export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
   const { setIsModelEditAnnouncement } = useContext(ModalContext)
+  const [ actualImageBackground, setActualImageBackground ] = useState(string)
+
   return (
-    <AuctionCardContainer>
+    <AuctionCardContainer vehicle={vehicle}>
       <div className="content-auction">
         <section className="content-auction-title">
           <div className="container-clocker">
             <AiOutlineClockCircle className="Icons" />
-            <time>{countDownTimer('00:00:10')}</time>
+            <time>{countDownTimer('00:24:00')}</time>
           </div>
           <Heading
             level={2}
@@ -25,7 +33,7 @@ export const AuctionCard = () => {
             color={'grey10'}
             lineHeight={'25px'}
           >
-            Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes
+          {vehicle.title}
           </Heading>
           <Paragraph
             fontWeight={400}
@@ -33,13 +41,12 @@ export const AuctionCard = () => {
             color={'grey5'}
             lineHeight={'28px'}
           >
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
+            {vehicle.description}
           </Paragraph>
           <div className="content-price">
             <section className="container-year">
-              <span>2013</span>
-              <span>0 km</span>
+              <span>{vehicle.year}</span>
+              <span>{vehicle.mileage} km</span>
             </section>
             <Heading
               level={3}
@@ -47,11 +54,10 @@ export const AuctionCard = () => {
               color={'whiteFixed'}
               lineHeight={'20px'}
             >
-              R$ 78.500,00
+              R$ {vehicle.price},00
             </Heading>
           </div>
         </section>
-
         <footer>
           <Button
             variant="transparent"

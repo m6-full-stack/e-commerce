@@ -79,7 +79,7 @@ export const ContainerHome = styled.main`
     display: flex;
     overflow-x: scroll;
     padding: 20px;
-    margin-left: -60px;
+
     flex-direction: row;
     justify-content: space-between;
     gap: 20px;
