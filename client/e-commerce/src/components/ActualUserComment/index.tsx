@@ -4,11 +4,27 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validationUserComment } from "../../validators/validationUserComment";
 import Button from "../Button";
-import { useContext } from "react";
-import { CommentContext, CommentData } from "../../contexts/CommentProvider/CommentProvider";
+import { useContext, useEffect, useState } from "react";
+import {
+  CommentContext,
+  CommentData,
+} from "../../contexts/CommentProvider/CommentProvider";
+import { useParams } from "react-router-dom";
+import { UserContext } from "../../contexts/UserProvider/UserProvider";
+import { UserRequest } from "../../interfaces/LoginInterface";
 
 export const ActualUserComment = () => {
   const { createComment } = useContext(CommentContext);
+  const { getProfile } = useContext(UserContext);
+
+  const [infoUserComment, setInfoUserComment] = useState<UserRequest>(
+    {} as UserRequest
+  );
+  const { id } = useParams();
+
+  useEffect(() => {
+    getProfile().then(res => setInfoUserComment(res))
+  }, []);
 
   const {
     register,
@@ -19,8 +35,7 @@ export const ActualUserComment = () => {
   });
 
   const onSubmit = (data: CommentData) => {
-    console.log("teste")
-    createComment(data, "c9953fe0-5728-41a7-a0f7-8abfdddf625b")
+    id && createComment(data, id);
   };
 
   return (
@@ -28,10 +43,10 @@ export const ActualUserComment = () => {
       <div className="divCommentContainer">
         <div className="divTopComments">
           <Heading size="small" className="userCommentsImage">
-            SL
+            {infoUserComment.name && infoUserComment.name[0]}
           </Heading>
           <Heading className="userCommentsName" color={"grey1"}>
-            Samuel Leão
+            {infoUserComment.name && infoUserComment.name}
           </Heading>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>

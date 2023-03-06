@@ -1,30 +1,11 @@
-import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useContext } from 'react'
-import { Heading, Paragraph } from '../../styles/typography'
-import { validationUserAnnouncement } from '../../validators/validationUserAnnouncement'
-
-import { useForm, FieldValues } from 'react-hook-form'
-import Button from '../Button'
-
-import { ModalContainer } from './style'
-import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
-
-import car1 from '../../assets/images/car_1.svg'
+import { useContext } from "react";
+import { Heading } from "../../styles/typography";
+import { ModalContainer } from "./style";
+import { ModalContext } from "../../contexts/ModalProvider/ModalProvider";
 
 export const ModalPhoto = () => {
-  const { setIsModelPhoto } = useContext(ModalContext)
+  const { setIsModelPhoto, photoInfo } = useContext(ModalContext);
 
-  const onSubmit = (data: FieldValues) => {
-    console.log(data)
-  }
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FieldValues>({
-    resolver: yupResolver(validationUserAnnouncement),
-  })
   return (
     <ModalContainer>
       <div className="content">
@@ -32,9 +13,9 @@ export const ModalPhoto = () => {
           <Heading
             level={2}
             fontWeight={500}
-            size={'normal'}
-            color={'grey1'}
-            lineHeight={'20px'}
+            size={"normal"}
+            color={"grey1"}
+            lineHeight={"20px"}
           >
             Imagem do veículo
           </Heading>
@@ -44,12 +25,10 @@ export const ModalPhoto = () => {
           </p>
         </div>
 
-     
-
-          <div className="content-img">
-            <img src={car1}/>
-          </div>
+        <div className="content-img">
+          <img src={photoInfo} />
+        </div>
       </div>
     </ModalContainer>
-  )
-}
+  );
+};

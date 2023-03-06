@@ -1,25 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
-import { UserContext } from '../../contexts/UserProvider/UserProvider'
-import { getUserProfile } from '../../services/api'
-import { MenuContainer } from './style'
+import React, { useContext, useEffect, useState } from "react";
+import { ModalContext } from "../../contexts/ModalProvider/ModalProvider";
+import { UserContext } from "../../contexts/UserProvider/UserProvider";
+import { MenuContainer } from "./style";
 
 const DropDrown = () => {
-  const { setIsModelEdit, setIsModelEditAddress } = useContext(ModalContext)
-  const { token, handleLogout } = useContext(UserContext)
-  const [username, setUsername] = useState('')
+  const { setIsModelEdit, setIsModelEditAddress } = useContext(ModalContext);
+  const { handleLogout, getProfile } = useContext(UserContext);
+  const [username, setUsername] = useState("");
+  const [seller, setSeller] = useState(false);
 
   useEffect(() => {
-    if (token) {
-      const storedUserId = localStorage.getItem('@MOTORS-USER-ID')
-      if (storedUserId) {
-        getUserProfile(token, storedUserId)
-          .then((user) => setUsername(user.name))
-          .catch((error) => console.error(error))
-      }
-    }
-  }, [token])
-
+    getProfile()
+      .then(user => {
+        setUsername(user.name);
+        setSeller(user.is_seller);
+      })
+      .catch(error => console.error(error));
+  }, []);
   return (
     <MenuContainer>
       <ul>
@@ -30,28 +27,56 @@ const DropDrown = () => {
             </div>
             <a href="#">{username}</a>
           </div>
-          <ul className="dropdown">
-            <li>
-              <a href="#" onClick={() => setIsModelEdit(true)}>
-                Editar Perfil
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => setIsModelEditAddress(true)}>
-                Editar endereço
-              </a>
-            </li>
-            <li>
-              <a href="#">Minhas Compras</a>
-            </li>
-            <li>
-              <a href="#" onClick={handleLogout}>Sair</a>
-            </li>
-          </ul>
+          {seller ? (
+            <ul className="dropdown">
+              <li>
+                <a href="#" onClick={() => setIsModelEdit(true)}>
+                  Editar Perfil
+                </a>
+              </li>
+              <li>
+                <a href="#" onClick={() => setIsModelEditAddress(true)}>
+                  Editar Endereço
+                </a>
+              </li>
+              <li>
+                <a href="#">Meus Anúncios</a>
+              </li>
+              <li>
+                <a href="#">Minhas Compras</a>
+              </li>
+              <li>
+                <a href="#" onClick={handleLogout}>
+                  Sair
+                </a>
+              </li>
+            </ul>
+          ) : (
+            <ul className="dropdown">
+              <li>
+                <a href="#" onClick={() => setIsModelEdit(true)}>
+                  Editar Perfil
+                </a>
+              </li>
+              <li>
+                <a href="#" onClick={() => setIsModelEditAddress(true)}>
+                  Editar Endereço
+                </a>
+              </li>
+              <li>
+                <a href="#">Minhas Compras</a>
+              </li>
+              <li>
+                <a href="#" onClick={handleLogout}>
+                  Sair
+                </a>
+              </li>
+            </ul>
+          )}
         </li>
       </ul>
     </MenuContainer>
-  )
-}
+  );
+};
 
-export default DropDrown
+export default DropDrown;
