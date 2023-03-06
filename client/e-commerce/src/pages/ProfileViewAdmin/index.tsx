@@ -26,7 +26,7 @@ export const ProfileViewAdm = () => {
         >
           Leilão
         </Heading>
-
+        
         <div className="content-carousel">
           <AuctionCard />
           <AuctionCard />

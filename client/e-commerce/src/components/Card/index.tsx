@@ -1,5 +1,6 @@
 import React from 'react'
 import car from '../../assets/car.svg'
+import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 import { Heading, Paragraph } from '../../styles/typography'
 import { CardContainer } from './style'
 
@@ -7,8 +8,13 @@ interface CardProps {
   isProfileView?: Boolean
 }
 
-export const Card = ({ isProfileView }: CardProps) => {
+interface AuctionCardProps {
+  vehicle: AnnouncementData
+}
+
+export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) => {
   const isActive: boolean = false
+  
 
   return (
     <CardContainer>
@@ -22,7 +28,7 @@ export const Card = ({ isProfileView }: CardProps) => {
       </div>
       <div className='content-description'>
         <Heading level={3} fontWeight={600} color={'grey1'} lineHeight={'20px'}>
-          Product title stays here - max 1 line
+          {vehicle.title}
         </Heading>
         <Paragraph
           fontWeight={400}

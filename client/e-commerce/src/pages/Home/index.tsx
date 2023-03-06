@@ -1,11 +1,15 @@
 import { ContainerHome } from './style'
 import { Card } from '../../components/Card'
-import { useState } from 'react'
-import { CreateAdCard } from '../../components/CreateAdCard'
-import { Heading } from '../../styles/typography'
+import { useContext } from 'react'
 import { AuctionCard } from '../../components/AuctionCard'
+import { ProductsContext } from '../../contexts/ProductsProvider/ProductsProvider'
+import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
+import { Heading } from '../../styles/typography'
 
 export const Home = () => {
+
+  const { auctionsList, carsList, motosList } = useContext<any>(ProductsContext)
+
   return (
     <ContainerHome>
       <div className='select-announcement'>
@@ -25,45 +29,75 @@ export const Home = () => {
       <div className='list-auction'>  
         <h1>Leilão</h1>
         <div className="content-carrossel">
-          <AuctionCard />
-          <AuctionCard />
-          <AuctionCard />
-          <AuctionCard />
-          <AuctionCard />
-          <AuctionCard />
+          {auctionsList.length > 0 ? (
+            auctionsList?.map((elem: AnnouncementData, ind: number) => (
+              <AuctionCard 
+                key={ind}
+                vehicle={elem}
+              />
+            )))
+            :
+            (
+              <Heading
+              level={2}
+              fontWeight={600}
+              size={'plus'}
+              color={'grey10'}
+              lineHeight={'25px'}
+            >
+              Nenhum leilão cadastrado!
+            </Heading>
+            )}
         </div>
       </div>
         <div id='car' className='list-car'>
           <h1>Carros</h1>
           <div className='carrossel'>
-            <Card />
-
-            <Card />
-
-            <Card />
-
-            <Card />
-
-            <Card />
-
-            <Card />
+            {carsList.length > 0 ? (
+              carsList.map((elem: AnnouncementData, ind: number)=> (
+                <Card 
+                  key={ind}
+                  vehicle={elem}
+                />
+              ))
+            )
+            :
+            (
+              <Heading
+              level={2}
+              fontWeight={600}
+              size={'plus'}
+              color={'grey10'}
+              lineHeight={'25px'}
+            >
+              Nenhum Carro à venda!
+            </Heading>
+            )}
           </div>
         </div>
         <div id='motorcycle' className='list-motorcycle'>
           <h1>Motos</h1>
           <div className='carrossel'>
-          <Card />
-
-          <Card />
-
-          <Card />
-          
-          <Card />
-
-          <Card />
-
-          <Card />
-
+          {motosList.length > 0 ? (
+              motosList.map((elem: AnnouncementData, ind: number)=> (
+                <Card 
+                  key={ind}
+                  vehicle={elem}
+                />
+              ))
+            )
+            :
+            (
+              <Heading
+              level={2}
+              fontWeight={600}
+              size={'plus'}
+              color={'grey10'}
+              lineHeight={'25px'}
+            >
+              Nenhuma Moto à venda!
+            </Heading>
+            )}
           </div>
         </div>
       </div>

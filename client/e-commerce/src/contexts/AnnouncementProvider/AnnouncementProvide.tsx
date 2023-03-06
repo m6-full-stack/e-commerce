@@ -11,7 +11,7 @@ interface ImageData {
   image_url: string;
 }
 
-interface AnnouncementData {
+export interface AnnouncementData {
   createdAt: string;
   id: string;
   type: string;

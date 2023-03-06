@@ -7,8 +7,13 @@ import { Heading, Paragraph } from '../../styles/typography'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 
 import countDownTimer from '../../utils/countDown'
+import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 
-export const AuctionCard = () => {
+interface AuctionCardProps {
+  vehicle: AnnouncementData
+}
+
+export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
   const { setIsModelEditAnnouncement } = useContext(ModalContext)
   return (
     <AuctionCardContainer>
@@ -25,7 +30,7 @@ export const AuctionCard = () => {
             color={'grey10'}
             lineHeight={'25px'}
           >
-            Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes
+          {vehicle.title}
           </Heading>
           <Paragraph
             fontWeight={400}
@@ -33,13 +38,12 @@ export const AuctionCard = () => {
             color={'grey5'}
             lineHeight={'28px'}
           >
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
+            {vehicle.description}
           </Paragraph>
           <div className="content-price">
             <section className="container-year">
-              <span>2013</span>
-              <span>0 km</span>
+              <span>{vehicle.year}</span>
+              <span>{vehicle.mileage} km</span>
             </section>
             <Heading
               level={3}
@@ -47,11 +51,10 @@ export const AuctionCard = () => {
               color={'whiteFixed'}
               lineHeight={'20px'}
             >
-              R$ 78.500,00
+              R$ {vehicle.price},00
             </Heading>
           </div>
         </section>
-
         <footer>
           <Button
             variant="transparent"
