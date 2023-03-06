@@ -22,7 +22,7 @@ export interface IUser {
   cpf: string
   birthdate: string
   description: string
-  is_buyer: boolean
+  is_seller: boolean
   address: IAddress
   sub: string
 }
@@ -39,7 +39,6 @@ export interface IAddress {
 export interface IMail {
   email: string
 }
-
 
 export interface UpdateProfileData {
   name?: string
