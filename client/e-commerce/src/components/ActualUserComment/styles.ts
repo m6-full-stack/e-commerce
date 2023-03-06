@@ -77,6 +77,9 @@ export const InputText = styled.textarea`
   color: #868e96;
   padding: 10px;
   resize: none;
+
+  min-height: 100px;
+  min-width: 300px;
 `
 
 export const InputText2 = styled.textarea`

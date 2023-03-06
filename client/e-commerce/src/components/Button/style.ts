@@ -9,6 +9,7 @@ type ButtonVariant =
   | 'grey1'
   | 'grey4'
   | 'grey6'
+  | 'grey7'
   | 'grey10'
   | 'brand3'
   | 'brand4'
@@ -28,6 +29,7 @@ const buttonVariants = {
   grey1: '#212529',
   grey4: '#ADB5BD',
   grey6: '#DEE2E6',
+  grey7: '#E9ECEF',
   grey10: '#FDFDFD',
 }
 
@@ -209,6 +211,16 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
 
       // button product inserir proposta
       case 'b1prop':
+        return css`
+          height: 48px;
+          max-width: 182px;
+          padding: 12px 28px;
+          color: ${(props) => props.theme.whiteFixed};
+          border: 1.5px solid ${(props) => props.theme.brand1};
+          `
+
+      // button product emotions
+      case 'g7proem':
         return css`
           height: 48px;
           max-width: 182px;
