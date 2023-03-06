@@ -1,10 +1,24 @@
-import { Card } from '../../components/Card'
-import { CreateAdCard } from '../../components/CreateAdCard'
-import { Heading } from '../../styles/typography'
+import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Card } from "../../components/Card";
+import { CreateAdCard } from "../../components/CreateAdCard";
+import { UserContext } from "../../contexts/UserProvider/UserProvider";
+import { UserRequest } from "../../interfaces/LoginInterface";
+import { Heading } from "../../styles/typography";
 
-import { ProfileContainer } from './style'
+import { ProfileContainer } from "./style";
 
 export const ProfileViewUser = () => {
+  const { getUserProfile } = useContext(UserContext);
+  const [profileInfo, setProfileInfo] = useState<UserRequest>(
+    {} as UserRequest
+  );
+  const { id } = useParams();
+
+  useEffect(() => {
+    id && getUserProfile(id).then(res => setProfileInfo(res));
+  }, []);
+
   return (
     <ProfileContainer>
       <div className="blue"></div>
@@ -14,9 +28,9 @@ export const ProfileViewUser = () => {
           className="title"
           level={2}
           fontWeight={600}
-          size={'plus'}
-          color={'black'}
-          lineHeight={'30px'}
+          size={"plus"}
+          color={"black"}
+          lineHeight={"30px"}
         >
           Carros
         </Heading>
@@ -35,9 +49,9 @@ export const ProfileViewUser = () => {
           className="title"
           level={2}
           fontWeight={600}
-          size={'plus'}
-          color={'black'}
-          lineHeight={'30px'}
+          size={"plus"}
+          color={"black"}
+          lineHeight={"30px"}
         >
           Motos
         </Heading>
@@ -54,5 +68,5 @@ export const ProfileViewUser = () => {
         </div>
       </div>
     </ProfileContainer>
-  )
-}
+  );
+};
