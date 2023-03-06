@@ -230,6 +230,18 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           font-size: 12px;
           line-height: 12px;
         `
+      // button product emotions2
+      case 'g7proem2':
+        return css`
+          height: 24px;
+          
+          max-width: 218x;
+          padding: 0px 12px;
+          color: ${(props) => props.theme.grey3};
+          border-radius: 24px;
+          font-size: 12px;
+          line-height: 12px;
+        `
 
       // button profile editar
       case 'tprofe':

@@ -153,8 +153,12 @@ export const UserCommentCardFinal = styled.div`
 
     border-radius: 4px;
 
-    padding: 0px 40px 36px 28px;
+    padding: 0px 40px 36px 44px;
     gap: 8px;
+
+    @media (min-width: 1024px) {
+      padding: 0px 44px 36px 44px;
+    }
   }
 
   .content-comment {

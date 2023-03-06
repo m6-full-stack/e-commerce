@@ -42,6 +42,9 @@ export const UserCommentInputFinal = styled.div`
     display: flex;
     flex-direction: column;
     padding: 36px 26px;
+    @media(min-width: 1024px) {
+      padding: 36px 35px 39px 44px;
+    }
   }
 
   .container-buttons {
@@ -57,6 +60,7 @@ export const UserCommentInputFinal = styled.div`
   .content-buttons {
     flex-direction: row;
     gap: 8px;
+    width: 100%;
     max-width: 190px;
   }
 
@@ -70,15 +74,21 @@ export const UserCommentInputFinal = styled.div`
 
   .content-text-area {
     @media (min-width: 1024px) {
-      background: red;
+      position: relative;
     }
   }
 
   .button-rel {
     @media (min-width: 1024px) {
       position: absolute;
-      /* left: 200px; */
+      top: 77px;
+      right: 11px;
+      
     }
+  }
+
+  .content-button3 {
+    max-width: 220px;
   }
 `
 

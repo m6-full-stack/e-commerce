@@ -87,8 +87,8 @@ export const ActualUserCommentFinal = () => {
                 </Button>
               </div>
             </div>
-            <div className="content-button">
-              <Button variant="grey7" buttonSize="g7proem">
+            <div className="content-button3">
+              <Button variant="grey7" buttonSize="g7proem2">
                 Recomendarei para meus amigos!
               </Button>
             </div>

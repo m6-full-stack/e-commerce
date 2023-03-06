@@ -40,15 +40,19 @@ export const SectionProductsFinalStyle = styled.div`
   //INICIO INFO CAR (content)
   .content-year-and-price {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 
     padding: 44px 20px 28px 28px;
+
 
     gap: 24px;
 
     background: ${(props) => props.theme.grey10};
 
     border-radius: 4px;
+    @media (min-width: 1024px) {
+      padding: 28px 44px 28px 44px;
+    }
   }
   .content-year {
     flex-direction: row;
@@ -81,6 +85,7 @@ export const SectionProductsFinalStyle = styled.div`
 
     @media (min-width: 1024px) {
       max-height: 212px;
+      padding: 36px 44px 36px 44px;
     }
   }
   /* FIM DESCRIPTION */

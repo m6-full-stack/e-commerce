@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Card } from '../../components/Card'
-import { EitaPorra } from './style'
+import { ProductContainerFinal } from './style'
 
 import car1 from '../../assets/images/car_1.svg'
 
@@ -39,7 +39,7 @@ export const ProductFinal = () => {
   }
 
   return (
-    <EitaPorra>
+    <ProductContainerFinal>
       <main>
         
         <div className="testt">
@@ -64,6 +64,6 @@ export const ProductFinal = () => {
           <AsideProductsFinal />
         </section>
       </main>
-    </EitaPorra>
+    </ProductContainerFinal>
   )
 }

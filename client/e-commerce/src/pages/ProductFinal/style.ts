@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const EitaPorra = styled.div`
+export const ProductContainerFinal = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
@@ -77,6 +77,15 @@ export const EitaPorra = styled.div`
     @media (min-width: 1024px) {
       display: flex;
     }
+  }
+
+  @media (min-width:1024px) {
+    background: linear-gradient(
+    180deg,
+    #4529e6 31.625%,
+    #f1f3f5 31.626%,
+    #f1f3f5 100%
+  );
   }
   
 `

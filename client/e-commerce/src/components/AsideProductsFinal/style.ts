@@ -41,6 +41,12 @@ export const AsideProductsStyleFinal = styled.div`
     border-radius: 4px;
     height: 90px;
     padding: 0px 16px;
+    &:hover {
+      -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    cursor: pointer;
+    }
   }
   /* fim mini-fotos */
 
