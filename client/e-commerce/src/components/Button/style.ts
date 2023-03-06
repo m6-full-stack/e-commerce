@@ -58,9 +58,8 @@ export const ButtonNavLogin = styled(Link)`
   border: 1.5px solid ${(props) => props.theme.grey4};
 
   &:hover {
-    color: ${props => props.theme.whiteFixed};
+    color: ${(props) => props.theme.whiteFixed};
     border: none;
-
   }
 `
 
@@ -217,24 +216,26 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           padding: 12px 28px;
           color: ${(props) => props.theme.whiteFixed};
           border: 1.5px solid ${(props) => props.theme.brand1};
-          `
+        `
 
       // button product emotions
       case 'g7proem':
         return css`
-          height: 48px;
-          max-width: 182px;
-          padding: 12px 28px;
-          color: ${(props) => props.theme.whiteFixed};
-          border: 1.5px solid ${(props) => props.theme.brand1};
+          height: 24px;
+          
+          max-width: 218x;
+          padding: 0px 12px;
+          color: ${(props) => props.theme.grey3};
+          border-radius: 24px;
+          font-size: 12px;
+          line-height: 12px;
         `
 
       // button profile editar
       case 'tprofe':
         return css`
           height: 38px;
-          max-width: 132px;
-          padding: 12px 20px;
+          padding: 0px 12px;
           font-size: 0.875rem;
           color: ${(props) => props.theme.whiteFixed};
           border: 1.5px solid ${(props) => props.theme.grey10};

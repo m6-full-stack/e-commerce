@@ -56,10 +56,12 @@ export const UserCommentInput = styled.div`
     margin-bottom: 20px;
     margin-left: -200px;
   }
+  
 `
 
 export const InputText = styled.textarea`
   width: 100%;
+  position: absolute;
   row-gap: initial;
   font-family: 'Inter';
   font-style: normal;
