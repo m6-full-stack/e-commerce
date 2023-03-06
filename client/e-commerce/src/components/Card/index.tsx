@@ -1,5 +1,3 @@
-import React from 'react'
-import car from '../../assets/car.svg'
 import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 import { Heading, Paragraph } from '../../styles/typography'
 import { CardContainer } from './style'
@@ -13,10 +11,6 @@ interface AuctionCardProps {
 }
 
 export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) => {
-  const isActive: boolean = false
-
-
-  
 
   return (
     <CardContainer>
