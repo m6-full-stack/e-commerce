@@ -1,4 +1,5 @@
 import React, { createContext, ReactNode, useState } from "react";
+import { IUser } from "../../interfaces/LoginInterface";
 import { api } from "../../services/api";
 import { CommentDataRecive } from "../CommentProvider/CommentProvider";
 
@@ -23,7 +24,8 @@ export interface AnnouncementData {
   vehicle_type: string;
   cover_image: string;
   is_sold: boolean;
-  advertiserId: string;
+  is_active: boolean;
+  advertiser: IUser;
   comments: CommentDataRecive[];
   images_list: ImageData[];
 }

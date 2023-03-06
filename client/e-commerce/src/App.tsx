@@ -7,6 +7,7 @@ import { ModalProvider } from "./contexts/ModalProvider/ModalProvider";
 import { UserContextProvider } from "./contexts/UserProvider/UserProvider";
 import { CommentContextProvider } from "./contexts/CommentProvider/CommentProvider";
 import { AnnouncementContextProvider } from "./contexts/AnnouncementProvider/AnnouncementProvide";
+import { ProductsContextProvider } from "./contexts/ProductsProvider/ProductsProvider";
 
 function App() {
   return (
@@ -15,10 +16,12 @@ function App() {
         <BrowserRouter>
           <UserContextProvider>
             <AnnouncementContextProvider>
-              <CommentContextProvider>
-                <Router />
-                <GlobalStyle />
-              </CommentContextProvider>
+              <ProductsContextProvider>
+                <CommentContextProvider>
+                  <Router />
+                  <GlobalStyle />
+                </CommentContextProvider>
+              </ProductsContextProvider>
             </AnnouncementContextProvider>
           </UserContextProvider>
         </BrowserRouter>

@@ -1,6 +1,6 @@
 import { ContainerHome } from './style'
 import { Card } from '../../components/Card'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { AuctionCard } from '../../components/AuctionCard'
 import { ProductsContext } from '../../contexts/ProductsProvider/ProductsProvider'
 import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
@@ -8,8 +8,12 @@ import { Heading } from '../../styles/typography'
 
 export const Home = () => {
 
-  const { auctionsList, carsList, motosList } = useContext<any>(ProductsContext)
+  const { auctionsList, carsList, motosList, actListsVehicles } = useContext<any>(ProductsContext)
 
+  useEffect(() => {
+    actListsVehicles();
+    }, []);
+  
   return (
     <ContainerHome>
       <div className='select-announcement'>
@@ -29,7 +33,7 @@ export const Home = () => {
       <div className='list-auction'>  
         <h1>Leilão</h1>
         <div className="content-carrossel">
-          {auctionsList.length > 0 ? (
+          {auctionsList?.length > 0 ? (
             auctionsList?.map((elem: AnnouncementData, ind: number) => (
               <AuctionCard 
                 key={ind}
@@ -39,10 +43,10 @@ export const Home = () => {
             :
             (
               <Heading
-              level={2}
-              fontWeight={600}
+              level={1}
+              fontWeight={400}
               size={'plus'}
-              color={'grey10'}
+              color={'grey0'}
               lineHeight={'25px'}
             >
               Nenhum leilão cadastrado!
@@ -53,8 +57,8 @@ export const Home = () => {
         <div id='car' className='list-car'>
           <h1>Carros</h1>
           <div className='carrossel'>
-            {carsList.length > 0 ? (
-              carsList.map((elem: AnnouncementData, ind: number)=> (
+            {carsList?.length > 0 ? (
+              carsList?.map((elem: AnnouncementData, ind: number)=> (
                 <Card 
                   key={ind}
                   vehicle={elem}
@@ -64,10 +68,10 @@ export const Home = () => {
             :
             (
               <Heading
-              level={2}
-              fontWeight={600}
+              level={1}
+              fontWeight={400}
               size={'plus'}
-              color={'grey10'}
+              color={'grey0'}
               lineHeight={'25px'}
             >
               Nenhum Carro à venda!
@@ -78,8 +82,8 @@ export const Home = () => {
         <div id='motorcycle' className='list-motorcycle'>
           <h1>Motos</h1>
           <div className='carrossel'>
-          {motosList.length > 0 ? (
-              motosList.map((elem: AnnouncementData, ind: number)=> (
+          {motosList?.length > 0 ? (
+              motosList?.map((elem: AnnouncementData, ind: number)=> (
                 <Card 
                   key={ind}
                   vehicle={elem}
@@ -89,10 +93,10 @@ export const Home = () => {
             :
             (
               <Heading
-              level={2}
-              fontWeight={600}
+              level={1}
+              fontWeight={400}
               size={'plus'}
-              color={'grey10'}
+              color={'grey0'}
               lineHeight={'25px'}
             >
               Nenhuma Moto à venda!

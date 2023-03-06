@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { AuctionCardContainer } from './style'
 
 import { AiOutlineClockCircle } from 'react-icons/ai'
@@ -8,6 +8,7 @@ import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 
 import countDownTimer from '../../utils/countDown'
 import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
+import { string } from 'yup'
 
 interface AuctionCardProps {
   vehicle: AnnouncementData
@@ -15,13 +16,15 @@ interface AuctionCardProps {
 
 export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
   const { setIsModelEditAnnouncement } = useContext(ModalContext)
+  const [ actualImageBackground, setActualImageBackground ] = useState(string)
+
   return (
     <AuctionCardContainer>
       <div className="content-auction">
         <section className="content-auction-title">
           <div className="container-clocker">
             <AiOutlineClockCircle className="Icons" />
-            <time>{countDownTimer('00:00:10')}</time>
+            <time>{countDownTimer('00:24:00')}</time>
           </div>
           <Heading
             level={2}

@@ -14,17 +14,19 @@ interface AuctionCardProps {
 
 export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) => {
   const isActive: boolean = false
+
+
   
 
   return (
     <CardContainer>
       <div className='content-img'>
         {isProfileView && (
-          <span style={{ backgroundColor: isActive ? '#4529E6' : '#ADB5BD' }}>
-            {isActive ? 'Ativo' : 'Inativo'}
+          <span style={{ backgroundColor: vehicle.is_active ? '#4529E6' : '#ADB5BD' }}>
+            {vehicle.is_active ? 'Ativo' : 'Inativo'}
           </span>
         )}
-        <img src={car} alt='foto de carro' />
+        <img src={vehicle.cover_image} alt='foto de carro' />
       </div>
       <div className='content-description'>
         <Heading level={3} fontWeight={600} color={'grey1'} lineHeight={'20px'}>
@@ -36,8 +38,7 @@ export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) 
           color={'grey2'}
           lineHeight={'24px'}
         >
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem...
+          {vehicle.description}
         </Paragraph>
         <div className='content-name'>
           <div className='content-border'>
@@ -47,16 +48,18 @@ export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) 
               color={'whiteFixed'}
               lineHeight={'0'}
             >
-              SL
+            {vehicle.advertiser.name.split(" ")[0][0].toUpperCase()}
+            {vehicle.advertiser.name?.split(" ")[1] &&
+              vehicle.advertiser.name?.split(" ")[1][0].toUpperCase()}
             </Paragraph>
           </div>
           <Paragraph
-            fontWeight={500}
+            fontWeight={700}
             size={'small'}
             color={'grey2'}
             lineHeight={'1.5rem'}
           >
-            Samuel Leão
+            {vehicle.advertiser.name}
           </Paragraph>
         </div>
         <section className='content-year-and-price'>
@@ -68,7 +71,7 @@ export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) 
                 color={'brand1'}
                 lineHeight={'1.5rem'}
               >
-                0 KM
+                {vehicle.mileage} Km
               </Paragraph>
             </div>
             <div className='border'>
@@ -78,7 +81,7 @@ export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) 
                 color={'brand1'}
                 lineHeight={'1.5rem'}
               >
-                2019
+                {vehicle.year}
               </Paragraph>
             </div>
           </div>
@@ -90,7 +93,7 @@ export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) 
               color={'grey1'}
               lineHeight={'1.25rem'}
             >
-              R$ 00.000,00
+              R$ {vehicle.price},00
             </Heading>
           </div>
         </section>

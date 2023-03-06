@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { AnnouncementData } from "../AnnouncementProvider/AnnouncementProvide";
 
@@ -7,9 +8,10 @@ interface ProductsContextProviderProps {
   }
 
 interface ProductsContextType {
-    carsList: AnnouncementData[]
-    motosList: AnnouncementData[]
-    auctionsList: AnnouncementData[]
+  actListsVehicles: () => void;
+    carsList: AnnouncementData[];
+    motosList: AnnouncementData[];
+    auctionsList: AnnouncementData[];
   }
 
 export const ProductsContext = createContext<ProductsContextType>(
@@ -17,18 +19,14 @@ export const ProductsContext = createContext<ProductsContextType>(
   );
 
 
-  export const ProductsContextProvider = ({children}: ProductsContextProviderProps) => {
-
-    
-
+export const ProductsContextProvider = ({children}: ProductsContextProviderProps) => {
     const [carsList, setCarsList] = useState<AnnouncementData[]>([] as AnnouncementData[]);
     const [motosList, setMotosList] = useState<AnnouncementData[]>([] as AnnouncementData[]);
     const [auctionsList, setAuctionsList] = useState<AnnouncementData[]>([] as AnnouncementData[]);
-  
 
-    useEffect(() => {
+    const actListsVehicles = async () => {
         api.get("/announcement")
-          .then((res) => {
+            .then((res) => {
             setMotosList(
               res.data.filter(
                 (moto: AnnouncementData) =>
@@ -49,14 +47,14 @@ export const ProductsContext = createContext<ProductsContextType>(
             )
           })
           .catch((err) => console.log(err));
-      }, []);
-
+        }
 
     return (
         <ProductsContext.Provider value = {{
             carsList,
             motosList,
-            auctionsList
+            auctionsList,
+            actListsVehicles
         }}>
         {children}
         </ProductsContext.Provider>
