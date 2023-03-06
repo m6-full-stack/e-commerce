@@ -27,7 +27,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   time {
-    color: ${props => props.theme.black};
+    color: ${(props) => props.theme.black};
   }
   
   ul, ol, li{
@@ -46,9 +46,17 @@ export const GlobalStyle = createGlobalStyle`
       box-shadow: none;
     }
 	}
+
   img {
         max-width: 100%;
     }
+  
+  .closeModal {
+    color: ${props => props.theme.grey4};
+    font-size: 20px;
+    cursor: pointer;
+  }
+
   section, aside, div{
         width: 100%;
         display: flex;

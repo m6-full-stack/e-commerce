@@ -9,6 +9,7 @@ import { ModalDelete } from '../ModalDelete'
 import { ModalEdit } from '../ModalEdit'
 import { ModalEditAddress } from '../ModalEditAddress'
 import { ModalEditAnnouncement } from '../ModalEditAnnouncement'
+import { ModalPhoto } from '../ModalPhoto'
 import Navbar from '../Navbar'
 import NavbarLogged from '../Navbar/NavbarLogged'
 import { LayoutContainer } from './style'
@@ -20,6 +21,7 @@ export const DefaultLayout = () => {
     isModelEditAddress,
     isModelEditAnnouncement,
     isModelDelete,
+    isModelPhoto,
   } = useContext(ModalContext)
 
   const { setIsUserLoggedIn, isUserLoggedIn  } = useContext(UserContext)
@@ -37,6 +39,7 @@ export const DefaultLayout = () => {
       {isModelEditAddress && <ModalEditAddress />}
       {isModelEditAnnouncement && <ModalEditAnnouncement />}
       {isModelDelete && <ModalDelete />}
+      {isModelPhoto && <ModalPhoto />}
 
       <Outlet />
       <Footer />

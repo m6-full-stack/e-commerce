@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext } from 'react'
+import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
+import { Heading } from '../../styles/typography'
+import { AsideProductsStyle } from './style'
 import { AnnouncementContext } from "../../contexts/AnnouncementProvider/AnnouncementProvide";
-import { Heading } from "../../styles/typography";
-import { AsideProductsStyle } from "./style";
 
 export const AsideProducts = () => {
+  const { setIsModelPhoto } = useContext(ModalContext)
   const { announcementInfo } = useContext(AnnouncementContext);
 
   return (
