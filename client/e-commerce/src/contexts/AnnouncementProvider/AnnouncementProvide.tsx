@@ -35,7 +35,7 @@ export interface AdvertiserData {
   address: AddressAdvertiser;
 }
 
-interface AnnouncementData {
+export interface AnnouncementData {
   createdAt: string;
   id: string;
   type: string;

@@ -1,12 +1,14 @@
-import { useContext } from 'react'
-import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
-import { Heading } from '../../styles/typography'
-import { AsideProductsStyle } from './style'
+import { useContext } from "react";
+import { ModalContext } from "../../contexts/ModalProvider/ModalProvider";
+import { Heading } from "../../styles/typography";
+import { AsideProductsStyle } from "./style";
 import { AnnouncementContext } from "../../contexts/AnnouncementProvider/AnnouncementProvide";
+import { useNavigate } from "react-router-dom";
 
 export const AsideProducts = () => {
-  const { setIsModelPhoto } = useContext(ModalContext)
+  const { modalPhoto } = useContext(ModalContext);
   const { announcementInfo } = useContext(AnnouncementContext);
+  const navigate = useNavigate()
 
   return (
     <AsideProductsStyle>
@@ -22,6 +24,9 @@ export const AsideProducts = () => {
                     src={elem.image_url}
                     alt=""
                     key={elem.id}
+                    onClick={() => {
+                      modalPhoto(elem.image_url);
+                    }}
                   />
                 );
               }
@@ -39,7 +44,7 @@ export const AsideProducts = () => {
           {announcementInfo.advertiser &&
             announcementInfo.advertiser.description}
         </p>
-        <button className="buttonSeeAll">Ver todos os anúncios</button>
+        <button className="buttonSeeAll" onClick={() => navigate(`/profileview/${announcementInfo.id}`)}>Ver todos os anúncios</button>
       </div>
     </AsideProductsStyle>
   );

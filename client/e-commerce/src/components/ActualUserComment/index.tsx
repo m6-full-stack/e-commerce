@@ -9,17 +9,21 @@ import {
   CommentContext,
   CommentData,
 } from "../../contexts/CommentProvider/CommentProvider";
-import { getProfile } from "../../services/api";
-import { AdvertiserData } from "../../contexts/AnnouncementProvider/AnnouncementProvide";
+import { useParams } from "react-router-dom";
+import { UserContext } from "../../contexts/UserProvider/UserProvider";
+import { UserRequest } from "../../interfaces/LoginInterface";
 
 export const ActualUserComment = () => {
   const { createComment } = useContext(CommentContext);
-  const [infoUserComment, setInfoUserComment] = useState<AdvertiserData>(
-    {} as AdvertiserData
+  const { getProfile } = useContext(UserContext);
+
+  const [infoUserComment, setInfoUserComment] = useState<UserRequest>(
+    {} as UserRequest
   );
+  const { id } = useParams();
 
   useEffect(() => {
-    getProfile().then(res => setInfoUserComment(res.data));
+    getProfile().then(res => setInfoUserComment(res))
   }, []);
 
   const {
@@ -31,7 +35,7 @@ export const ActualUserComment = () => {
   });
 
   const onSubmit = (data: CommentData) => {
-    createComment(data, "c9953fe0-5728-41a7-a0f7-8abfdddf625b");
+    id && createComment(data, id);
   };
 
   return (
