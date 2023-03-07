@@ -16,6 +16,7 @@ export const CardContainer = styled.div`
     .content-img {
       border: 2px solid ${(props) => props.theme.brand1};
       border-radius: 4px;
+      overflow: hidden;
 
       & img {
         scale: 1.2;
@@ -26,12 +27,20 @@ export const CardContainer = styled.div`
     }
   }
 
+  
   .content-img {
     background: ${(props) => props.theme.grey7};
     position: relative;
     height: 150px;
+    overflow: hidden;
   }
 
+  img:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    cursor: pointer;
+  }
   .content-img span {
     font-weight: 500;
     font-size: 14px;
