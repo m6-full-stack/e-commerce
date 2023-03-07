@@ -1,14 +1,15 @@
 import React, { useContext, useState } from 'react'
 import { AuctionCardContainer } from './style'
-
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import Button from '../Button'
 import { Heading, Paragraph } from '../../styles/typography'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
-
 import countDownTimer from '../../utils/countDown'
 import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 import { string } from 'yup'
+import { ProductsContext } from '../../contexts/ProductsProvider/ProductsProvider'
+import { ButtonAuctionHomeStyle } from '../Button/style'
+import { BsArrowRight } from 'react-icons/bs'
 
 interface AuctionCardProps {
   vehicle: AnnouncementData
@@ -16,7 +17,9 @@ interface AuctionCardProps {
 
 export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
   const { setIsModelEditAnnouncement } = useContext(ModalContext)
+  const { actualPage } = useContext(ProductsContext)
   const [ actualImageBackground, setActualImageBackground ] = useState(string)
+
 
   return (
     <AuctionCardContainer vehicle={vehicle}>
@@ -59,16 +62,29 @@ export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
           </div>
         </section>
         <footer>
-          <Button
-            variant="transparent"
-            buttonSize="tprofe"
-            onClick={() => setIsModelEditAnnouncement(true)}
-          >
-            Editar
-          </Button>
-          <Button variant="transparent" buttonSize="tprofvc">
-            Ver como
-          </Button>
+          {actualPage === 'home' ? (
+            <>
+              <ButtonAuctionHomeStyle
+                onClick={() => console.log(vehicle.id)}
+              >
+                <span>Acessar página do leilão</span>
+                <BsArrowRight size={25}></BsArrowRight>
+              </ButtonAuctionHomeStyle>
+            </>
+          ):(
+            <>
+              <Button
+                variant="transparent"
+                buttonSize="tprofe"
+                onClick={() => setIsModelEditAnnouncement(true)}
+              >
+                Editar
+              </Button>
+              <Button variant="transparent" buttonSize="tprofvc">
+                Ver como
+              </Button>
+            </>
+          )}
         </footer>
       </div>
     </AuctionCardContainer>

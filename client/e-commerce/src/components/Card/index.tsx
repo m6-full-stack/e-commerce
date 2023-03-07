@@ -1,5 +1,3 @@
-import React from 'react'
-import car from '../../assets/car.svg'
 import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 import { Heading, Paragraph } from '../../styles/typography'
 import { CardContainer } from './style'
@@ -12,14 +10,11 @@ interface AuctionCardProps {
   vehicle: AnnouncementData
 }
 
-export const Card = (
-  { vehicle }: AuctionCardProps,
-  { isProfileView }: CardProps
-) => {
-  const isActive: boolean = false
+export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) => {
+  
 
   return (
-    <CardContainer>
+    <CardContainer onClick={()=>{console.log(vehicle.id)}}>
       <div className="content-img">
         {isProfileView && (
           <span
@@ -70,7 +65,7 @@ export const Card = (
         </div>
         <section className="content-year-and-price">
           <div className="content-year">
-            <div className="border">
+            <div className="border border-mileage">
               <Paragraph
                 fontWeight={500}
                 size={'small'}

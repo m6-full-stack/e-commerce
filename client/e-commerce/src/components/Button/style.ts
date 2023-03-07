@@ -494,3 +494,26 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
     cursor: not-allowed;
   }
 `
+export const ButtonAuctionHomeStyle = styled.button`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding: 30px;
+align-items: center;
+min-width: 100%;
+height: 42px;
+background-color: var(--brand1);
+color: var(--whiteFixed);
+
+border-bottom-left-radius: 4px;
+border-bottom-right-radius: 4px;
+
+span {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+:hover {
+    cursor: pointer;
+}
+`

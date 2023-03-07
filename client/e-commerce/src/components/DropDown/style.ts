@@ -9,7 +9,6 @@ export const MenuContainer = styled.ul`
     border-bottom: 1px solid #dee2e6;
   }
 
-  //box samuel
   ul li {
     width: 100%;
     max-width: 200px;
@@ -44,7 +43,6 @@ export const MenuContainer = styled.ul`
     color: #fff;
   }
 
-  //SAMUEL
   ul li a {
     display: block;
     padding: 20px 25px;
@@ -58,17 +56,14 @@ export const MenuContainer = styled.ul`
     font-size: 16px;
     line-height: 28px;
 
-    /* Grey Scale/grey-2 */
 
     color: #495057;
   }
 
-  //box li dropdown (edp, ede, mc, sair)
   ul li ul.dropdown li {
     display: block;
   }
 
-  //ul box content li's
   ul li ul.dropdown {
     display: none;
 
