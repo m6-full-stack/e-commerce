@@ -65,7 +65,7 @@ export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
           {actualPage === 'home' ? (
             <>
               <ButtonAuctionHomeStyle
-                onClick={() => setIsModelEditAnnouncement(true)}
+                onClick={() => console.log(vehicle.id)}
               >
                 <span>Acessar página do leilão</span>
                 <BsArrowRight size={25}></BsArrowRight>

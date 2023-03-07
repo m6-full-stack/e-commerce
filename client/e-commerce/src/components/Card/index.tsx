@@ -14,7 +14,7 @@ export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) 
   
 
   return (
-    <CardContainer>
+    <CardContainer onClick={()=>{console.log(vehicle.id)}}>
       <div className="content-img">
         {isProfileView && (
           <span

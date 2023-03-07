@@ -12,8 +12,10 @@ interface ProductsContextType {
     carsList: AnnouncementData[];
     motosList: AnnouncementData[];
     auctionsList: AnnouncementData[];
+    actualVehicle: AnnouncementData;
     actualPage: string;
     setActualPage: React.Dispatch<React.SetStateAction<string>>
+    setActualVehicle: React.Dispatch<React.SetStateAction<AnnouncementData>>
   }
 
 export const ProductsContext = createContext<ProductsContextType>(
@@ -25,6 +27,7 @@ export const ProductsContextProvider = ({children}: ProductsContextProviderProps
     const [carsList, setCarsList] = useState<AnnouncementData[]>([] as AnnouncementData[]);
     const [motosList, setMotosList] = useState<AnnouncementData[]>([] as AnnouncementData[]);
     const [auctionsList, setAuctionsList] = useState<AnnouncementData[]>([] as AnnouncementData[]);
+    const [actualVehicle, setActualVehicle] = useState<AnnouncementData>({} as AnnouncementData);
     const [ actualPage, setActualPage ] = useState('home')
 
     const actListsVehicles = async () => {
@@ -58,7 +61,9 @@ export const ProductsContextProvider = ({children}: ProductsContextProviderProps
           motosList,
           actualPage,
           auctionsList,
+          actualVehicle,
           setActualPage,
+          setActualVehicle,
           actListsVehicles,
         }}>
         {children}
