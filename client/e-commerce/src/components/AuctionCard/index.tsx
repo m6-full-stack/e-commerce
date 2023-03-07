@@ -9,6 +9,7 @@ import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 import countDownTimer from '../../utils/countDown'
 import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 import { string } from 'yup'
+import { ProductsContext, ProductsContextProvider } from '../../contexts/ProductsProvider/ProductsProvider'
 
 interface AuctionCardProps {
   vehicle: AnnouncementData
@@ -16,10 +17,12 @@ interface AuctionCardProps {
 
 export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
   const { setIsModelEditAnnouncement } = useContext(ModalContext)
+  const { actualPage } = useContext(ProductsContext)
   const [ actualImageBackground, setActualImageBackground ] = useState(string)
 
+
   return (
-    <AuctionCardContainer>
+    <AuctionCardContainer vehicle={vehicle}>
       <div className="content-auction">
         <section className="content-auction-title">
           <div className="container-clocker">
@@ -59,16 +62,31 @@ export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
           </div>
         </section>
         <footer>
-          <Button
-            variant="transparent"
-            buttonSize="tprofe"
-            onClick={() => setIsModelEditAnnouncement(true)}
-          >
-            Editar
-          </Button>
-          <Button variant="transparent" buttonSize="tprofvc">
-            Ver como
-          </Button>
+          {actualPage === 'home' ? (
+            <>
+              <Button
+                variant="transparent"
+                buttonSize="tprofe"
+                onClick={() => setIsModelEditAnnouncement(true)}
+              >
+                <p>Acessar página do leilão</p>
+                <FontAwesomeIcon icon="fa-light fa-arrow-right" />
+              </Button>
+            </>
+          ):(
+            <>
+              <Button
+                variant="transparent"
+                buttonSize="tprofe"
+                onClick={() => setIsModelEditAnnouncement(true)}
+              >
+                Editar
+              </Button>
+              <Button variant="transparent" buttonSize="tprofvc">
+                Ver como
+              </Button>
+            </>
+          )}
         </footer>
       </div>
     </AuctionCardContainer>

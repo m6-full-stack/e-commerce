@@ -11,40 +11,47 @@ interface AuctionCardProps {
 }
 
 export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) => {
+  
 
   return (
     <CardContainer>
-      <div className='content-img'>
+      <div className="content-img">
         {isProfileView && (
-          <span style={{ backgroundColor: vehicle.is_active ? '#4529E6' : '#ADB5BD' }}>
+          <span
+            style={{
+              backgroundColor: vehicle.is_active ? '#4529E6' : '#ADB5BD',
+            }}
+          >
             {vehicle.is_active ? 'Ativo' : 'Inativo'}
           </span>
         )}
-        <img src={vehicle.cover_image} alt='foto de carro' />
+        <img src={vehicle.cover_image} alt="foto de carro" />
       </div>
-      <div className='content-description'>
+      <div className="content-description">
         <Heading level={3} fontWeight={600} color={'grey1'} lineHeight={'20px'}>
           {vehicle.title}
         </Heading>
-        <Paragraph
-          fontWeight={400}
-          size={'small'}
-          color={'grey2'}
-          lineHeight={'24px'}
-        >
-          {vehicle.description}
-        </Paragraph>
-        <div className='content-name'>
-          <div className='content-border'>
+        <div className="content-desc">
+          <Paragraph
+            fontWeight={400}
+            size={'small'}
+            color={'grey2'}
+            lineHeight={'24px'}
+          >
+            {vehicle.description}
+          </Paragraph>
+        </div>
+        <div className="content-name">
+          <div className="content-border">
             <Paragraph
               fontWeight={500}
               size={'small'}
               color={'whiteFixed'}
               lineHeight={'0'}
             >
-            {vehicle.advertiser.name.split(" ")[0][0].toUpperCase()}
-            {vehicle.advertiser.name?.split(" ")[1] &&
-              vehicle.advertiser.name?.split(" ")[1][0].toUpperCase()}
+              {vehicle.advertiser.name.split(' ')[0][0].toUpperCase()}
+              {vehicle.advertiser.name?.split(' ')[1] &&
+                vehicle.advertiser.name?.split(' ')[1][0].toUpperCase()}
             </Paragraph>
           </div>
           <Paragraph
@@ -56,9 +63,9 @@ export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) 
             {vehicle.advertiser.name}
           </Paragraph>
         </div>
-        <section className='content-year-and-price'>
-          <div className='content-year'>
-            <div className='border'>
+        <section className="content-year-and-price">
+          <div className="content-year">
+            <div className="border">
               <Paragraph
                 fontWeight={500}
                 size={'small'}
@@ -68,7 +75,7 @@ export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) 
                 {vehicle.mileage} Km
               </Paragraph>
             </div>
-            <div className='border'>
+            <div className="border">
               <Paragraph
                 fontWeight={500}
                 size={'small'}
@@ -79,7 +86,7 @@ export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) 
               </Paragraph>
             </div>
           </div>
-          <div className='content-price'>
+          <div className="content-price">
             <Heading
               fontWeight={500}
               level={3}

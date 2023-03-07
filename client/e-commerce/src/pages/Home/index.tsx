@@ -1,6 +1,6 @@
 import { ContainerHome } from './style'
 import { Card } from '../../components/Card'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AuctionCard } from '../../components/AuctionCard'
 import { ProductsContext } from '../../contexts/ProductsProvider/ProductsProvider'
 import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
@@ -8,10 +8,12 @@ import { Heading } from '../../styles/typography'
 
 export const Home = () => {
 
-  const { auctionsList, carsList, motosList, actListsVehicles } = useContext<any>(ProductsContext)
+
+  const { auctionsList, carsList, motosList, actListsVehicles, setActualPage } = useContext<any>(ProductsContext)
 
   useEffect(() => {
     actListsVehicles();
+    setActualPage('home');
     }, []);
   
   return (

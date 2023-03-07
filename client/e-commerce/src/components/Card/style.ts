@@ -22,10 +22,11 @@ export const CardContainer = styled.div`
   }
 
   .content-img {
-    padding: 0 25px;
+    /* padding: 0 25px; */
     background: ${(props) => props.theme.grey7};
     position: relative;
     height: 150px;
+    /* background: red; */
   }
 
   .content-img span {
@@ -44,11 +45,24 @@ export const CardContainer = styled.div`
 
   .content-img img {
     transition: all 0.25s linear;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    object-fit: cover;
   }
 
   .content-description {
     width: 100%;
     gap: 16px;
+  }
+
+  .content-desc {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
   }
 
   .content-name {
