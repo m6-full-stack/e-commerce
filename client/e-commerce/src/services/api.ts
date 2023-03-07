@@ -1,9 +1,11 @@
+import axios from "axios";
 import {
   IloginData,
   IResponseLogin,
   IUser,
   UpdateProfileData,
 } from '../interfaces/LoginInterface'
+
 
 export const api = axios.create({
   // baseURL: 'https://fullstack-project-qi7p.onrender.com/',
