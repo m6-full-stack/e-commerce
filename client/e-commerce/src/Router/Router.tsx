@@ -20,7 +20,9 @@ export const Router = () => {
           <Route path=":id" element={<Product />} />
         </Route>
         <Route path='/productfinal' element={<ProductFinal />} />
-        <Route path="/profileview" element={<ProfileViewUser />} />
+        <Route path="/profileview" element={<ProfileViewUser />}>
+          <Route path=":id" element={<ProfileViewUser />} />
+        </Route>
         <Route path="/profileviewAdm" element={<ProfileViewAdm />} />
         <Route path="/recoverPassword" element={<RecoverPassword />} />
       </Route>
