@@ -17,6 +17,7 @@ import {
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
 import { decodeToken } from 'react-jwt'
+import { toast } from 'react-toastify'
 
 interface UserContextType {
   token: string | null
@@ -84,11 +85,15 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         const decodedToken = decodeToken(token) as Record<string, any>
         const userId = decodedToken.id
         localStorage.setItem('@MOTORS-USER-ID', userId)
+
+        toast.success('Login realizado com sucesso!')
         navigate('/', { replace: true })
 
         return token
       })
       .catch((error) => {
+
+        toast.error('Confira seu mail ou senha')
         console.log(error)
         throw error
       })
@@ -126,9 +131,11 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         is_seller: advertiserOrBuyer,
       })
       .then(() => {
+        toast.success('Sua conta foi criada com sucesso')
         navigate('login', { replace: true })
       })
       .catch((error) => {
+        toast.error('Ops algo deu errado!')
         console.log(error)
       })
   }
@@ -137,9 +144,11 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
     api
       .post('users/sendTokenPassword', data)
       .then((response) => {
+        toast.success('Token enviado')
         setTokenRecoverPassword(response.data.token)
       })
       .catch((error) => {
+        toast.error('Ops algo deu errado!')
         console.log(error)
       })
   }
@@ -148,10 +157,11 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
     api
       .post('users/recoverPassword', { tokenResetPassword: token, password })
       .then((response) => {
-        console.log()
+        toast.success('Faça login com a nova senha.')
         navigate('login')
       })
       .catch((error) => {
+        toast.error('Ops algo deu errado!')
         console.log(error)
       })
   }

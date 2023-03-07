@@ -3,6 +3,8 @@ import { FieldValues } from 'react-hook-form'
 import { IUser } from '../../interfaces/LoginInterface'
 import { api } from '../../services/api'
 import { CommentDataRecive } from '../CommentProvider/CommentProvider'
+import { toast } from 'react-toastify'
+
 
 interface AnnouncementContextProviderProps {
   children: ReactNode
@@ -129,9 +131,13 @@ export function AnnouncementContextProvider({
         headers,
       })
       .then((response) => {
+        toast.success('Anunciado criado com sucesso')
         console.log(response)
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+      toast.error('Ops algo deu errado!')
+      console.log(err)
+      })
   }
   const updateAnnouncement = (
     announcementId: string,
@@ -156,9 +162,12 @@ export function AnnouncementContextProvider({
         headers,
       })
       .then((response) => {
+        toast.success('Anuncio atualizado com sucesso')
         console.log(response)
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        toast.error('Ops algo deu errado!')
+        console.log(err)})
   }
   const deleteAnnouncement = (announcementId: string) => {
     const validToken: any = token()
@@ -168,6 +177,7 @@ export function AnnouncementContextProvider({
         headers,
       })
       .then((response) => {
+        toast.success('Anuncio removido com sucesso')
         console.log(response)
       })
       .catch((err) => console.log(err))
