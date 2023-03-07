@@ -1,8 +1,10 @@
-import React, { createContext, ReactNode, useState } from "react";
-import { FieldValues } from "react-hook-form";
-import { IUser } from "../../interfaces/LoginInterface";
-import { api } from "../../services/api";
-import { CommentDataRecive } from "../CommentProvider/CommentProvider";
+import React, { createContext, ReactNode, useState } from 'react'
+import { FieldValues } from 'react-hook-form'
+import { IUser } from '../../interfaces/LoginInterface'
+import { api } from '../../services/api'
+import { CommentDataRecive } from '../CommentProvider/CommentProvider'
+import { toast } from 'react-toastify'
+
 
 interface AnnouncementContextProviderProps {
   children: ReactNode;
@@ -129,11 +131,15 @@ export function AnnouncementContextProvider({
       .post("/announcement", newData, {
         headers,
       })
-      .then(response => {
-        console.log(response);
+      .then((response) => {
+        toast.success('Anunciado criado com sucesso')
+        console.log(response)
       })
-      .catch(err => console.log(err));
-  };
+      .catch((err) => {
+      toast.error('Ops algo deu errado!')
+      console.log(err)
+      })
+  }
   const updateAnnouncement = (
     announcementId: string,
     data: AnnouncementRequest
@@ -156,11 +162,14 @@ export function AnnouncementContextProvider({
       .patch(`/announcement/${announcementId}`, newData, {
         headers,
       })
-      .then(response => {
-        console.log(response);
+      .then((response) => {
+        toast.success('Anuncio atualizado com sucesso')
+        console.log(response)
       })
-      .catch(err => console.log(err));
-  };
+      .catch((err) => {
+        toast.error('Ops algo deu errado!')
+        console.log(err)})
+  }
   const deleteAnnouncement = (announcementId: string) => {
     const validToken: any = token();
     const headers = { Authorization: `Bearer ${validToken}` };
@@ -168,8 +177,9 @@ export function AnnouncementContextProvider({
       .delete(`/announcement/${announcementId}`, {
         headers,
       })
-      .then(response => {
-        console.log(response);
+      .then((response) => {
+        toast.success('Anuncio removido com sucesso')
+        console.log(response)
       })
       .catch(err => console.log(err));
   };
