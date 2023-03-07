@@ -9,6 +9,7 @@ import { CommentContextProvider } from "./contexts/CommentProvider/CommentProvid
 import { AnnouncementContextProvider } from "./contexts/AnnouncementProvider/AnnouncementProvide";
 import { ProductsContextProvider } from "./contexts/ProductsProvider/ProductsProvider";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css"
 
 function App() {
   return (
