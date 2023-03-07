@@ -5,6 +5,8 @@ export const CardContainer = styled.div`
   max-width: 312px;
   min-width: 312px;
 
+  cursor: pointer;
+
   section {
     gap: 16px;
     max-height: 347px;
@@ -17,16 +19,17 @@ export const CardContainer = styled.div`
 
       & img {
         scale: 1.2;
+        
       }
+
+
     }
   }
 
   .content-img {
-    /* padding: 0 25px; */
     background: ${(props) => props.theme.grey7};
     position: relative;
     height: 150px;
-    /* background: red; */
   }
 
   .content-img span {
@@ -98,6 +101,9 @@ export const CardContainer = styled.div`
     gap: 10px;
     background: ${(props) => props.theme.brand4};
     border-radius: 4px;
+  }
+  .border-mileage {
+    width: 95px;
   }
   .content-price {
     align-items: flex-end;

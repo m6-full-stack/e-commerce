@@ -65,7 +65,7 @@ export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) 
         </div>
         <section className="content-year-and-price">
           <div className="content-year">
-            <div className="border">
+            <div className="border border-mileage">
               <Paragraph
                 fontWeight={500}
                 size={'small'}
