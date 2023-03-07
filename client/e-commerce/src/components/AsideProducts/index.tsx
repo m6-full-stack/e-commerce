@@ -44,7 +44,7 @@ export const AsideProducts = () => {
           {announcementInfo.advertiser &&
             announcementInfo.advertiser.description}
         </p>
-        <button className="buttonSeeAll" onClick={() => navigate(`/profileview/${announcementInfo.id}`)}>Ver todos os anúncios</button>
+        <button className="buttonSeeAll" onClick={() => navigate(`/profileview/${announcementInfo.advertiserId}`)}>Ver todos os anúncios</button>
       </div>
     </AsideProductsStyle>
   );

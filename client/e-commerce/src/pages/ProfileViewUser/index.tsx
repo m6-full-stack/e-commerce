@@ -9,21 +9,37 @@ import { Heading } from "../../styles/typography";
 import { ProfileContainer } from "./style";
 
 export const ProfileViewUser = () => {
+  const { id } = useParams();
   const { getUserProfile } = useContext(UserContext);
+  const [isCarExists, setIsCarExists] = useState(false);
+  const [isMotoExists, setIsMotoExists] = useState(false);
   const [profileInfo, setProfileInfo] = useState<UserRequest>(
     {} as UserRequest
   );
-  const { id } = useParams();
 
   useEffect(() => {
-    id && getUserProfile(id).then(res => setProfileInfo(res));
+    id &&
+      getUserProfile(id)
+        .then(res => {
+          res.announcements.forEach(elem => {
+            console.log(elem);
+            if (elem.vehicle_type.toLowerCase() === "carro") {
+              setIsCarExists(true);
+            }
+            if (elem.vehicle_type.toLowerCase() === "moto") {
+              setIsMotoExists(true);
+            }
+          });
+          setProfileInfo(res);
+        })
+        .catch(err => console.log(err));
   }, []);
 
   return (
     <ProfileContainer>
       <div className="blue"></div>
       <div className="content">
-        <CreateAdCard isAdmin={false} />
+        <CreateAdCard isAdmin={false} userId={id} />
         <Heading
           className="title"
           level={2}
@@ -35,14 +51,26 @@ export const ProfileViewUser = () => {
           Carros
         </Heading>
         <div className="carousel">
-          <Card isProfileView={false} />
-          <Card isProfileView={false} />
-          <Card isProfileView={false} />
-          <Card isProfileView={true} />
-          <Card isProfileView={true} />
-          <Card isProfileView={true} />
-          <Card isProfileView={true} />
-          <Card isProfileView={true} />
+          {!isCarExists ? (
+            <Heading
+              className="no-ads"
+              level={2}
+              fontWeight={600}
+              size={"plus"}
+              color={"black"}
+              lineHeight={"30px"}
+            >
+              Sem anúncios por aqui...
+            </Heading>
+          ) : (
+            profileInfo.announcements &&
+            profileInfo.announcements.map(
+              elem =>
+                elem.vehicle_type.toLowerCase() === "carro" && (
+                  <Card isProfileView={true} vehicle={elem} />
+                )
+            )
+          )}
         </div>
 
         <Heading
@@ -56,15 +84,26 @@ export const ProfileViewUser = () => {
           Motos
         </Heading>
         <div className="carousel">
-          <Card />
-          <Card isProfileView={true} />
-          <Card isProfileView={true} />
-          <Card isProfileView={true} />
-          <Card isProfileView={true} />
-          <Card isProfileView={true} />
-          <Card isProfileView={true} />
-          <Card isProfileView={true} />
-          <Card isProfileView={true} />
+          {!isMotoExists ? (
+            <Heading
+              className="no-ads"
+              level={2}
+              fontWeight={600}
+              size={"plus"}
+              color={"black"}
+              lineHeight={"30px"}
+            >
+              Sem anúncios por aqui...
+            </Heading>
+          ) : (
+            profileInfo.announcements &&
+            profileInfo.announcements.map(
+              elem =>
+                elem.vehicle_type.toLowerCase() === "moto" && (
+                  <Card isProfileView={true} vehicle={elem} />
+                )
+            )
+          )}
         </div>
       </div>
     </ProfileContainer>

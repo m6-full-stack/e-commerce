@@ -198,7 +198,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         advertiserOrBuyer,
         setAdvertiserOrBuyer,
         getProfile,
-        getUserProfile
+        getUserProfile,
         setUser,
       }}
     >
