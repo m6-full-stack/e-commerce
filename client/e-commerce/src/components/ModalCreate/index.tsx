@@ -8,15 +8,20 @@ import Button from '../Button'
 import Input, { TextArea } from '../Input'
 import { ModalContainer } from './style'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
+import {
+  AnnouncementContext,
+  AnnouncementRequest,
+} from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 
 export const ModalCreate = () => {
+  const { setIsModelCreate } = useContext(ModalContext)
   const {
-    setIsModelCreate,
-    typeOfVehicle,
-    setTypeOfVehicle,
-    announcementType,
-    setAnnouncementType,
-  } = useContext(ModalContext)
+    registerAnnouncement,
+    typeAnnouncement,
+    setTypeAnnouncement,
+    typeVehicle,
+    setTypeVehicle,
+  } = useContext(AnnouncementContext)
 
   const onSubmit = (data: FieldValues) => {
     console.log(data)
@@ -31,8 +36,8 @@ export const ModalCreate = () => {
   })
   return (
     <ModalContainer>
-      <div className="content">
-        <div className="content-title">
+      <div className='content'>
+        <div className='content-title'>
           <Heading
             level={2}
             fontWeight={500}
@@ -42,12 +47,12 @@ export const ModalCreate = () => {
           >
             Criar anúncio
           </Heading>
-          <p className="closeModal" onClick={() => setIsModelCreate(false)}>
+          <p className='closeModal' onClick={() => setIsModelCreate(false)}>
             x
           </p>
         </div>
 
-        <form>
+        <form onSubmit={handleSubmit((data) => registerAnnouncement(data))}>
           <Paragraph
             fontWeight={500}
             size={'small'}
@@ -56,18 +61,20 @@ export const ModalCreate = () => {
           >
             Tipo de anúncio
           </Paragraph>
-          <div className="content-buttons">
+          <div className='content-buttons'>
             <Button
-              variant="blue"
-              buttonSize="b1profmodv"
-              onClick={() => setAnnouncementType('sale')}
+              type='button'
+              variant='blue'
+              buttonSize='b1profmodv'
+              onClick={() => setTypeAnnouncement('venda')}
             >
               Venda
             </Button>
             <Button
-              variant="transparent"
-              buttonSize="tprofmodl"
-              onClick={() => setAnnouncementType('auction')}
+              type='button'
+              variant='transparent'
+              buttonSize='tprofmodl'
+              onClick={() => setTypeAnnouncement('leilão')}
             >
               Leilão
             </Button>
@@ -81,40 +88,40 @@ export const ModalCreate = () => {
             Informações do veículo
           </Paragraph>
           <Input
-            label="Título"
-            placeholder="Digitar título"
-            name="username"
+            label='Título'
+            placeholder='Digitar título'
+            name='title'
             register={register}
-            errosMessage={errors.username?.message?.toString()}
+            errosMessage={errors.title?.message?.toString()}
           />
-          <div className="content-3-inputs">
-            <div className="content-input">
+          <div className='content-3-inputs'>
+            <div className='content-input'>
               <Input
-                label="Ano"
-                placeholder="2018"
-                name="year"
+                label='Ano'
+                placeholder='2018'
+                name='year'
                 register={register}
                 errosMessage={errors.year?.message?.toString()}
               />
               <Input
-                label="Quilometragem"
-                placeholder="0"
-                name="mileage"
+                label='Quilometragem'
+                placeholder='0'
+                name='mileage'
                 register={register}
                 errosMessage={errors.mileage?.message?.toString()}
               />
             </div>
             <Input
-              label="Preço"
-              placeholder="50.000,00"
-              name="mileage"
+              label='Preço'
+              placeholder='50.000,00'
+              name='price'
               register={register}
-              errosMessage={errors.mileage?.message?.toString()}
+              errosMessage={errors.price?.message?.toString()}
             />
             <TextArea
-              label="Descrição"
-              placeholder="Digitar descrição"
-              name="description"
+              label='Descrição'
+              placeholder='Digitar descrição'
+              name='description'
               register={register}
               errosMessage={errors.description?.message?.toString()}
             />
@@ -129,58 +136,61 @@ export const ModalCreate = () => {
             Tipo de veículo
           </Paragraph>
 
-          <div className="content-buttons">
+          <div className='content-buttons'>
             <Button
-              variant="blue"
-              buttonSize="b1profmodv"
-              onClick={() => setTypeOfVehicle('car')}
+              type='button'
+              variant='blue'
+              buttonSize='b1profmodv'
+              onClick={() => setTypeVehicle('carro')}
             >
               Carro
             </Button>
             <Button
-              variant="transparent"
-              buttonSize="tprofmodl"
-              onClick={() => setTypeOfVehicle('motorbike')}
+              type='button'
+              variant='transparent'
+              buttonSize='tprofmodl'
+              onClick={() => setTypeVehicle('moto')}
             >
               Moto
             </Button>
           </div>
 
           <Input
-            label="Imagem da capa"
-            placeholder="https://image.com"
-            name="imageCloak"
+            label='Imagem da capa'
+            placeholder='https://image.com'
+            name='cover_image'
             register={register}
-            errosMessage={errors.imageCloak?.message?.toString()}
+            errosMessage={errors.cover_image?.message?.toString()}
           />
           <Input
-            label="1° Imagem da galeria"
-            placeholder="https://image.com"
-            name="oneImage"
+            label='1° Imagem da galeria'
+            placeholder='https://image.com'
+            name='oneImage'
             register={register}
             errosMessage={errors.oneImage?.message?.toString()}
           />
           <Input
-            label="2° Imagem da galeria"
-            placeholder="https://image.com"
-            name="twoImage"
+            label='2° Imagem da galeria'
+            placeholder='https://image.com'
+            name='twoImage'
             register={register}
             errosMessage={errors.twoImage?.message?.toString()}
           />
 
-          <Button variant="brand4" buttonSize="b4profmodac">
+          <Button type='button' variant='brand4' buttonSize='b4profmodac'>
             Adicionar campo para imagem da galeria
           </Button>
 
-          <div className="content-buttons-create">
+          <div className='content-buttons-create'>
             <Button
-              variant="grey6"
-              buttonSize="g6profmodcc"
+              type='button'
+              variant='grey6'
+              buttonSize='g6profmodcc'
               onClick={() => setIsModelCreate(false)}
             >
               Cancelar
             </Button>
-            <Button variant="brand3" buttonSize="b3profmodca">
+            <Button type='submit' variant='brand3' buttonSize='b3profmodca'>
               Criar anúncio
             </Button>
           </div>

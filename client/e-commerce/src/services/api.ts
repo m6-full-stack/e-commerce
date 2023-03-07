@@ -1,4 +1,3 @@
-import axios, { AxiosResponse } from 'axios'
 import {
   IloginData,
   IResponseLogin,
@@ -21,3 +20,4 @@ export function getUserProfile(token: string, userId: string): Promise<IUser> {
       throw error
     })
 }
+

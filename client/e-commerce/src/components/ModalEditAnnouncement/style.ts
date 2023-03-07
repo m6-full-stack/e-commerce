@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ModalContainer = styled.div`
-  position: fixed;
+  position: absolute;
 
   display: flex;
   justify-content: center;
@@ -58,7 +58,6 @@ export const ModalContainer = styled.div`
     flex-direction: row;
     margin-top: 31px;
     gap: 8px;
-
   }
 
   .content::-webkit-scrollbar {

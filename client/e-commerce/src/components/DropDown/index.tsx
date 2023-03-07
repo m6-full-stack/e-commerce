@@ -5,7 +5,7 @@ import { MenuContainer } from './style'
 
 const DropDrown = () => {
   const { setIsModelEdit, setIsModelEditAddress } = useContext(ModalContext)
-  const { handleLogout, getProfile } = useContext(UserContext)
+  const { handleLogout, getProfile, navigate } = useContext(UserContext)
   const [username, setUsername] = useState('')
   const [seller, setSeller] = useState(false)
 
@@ -21,54 +21,56 @@ const DropDrown = () => {
     <MenuContainer>
       <ul>
         <li>
-          <div className="content-username">
-            <div className="border-name">
+          <div className='content-username'>
+            <div className='border-name'>
               <span>{username.substring(0, 2).toUpperCase()}</span>
               
             </div>
-            <a href="#">{username}</a>
+            <a href='#'>{username}</a>
           </div>
           {seller ? (
-            <ul className="dropdown">
+            <ul className='dropdown'>
               <li>
-                <a href="#" onClick={() => setIsModelEdit(true)}>
+                <a href='#' onClick={() => setIsModelEdit(true)}>
                   Editar Perfil
                 </a>
               </li>
               <li>
-                <a href="#" onClick={() => setIsModelEditAddress(true)}>
+                <a href='#' onClick={() => setIsModelEditAddress(true)}>
                   Editar Endereço
                 </a>
               </li>
               <li>
-                <a href="#">Meus Anúncios</a>
+                <a href='#' onClick={() => navigate('/profileviewAdm')}>
+                  Meus Anúncios
+                </a>
               </li>
               <li>
-                <a href="#">Minhas Compras</a>
+                <a href='#'>Minhas Compras</a>
               </li>
               <li>
-                <a href="#" onClick={handleLogout}>
+                <a href='#' onClick={handleLogout}>
                   Sair
                 </a>
               </li>
             </ul>
           ) : (
-            <ul className="dropdown">
+            <ul className='dropdown'>
               <li>
-                <a href="#" onClick={() => setIsModelEdit(true)}>
+                <a href='#' onClick={() => setIsModelEdit(true)}>
                   Editar Perfil
                 </a>
               </li>
               <li>
-                <a href="#" onClick={() => setIsModelEditAddress(true)}>
+                <a href='#' onClick={() => setIsModelEditAddress(true)}>
                   Editar Endereço
                 </a>
               </li>
               <li>
-                <a href="#">Minhas Compras</a>
+                <a href='#'>Minhas Compras</a>
               </li>
               <li>
-                <a href="#" onClick={handleLogout}>
+                <a href='#' onClick={handleLogout}>
                   Sair
                 </a>
               </li>
