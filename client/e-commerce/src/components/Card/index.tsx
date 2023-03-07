@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 import { Heading, Paragraph } from '../../styles/typography'
 import { CardContainer } from './style'
@@ -11,10 +12,12 @@ interface AuctionCardProps {
 }
 
 export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) => {
+
+  const navigate = useNavigate()
   
 
   return (
-    <CardContainer onClick={()=>{console.log(vehicle.id)}}>
+    <CardContainer onClick={() => navigate(`/product/${vehicle.id}`)}>
       <div className="content-img">
         {isProfileView && (
           <span

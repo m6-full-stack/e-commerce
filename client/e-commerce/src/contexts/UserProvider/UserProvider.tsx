@@ -14,11 +14,8 @@ import {
   IMail,
   UserRequest,
 } from '../../interfaces/LoginInterface'
-
-
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
-
 import { decodeToken } from 'react-jwt'
 
 interface UserContextType {
@@ -87,7 +84,6 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         const decodedToken = decodeToken(token) as Record<string, any>
         const userId = decodedToken.id
         localStorage.setItem('@MOTORS-USER-ID', userId)
-
         navigate('/', { replace: true })
 
         return token
