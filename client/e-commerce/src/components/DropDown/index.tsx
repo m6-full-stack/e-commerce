@@ -24,6 +24,7 @@ const DropDrown = () => {
           <div className='content-username'>
             <div className='border-name'>
               <span>{username.substring(0, 2).toUpperCase()}</span>
+              
             </div>
             <a href='#'>{username}</a>
           </div>

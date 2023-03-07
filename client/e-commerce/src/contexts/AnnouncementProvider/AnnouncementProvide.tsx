@@ -1,7 +1,9 @@
+
 import React, { createContext, ReactNode, useState } from 'react'
 import { FieldValues } from 'react-hook-form'
 import { api } from '../../services/api'
 import { CommentDataRecive } from '../CommentProvider/CommentProvider'
+
 
 interface AnnouncementContextProviderProps {
   children: ReactNode
@@ -11,6 +13,7 @@ interface ImageData {
   id: string
   image_url: string
 }
+
 
 interface AddressAdvertiser {
   id: string
@@ -61,6 +64,22 @@ export interface AnnouncementRequest extends FieldValues {
   description?: string
   oneImage?: string | undefined
   twoImage?: string | undefined
+export interface AnnouncementData {
+  createdAt: string;
+  id: string;
+  type: string;
+  title: string;
+  year: string;
+  mileage: string;
+  price: string;
+  description: string;
+  vehicle_type: string;
+  cover_image: string;
+  is_sold: boolean;
+  is_active: boolean;
+  advertiser: IUser;
+  comments: CommentDataRecive[];
+  images_list: ImageData[];
 }
 
 interface AnnouncementContextType {
@@ -92,6 +111,7 @@ export const AnnouncementContext = createContext<AnnouncementContextType>(
 export function AnnouncementContextProvider({
   children,
 }: AnnouncementContextProviderProps) {
+
   const [announcementData, setAnnouncementData] = useState<
     AnnouncementData[] | null
   >(null)

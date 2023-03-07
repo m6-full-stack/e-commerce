@@ -11,6 +11,7 @@ export interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     | 'grey1'
     | 'grey4'
     | 'grey6'
+    | 'grey7'
     | 'grey10'
     | 'brand3'
     | 'brand4'
