@@ -10,6 +10,7 @@ import { string } from 'yup'
 import { ProductsContext } from '../../contexts/ProductsProvider/ProductsProvider'
 import { ButtonAuctionHomeStyle } from '../Button/style'
 import { BsArrowRight } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
 
 interface AuctionCardProps {
   vehicle: AnnouncementData
@@ -19,6 +20,7 @@ export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
   const { setIsModelEditAnnouncement } = useContext(ModalContext)
   const { actualPage } = useContext(ProductsContext)
   const [ actualImageBackground, setActualImageBackground ] = useState(string)
+  const navigate = useNavigate()
 
 
   return (
@@ -65,7 +67,7 @@ export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
           {actualPage === 'home' ? (
             <>
               <ButtonAuctionHomeStyle
-                onClick={() => console.log(vehicle.id)}
+                onClick={() => navigate(`/product/${vehicle.id}`)}
               >
                 <span>Acessar página do leilão</span>
                 <BsArrowRight size={25}></BsArrowRight>
