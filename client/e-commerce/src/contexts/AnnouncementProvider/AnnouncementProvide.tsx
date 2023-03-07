@@ -1,5 +1,4 @@
 import React, { createContext, ReactNode, useState } from 'react'
-
 import { FieldValues } from 'react-hook-form'
 import { IUser } from '../../interfaces/LoginInterface'
 import { api } from '../../services/api'
@@ -38,23 +37,6 @@ export interface AdvertiserData {
   address: AddressAdvertiser
 }
 
-export interface AnnouncementData {
-  createdAt: string
-  id: string
-  type: string
-  title: string
-  year: string
-  mileage: string
-  price: string
-  description: string
-  vehicle_type: string
-  cover_image: string
-  is_sold: boolean
-  advertiserId: string
-  comments: CommentDataRecive[]
-  images_list: ImageData[]
-  advertiser: AdvertiserData
-}
 export interface AnnouncementRequest extends FieldValues {
   title?: string
   year?: string
@@ -64,7 +46,6 @@ export interface AnnouncementRequest extends FieldValues {
   oneImage?: string | undefined
   twoImage?: string | undefined
 }
-
 export interface AnnouncementData {
   createdAt: string
   id: string
@@ -78,7 +59,7 @@ export interface AnnouncementData {
   cover_image: string
   is_sold: boolean
   is_active: boolean
-  advertiser: AdvertiserData
+  advertiserId: string
   comments: CommentDataRecive[]
   images_list: ImageData[]
 }

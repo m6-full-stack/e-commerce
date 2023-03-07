@@ -68,9 +68,10 @@ export const ModalEditAnnouncement = () => {
         </div>
 
         <form
-          onSubmit={handleSubmit((data) =>
+          onSubmit={handleSubmit((data) => {
             updateAnnouncement(announcementId!, data)
-          )}
+            closeModalEditannouncement()
+          })}
         >
           <Paragraph
             fontWeight={500}
@@ -246,14 +247,7 @@ export const ModalEditAnnouncement = () => {
             >
               Excluir anúncio
             </Button>
-            <Button
-              type='submit'
-              onClick={() => {
-                closeModalEditannouncement()
-              }}
-              variant='brand3'
-              buttonSize='b3profmodsa'
-            >
+            <Button type='submit' variant='brand3' buttonSize='b3profmodsa'>
               Salvar alterações
             </Button>
           </div>
