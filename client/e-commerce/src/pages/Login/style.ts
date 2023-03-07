@@ -8,6 +8,7 @@ export const LoginContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: ${(props) => props.theme.grey8};
+  padding: 0 16px;
 
   & > div {
     display: flex;

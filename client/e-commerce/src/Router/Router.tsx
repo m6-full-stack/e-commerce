@@ -1,12 +1,13 @@
-import { Home } from "../pages/Home";
-import { Login } from "../pages/Login";
-import { Product } from "../pages/Product";
-import { ProfileViewAdm } from "../pages/ProfileViewAdmin";
-import { ProfileViewUser } from "../pages/ProfileViewUser";
-import { DefaultLayout } from "../components/layouts/Default.layout";
-import { Route, Routes } from "react-router-dom";
-import { Register } from "../pages/Register";
-import { RecoverPassword } from "../pages/RecoverPassword";
+import { Home } from '../pages/Home'
+import { Login } from '../pages/Login'
+import { Product } from '../pages/Product'
+import { ProfileViewAdm } from '../pages/ProfileViewAdmin'
+import { ProfileViewUser } from '../pages/ProfileViewUser'
+import { DefaultLayout } from '../components/layouts/Default.layout'
+import { Route, Routes } from 'react-router-dom'
+import { Register } from '../pages/Register'
+import { RecoverPassword } from '../pages/RecoverPassword'
+import { ProductFinal } from '../pages/ProductFinal'
 
 export const Router = () => {
   return (
@@ -18,6 +19,7 @@ export const Router = () => {
         <Route path="/product" element={<Product />}>
           <Route path=":id" element={<Product />} />
         </Route>
+        <Route path='/productfinal' element={<ProductFinal />} />
         <Route path="/profileview" element={<ProfileViewUser />}>
           <Route path=":id" element={<ProfileViewUser />} />
         </Route>
@@ -25,5 +27,9 @@ export const Router = () => {
         <Route path="/recoverPassword" element={<RecoverPassword />} />
       </Route>
     </Routes>
-  );
-};
+  )
+}
+
+
+
+

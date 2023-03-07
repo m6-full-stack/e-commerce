@@ -8,9 +8,11 @@ import Button from '../Button'
 
 import { ModalContainer } from './style'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
+import { AnnouncementContext } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 
 export const ModalDelete = () => {
   const { setIsModelDelete } = useContext(ModalContext)
+  const { announcementId, deleteAnnouncement } = useContext(AnnouncementContext)
 
   const onSubmit = (data: FieldValues) => {
     console.log(data)
@@ -25,8 +27,8 @@ export const ModalDelete = () => {
   })
   return (
     <ModalContainer>
-      <div className="content">
-        <div className="content-title">
+      <div className='content'>
+        <div className='content-title'>
           <Heading
             level={2}
             fontWeight={500}
@@ -37,7 +39,7 @@ export const ModalDelete = () => {
             Excluir anúncio
           </Heading>
 
-          <p className="closeModal" onClick={() => setIsModelDelete(false)}>
+          <p className='closeModal' onClick={() => setIsModelDelete(false)}>
             x
           </p>
         </div>
@@ -63,15 +65,21 @@ export const ModalDelete = () => {
             conta e removerá seus dados de nossos servidores.
           </Paragraph>
 
-          <div className="content-buttons-create">
+          <div className='content-buttons-create'>
             <Button
-              variant="grey6"
-              buttonSize="g6profmodvac"
+              variant='grey6'
+              buttonSize='g6profmodvac'
               onClick={() => setIsModelDelete(false)}
             >
               Cancelar
             </Button>
-            <Button variant="alert1" buttonSize="a1profmodvse">
+            <Button
+              onClick={() => {
+                deleteAnnouncement(announcementId!)
+              }}
+              variant='alert1'
+              buttonSize='a1profmodvse'
+            >
               Sim, excluir anúncio
             </Button>
           </div>

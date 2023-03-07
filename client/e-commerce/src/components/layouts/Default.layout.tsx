@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
+import { AnnouncementContext } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 import { UserContext } from '../../contexts/UserProvider/UserProvider'
 import { Footer } from '../Footer'
@@ -24,8 +25,8 @@ export const DefaultLayout = () => {
     isModelPhoto,
   } = useContext(ModalContext)
 
-  const { setIsUserLoggedIn, isUserLoggedIn  } = useContext(UserContext)
-  
+  const { setIsUserLoggedIn, isUserLoggedIn } = useContext(UserContext)
+
   useEffect(() => {
     const token = localStorage.getItem('@MOTORS-TOKEN')
     setIsUserLoggedIn(!!token)
@@ -33,7 +34,7 @@ export const DefaultLayout = () => {
 
   return (
     <LayoutContainer>
-      { isUserLoggedIn  ? <NavbarLogged /> : <Navbar />}
+      {isUserLoggedIn ? <NavbarLogged /> : <Navbar />}
       {isModelCreate && <ModalCreate />}
       {isModelEdit && <ModalEdit />}
       {isModelEditAddress && <ModalEditAddress />}
