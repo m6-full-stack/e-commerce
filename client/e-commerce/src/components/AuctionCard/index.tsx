@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react'
 import { AuctionCardContainer } from './style'
-
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import Button from '../Button'
 import { Heading, Paragraph } from '../../styles/typography'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
-
 import countDownTimer from '../../utils/countDown'
 import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 import { string } from 'yup'
-import { ProductsContext, ProductsContextProvider } from '../../contexts/ProductsProvider/ProductsProvider'
+import { ProductsContext } from '../../contexts/ProductsProvider/ProductsProvider'
+import { ButtonAuctionHomeStyle } from '../Button/style'
+import { BsArrowRight } from 'react-icons/bs'
 
 interface AuctionCardProps {
   vehicle: AnnouncementData
@@ -64,14 +64,12 @@ export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
         <footer>
           {actualPage === 'home' ? (
             <>
-              <Button
-                variant="transparent"
-                buttonSize="tprofe"
+              <ButtonAuctionHomeStyle
                 onClick={() => setIsModelEditAnnouncement(true)}
               >
-                <p>Acessar página do leilão</p>
-                <FontAwesomeIcon icon="fa-light fa-arrow-right" />
-              </Button>
+                <span>Acessar página do leilão</span>
+                <BsArrowRight size={25}></BsArrowRight>
+              </ButtonAuctionHomeStyle>
             </>
           ):(
             <>

@@ -495,12 +495,25 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   }
 `
 export const ButtonAuctionHomeStyle = styled.button`
-    height: 38px;
-    padding: 0px 12px;
-    font-size: 0.875rem;
-    color: ${(props) => props.theme.whiteFixed};
-    border: 1.5px solid ${(props) => props.theme.grey10};
-    @media (min-width: 1024px) {
-      max-width: 80px;
-    }
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding: 30px;
+align-items: center;
+min-width: 100%;
+height: 42px;
+background-color: var(--brand1);
+color: var(--whiteFixed);
+
+border-bottom-left-radius: 4px;
+border-bottom-right-radius: 4px;
+
+span {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+:hover {
+    cursor: pointer;
+}
 `
