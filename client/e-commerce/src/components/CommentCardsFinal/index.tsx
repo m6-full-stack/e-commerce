@@ -4,6 +4,7 @@ import { UserContext } from "../../contexts/UserProvider/UserProvider";
 import { ModalContext } from "../../contexts/ModalProvider/ModalProvider";
 import { UserRequest } from "../../interfaces/LoginInterface";
 import { Heading, Paragraph } from "../../styles/typography";
+import { Card } from "../Card";
 import { UserCommentCardFinal } from "./styles";
 
 export const CommentsCardsFinal = () => {
@@ -18,19 +19,21 @@ export const CommentsCardsFinal = () => {
 
   return (
     <UserCommentCardFinal>
+      <div className="content-title">
+        <Heading
+          fontWeight={600}
+          level={3}
+          size={"plus"}
+          color={"grey1"}
+          lineHeight={"25px"}
+        >
+          Comentários
+        </Heading>
+      </div>
       {announcementInfo.comments &&
         announcementInfo.comments.map(elem => (
           <section className="content-comments" key={elem.id}>
             <article className="content-comment">
-              <Heading
-                fontWeight={600}
-                level={3}
-                size={"plus"}
-                color={"grey1"}
-                lineHeight={"25px"}
-              >
-                Comentários
-              </Heading>
               <div className="content-avatar">
                 <div className="border-initials">
                   <span>{elem.user?.name.substring(0, 2).toUpperCase()}</span>

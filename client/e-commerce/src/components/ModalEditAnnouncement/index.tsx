@@ -15,6 +15,7 @@ export const ModalEditAnnouncement = () => {
     useContext(ModalContext)
 
   const {
+    typeVehicle,
     setTypeVehicle,
     setTypeAnnouncement,
     typeAnnouncement,
@@ -47,7 +48,11 @@ export const ModalEditAnnouncement = () => {
     resolver: yupResolver(validationUserAnnouncement),
   })
   return (
-    <ModalContainer>
+    <ModalContainer
+      typeAnnouncement={typeAnnouncement!}
+      typeVehicle={typeVehicle!}
+      publishedYesOrNo={publishedYesOrNo!}
+    >
       <div className='content'>
         <div className='content-title'>
           <Heading
@@ -92,6 +97,7 @@ export const ModalEditAnnouncement = () => {
             </Button>
             <Button
               type='button'
+              className='auction'
               variant='transparent'
               buttonSize='tprofmodl'
               onClick={() => setTypeAnnouncement('leilão')}
@@ -172,6 +178,7 @@ export const ModalEditAnnouncement = () => {
             </Button>
             <Button
               type='button'
+              className='motorcycle'
               variant='transparent'
               buttonSize='tprofmodl'
               onClick={() => setTypeVehicle('moto')}
@@ -193,6 +200,7 @@ export const ModalEditAnnouncement = () => {
             <Button
               type='button'
               variant='transparent'
+              className='publishedYesOrNo'
               buttonSize='tprofmodl'
               onClick={() => setPublishedYesOrNo('yes')}
             >

@@ -75,7 +75,6 @@ export const ContainerHome = styled.main`
     padding-left: 20px;
   }
   .content-carrossel {
-    height: 520px;
     display: flex;
     overflow-x: scroll;
     padding: 20px;
@@ -90,7 +89,6 @@ export const ContainerHome = styled.main`
     width: 0px;
   }
   .carrossel {
-    height: 400px;
     display: -webkit-box;
     overflow-x: scroll;
     padding: 20px;
@@ -102,7 +100,7 @@ export const ContainerHome = styled.main`
   .carrossel::-webkit-scrollbar {
     width: 0px;
   }
-/* 
+  /* 
   .carrossel::-webkit-scrollbar-track {
     background: #ffffff;
   }
@@ -136,11 +134,11 @@ export const ContainerHome = styled.main`
     margin-top: 80px;
     .select-announcement {
       height: 60vh;
-    .select-buttons {
-      display: flex;
-      flex-direction: row;
-      width: 90%;
-  }
+      .select-buttons {
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+      }
     }
   }
 `

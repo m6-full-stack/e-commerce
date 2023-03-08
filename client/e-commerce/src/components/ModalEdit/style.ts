@@ -22,7 +22,6 @@ export const ModalContainer = styled.div`
     background: ${(props) => props.theme.whiteFixed};
 
     border-radius: 8px;
-    gap: 55px;
     overflow: auto;
   }
 

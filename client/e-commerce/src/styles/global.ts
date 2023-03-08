@@ -25,7 +25,9 @@ export const GlobalStyle = createGlobalStyle`
   textarea::-webkit-scrollbar {
     width: 0;
   }
-
+.Toastify div{
+  flex-direction: initial;
+}
   time {
     color: ${(props) => props.theme.black};
   }
@@ -52,7 +54,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   
   .closeModal {
-    color: ${props => props.theme.grey4};
+    color: ${(props) => props.theme.grey4};
     font-size: 20px;
     cursor: pointer;
   }
