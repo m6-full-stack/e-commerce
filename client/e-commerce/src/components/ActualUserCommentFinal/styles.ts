@@ -42,7 +42,7 @@ export const UserCommentInputFinal = styled.div`
     display: flex;
     flex-direction: column;
     padding: 36px 26px;
-    @media(min-width: 1024px) {
+    @media (min-width: 1024px) {
       padding: 36px 35px 39px 44px;
     }
   }
@@ -80,10 +80,9 @@ export const UserCommentInputFinal = styled.div`
 
   .button-rel {
     @media (min-width: 1024px) {
-      position: absolute;
+      /* position: absolute;
       top: 77px;
-      right: 11px;
-      
+      right: 11px; */
     }
   }
 

@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const RegisterContainer = styled.div`
+interface Advertiser {
+  advertiserOrBuyer: boolean
+}
+
+export const RegisterContainer = styled.div<Advertiser>`
   display: flex;
   width: 100%;
   padding: 0 1rem;
@@ -44,7 +48,6 @@ export const RegisterContainer = styled.div`
 
   .title-register {
     display: flex;
-    
 
     /* margin-bottom: 32px; */
   }
@@ -53,12 +56,17 @@ export const RegisterContainer = styled.div`
     flex-direction: row;
     gap: 9px;
   }
+  .advertiser-button {
+    background-color: ${(props) =>
+      props.advertiserOrBuyer ? props.theme.grey1 : ''};
+    color: ${(props) => (props.advertiserOrBuyer ? 'white' : 'black')};
+  }
 
   .content-buttons {
     flex-direction: row;
     gap: 9px;
     margin-bottom: 1rem;
-    
+
     @media (max-width: 374px) {
       flex-direction: column;
     }

@@ -11,16 +11,11 @@ export const AuctionCardContainer = styled.div<AuctionCardContainerProps>`
   width: 100%;
   margin: 0 auto;
 
-  & > div {
-    @media (min-width: 1024px) {
-      margin-left: 60px;
-    }
-  }
-
   .content-auction {
     width: 100%;
     min-width: 375px;
     max-width: 725px;
+    height: 400px;
 
     justify-content: space-between;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%),
@@ -28,7 +23,7 @@ export const AuctionCardContainer = styled.div<AuctionCardContainerProps>`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    
+
     border-radius: 4px 4px 0px 0px;
     margin-top: 40px;
     margin-bottom: 32px;
@@ -42,6 +37,13 @@ export const AuctionCardContainer = styled.div<AuctionCardContainerProps>`
       transition: background-color 0.8s ease;
     }
     transition: background-color 0.8s ease;
+  }
+  .description {
+    max-width: 320px;
+    max-height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .content-auction-title {

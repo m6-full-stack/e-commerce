@@ -26,16 +26,16 @@ export const AsideProductsFinal = () => {
           >
             Fotos
           </Heading>
-          <div className="content-small-photos-row1">
-            <div className="content-small-img">
-              {announcementInfo.images_list &&
+          <div className='content-small-photos-row1'>
+            <div className='content-small-img'>
+              {announcementInfo.images_list.length > 0 &&
                 announcementInfo.images_list.map((elem, index) => {
                   if (index < 6) {
                     return (
                       <img
-                        className="otherImages"
+                        className='otherImages'
                         src={elem.image_url}
-                        alt=""
+                        alt=''
                         key={elem.id}
                         onClick={() => {
                           modalPhoto(elem.image_url)
@@ -50,9 +50,12 @@ export const AsideProductsFinal = () => {
 
         {/* cardUser */}
         <article>
-          <section className="content-card-user">
-            <div className="content-initials">
-              <span>{announcementInfo.advertiser && announcementInfo.advertiser.name[0]}</span>
+          <section className='content-card-user'>
+            <div className='content-initials'>
+              <span>
+                {announcementInfo.advertiser &&
+                  announcementInfo.advertiser.name[0]}
+              </span>
             </div>
             <Heading
               fontWeight={600}
@@ -74,8 +77,8 @@ export const AsideProductsFinal = () => {
                 announcementInfo.advertiser.description}
             </Paragraph>
             <Button
-              variant="grey0"
-              buttonSize="g0pvta"
+              variant='grey0'
+              buttonSize='g0pvta'
               onClick={() =>
                 navigate(`/profileview/${announcementInfo.advertiserId}`)
               }
