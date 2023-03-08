@@ -19,7 +19,7 @@ export const CommentsCardsFinal = () => {
         >
           Comentários
         </Heading>
-        {announcementInfo.comments?.length > 0 ? (
+        {announcementInfo.comments.length > 0 ? (
           announcementInfo.comments.map((elem) => (
             <section className="content-comments" key={elem.id}>
               <article className="content-comment">
