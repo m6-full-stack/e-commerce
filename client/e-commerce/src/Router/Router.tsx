@@ -9,10 +9,13 @@ import { Register } from "../pages/Register";
 import { RecoverPassword } from "../pages/RecoverPassword";
 import { ProductFinal } from "../pages/ProductFinal";
 import { ProtectedRoutes } from "../components/ProtectedRoutes";
+import FallBack from "../pages/Error";
 
 export const Router = () => {
   return (
     <Routes>
+      <Route path="*" element={<FallBack />} />
+      <Route path="/error" element={<FallBack />} />
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
