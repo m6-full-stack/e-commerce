@@ -64,6 +64,18 @@ export const UserCommentCardFinal = styled.div`
     margin-right: 8px;
   }
 
+  .button-edit{
+    cursor: pointer;
+  }
+
+  .button-edit::before {
+    content: '• ';
+    color: ${(props) => props.theme.grey3};
+    height: 4px;
+    margin-right: 8px;
+    margin-left: 8px;
+  }
+
   /* post */
   .content-post {
     background: ${(props) => props.theme.grey10};
