@@ -1,19 +1,21 @@
-import { useContext, useEffect, useState } from 'react'
-import { Outlet } from 'react-router-dom'
-import { AnnouncementContext } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
-import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
-import { UserContext } from '../../contexts/UserProvider/UserProvider'
-import { Footer } from '../Footer'
+import { useContext, useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+import { AnnouncementContext } from "../../contexts/AnnouncementProvider/AnnouncementProvide";
+import { ModalContext } from "../../contexts/ModalProvider/ModalProvider";
+import { UserContext } from "../../contexts/UserProvider/UserProvider";
+import { Footer } from "../Footer";
 
-import { ModalCreate } from '../ModalCreate'
-import { ModalDelete } from '../ModalDelete'
-import { ModalEdit } from '../ModalEdit'
-import { ModalEditAddress } from '../ModalEditAddress'
-import { ModalEditAnnouncement } from '../ModalEditAnnouncement'
-import { ModalPhoto } from '../ModalPhoto'
-import Navbar from '../Navbar'
-import NavbarLogged from '../Navbar/NavbarLogged'
-import { LayoutContainer } from './style'
+import { ModalCreate } from "../ModalCreate";
+import { ModalDelete } from "../ModalDelete";
+import { ModalDeleteComment } from "../ModalDeleteComment";
+import { ModalEdit } from "../ModalEdit";
+import { ModalEditAddress } from "../ModalEditAddress";
+import { ModalEditAnnouncement } from "../ModalEditAnnouncement";
+import { ModalEditComment } from "../ModalEditComment";
+import { ModalPhoto } from "../ModalPhoto";
+import Navbar from "../Navbar";
+import NavbarLogged from "../Navbar/NavbarLogged";
+import { LayoutContainer } from "./style";
 
 export const DefaultLayout = () => {
   const {
@@ -23,14 +25,16 @@ export const DefaultLayout = () => {
     isModelEditAnnouncement,
     isModelDelete,
     isModelPhoto,
-  } = useContext(ModalContext)
+    isModelEditComment,
+    isModelDeleteComment,
+  } = useContext(ModalContext);
 
-  const { setIsUserLoggedIn, isUserLoggedIn } = useContext(UserContext)
+  const { setIsUserLoggedIn, isUserLoggedIn } = useContext(UserContext);
 
   useEffect(() => {
-    const token = localStorage.getItem('@MOTORS-TOKEN')
-    setIsUserLoggedIn(!!token)
-  }, [])
+    const token = localStorage.getItem("@MOTORS-TOKEN");
+    setIsUserLoggedIn(!!token);
+  }, []);
 
   return (
     <LayoutContainer>
@@ -41,9 +45,11 @@ export const DefaultLayout = () => {
       {isModelEditAnnouncement && <ModalEditAnnouncement />}
       {isModelDelete && <ModalDelete />}
       {isModelPhoto && <ModalPhoto />}
+      {isModelEditComment && <ModalEditComment />}
+      {isModelDeleteComment && <ModalDeleteComment />}
 
       <Outlet />
       <Footer />
     </LayoutContainer>
-  )
-}
+  );
+};

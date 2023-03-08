@@ -24,10 +24,10 @@ interface UserComment {
 }
 
 export interface CommentDataRecive {
-  id: string;
-  content: string;
-  created_at: string;
-  user: UserComment;
+  id?: string;
+  content?: string;
+  created_at?: string;
+  user?: UserComment;
 }
 
 interface CommentContextType {

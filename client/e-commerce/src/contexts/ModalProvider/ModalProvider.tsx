@@ -6,6 +6,7 @@ import {
   UpdateProfileData,
 } from "../../interfaces/LoginInterface";
 import { api } from "../../services/api";
+import { CommentDataRecive } from "../CommentProvider/CommentProvider";
 
 interface ModalContextType {
   isModelCreate: boolean;
@@ -14,10 +15,13 @@ interface ModalContextType {
   isModelEditAnnouncement: boolean;
   isModelDelete: boolean;
   isModelPhoto: boolean;
+  isModelEditComment: boolean;
+  isModelDeleteComment: boolean;
 
   announcementType: string;
   typeOfVehicle: string;
   photoInfo: string;
+  commentInfo: CommentDataRecive;
 
   setIsModelCreate: Dispatch<SetStateAction<boolean>>;
   setIsModelEdit: Dispatch<SetStateAction<boolean>>;
@@ -27,11 +31,14 @@ interface ModalContextType {
   setAnnouncementType: Dispatch<SetStateAction<string>>;
   setTypeOfVehicle: Dispatch<SetStateAction<string>>;
   setIsModelPhoto: Dispatch<SetStateAction<boolean>>;
+  setIsModelEditComment: Dispatch<SetStateAction<boolean>>;
 
   updateProfile: (data: UpdateProfileData) => void;
   updateAddress: (data: UpdateAddresData) => void;
 
   modalPhoto: (url: string) => void;
+  modalComment: (content: CommentDataRecive) => void;
+  modalDeleteComment: (id: string | undefined) => void;
 }
 
 interface ModalProviderProps {
@@ -48,6 +55,9 @@ export const ModalContext = createContext<ModalContextType>({
   typeOfVehicle: "car",
   isModelPhoto: false,
   photoInfo: "",
+  isModelEditComment: false,
+  commentInfo: {},
+  isModelDeleteComment: false,
 
   setIsModelCreate: () => {},
   setIsModelEdit: () => {},
@@ -57,11 +67,14 @@ export const ModalContext = createContext<ModalContextType>({
   setAnnouncementType: () => {},
   setTypeOfVehicle: () => {},
   setIsModelPhoto: () => {},
+  setIsModelEditComment: () => {},
 
   updateProfile: () => {},
   updateAddress: () => {},
 
   modalPhoto: () => {},
+  modalComment: () => {},
+  modalDeleteComment: () => {},
 });
 
 export function ModalProvider({ children }: ModalProviderProps) {
@@ -72,6 +85,14 @@ export function ModalProvider({ children }: ModalProviderProps) {
   const [isModelDelete, setIsModelDelete] = useState(false);
   const [isModelPhoto, setIsModelPhoto] = useState(false);
   const [photoInfo, setPhotoInfo] = useState("");
+  const [isModelEditComment, setIsModelEditComment] = useState(true);
+  const [commentInfo, setCommentInfo] = useState<CommentDataRecive>(
+    {} as CommentDataRecive
+  );
+  const [isModelDeleteComment, setIsModelDeleteComment] = useState(false);
+  const [commentDeleteInfo, setCommentDeleteInfo] = useState<
+    string | undefined
+  >("");
 
   const [announcementType, setAnnouncementType] = useState("sale");
   const [typeOfVehicle, setTypeOfVehicle] = useState("car");
@@ -121,6 +142,16 @@ export function ModalProvider({ children }: ModalProviderProps) {
     setPhotoInfo(url);
   };
 
+  const modalComment = (content: CommentDataRecive) => {
+    setIsModelEditComment(true);
+    setCommentInfo(content);
+  };
+
+  const modalDeleteComment = (id: string | undefined) => {
+    setIsModelDeleteComment(true);
+    setCommentDeleteInfo(id);
+  };
+
   return (
     <ModalContext.Provider
       value={{
@@ -130,6 +161,8 @@ export function ModalProvider({ children }: ModalProviderProps) {
         isModelEditAnnouncement,
         isModelDelete,
         isModelPhoto,
+        isModelEditComment,
+        isModelDeleteComment,
 
         announcementType,
         typeOfVehicle,
@@ -142,11 +175,15 @@ export function ModalProvider({ children }: ModalProviderProps) {
         setAnnouncementType,
         setTypeOfVehicle,
         setIsModelPhoto,
+        setIsModelEditComment,
 
         updateProfile,
         updateAddress,
         photoInfo,
         modalPhoto,
+        commentInfo,
+        modalComment,
+        modalDeleteComment,
       }}
     >
       {children}
