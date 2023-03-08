@@ -59,10 +59,15 @@ export const ContainerHome = styled.main`
     display: flex;
     gap: 80px;
   }
+
+  .list-auction{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
   .list-auction h1 {
     user-select: none;
     color: black;
-    padding-left: 20px;
+    
   }
   .list-car h1 {
     user-select: none;
@@ -77,7 +82,6 @@ export const ContainerHome = styled.main`
   .content-carrossel {
     display: flex;
     overflow-x: scroll;
-    padding: 20px;
 
     flex-direction: row;
     justify-content: space-between;

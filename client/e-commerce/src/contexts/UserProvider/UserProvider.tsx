@@ -176,7 +176,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
       .then((res) => res.data)
       .catch((error) => {
         console.error(error)
-        throw error
+        navigate("/error")
       })
   }
 
