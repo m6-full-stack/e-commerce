@@ -131,7 +131,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
 
   function changePassword(password: string) {
     api
-      .post('users/recoverPassword', { password })
+      .post(`users/recoverPassword/${tokenRecoverPassword}`, { password })
       .then((response) => {
         navigate('login')
       })
