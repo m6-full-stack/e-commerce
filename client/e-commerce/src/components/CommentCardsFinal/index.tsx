@@ -66,7 +66,7 @@ export const CommentsCardsFinal = () => {
             color={"grey3"}
             lineHeight={"30px"}
           >
-            Não há comentários...
+            Não há comentário...
           </Heading>
         </>
         )}
