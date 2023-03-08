@@ -1,6 +1,5 @@
 import { AxiosResponse } from "axios";
 import { createContext, Dispatch, SetStateAction, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   UpdateAddresData,
   UpdateProfileData,
@@ -14,6 +13,7 @@ interface ModalContextType {
   isModelEditAnnouncement: boolean;
   isModelDelete: boolean;
   isModelPhoto: boolean;
+  isModalLoginNecessary: boolean,
 
   announcementType: string;
   typeOfVehicle: string;
@@ -27,6 +27,7 @@ interface ModalContextType {
   setAnnouncementType: Dispatch<SetStateAction<string>>;
   setTypeOfVehicle: Dispatch<SetStateAction<string>>;
   setIsModelPhoto: Dispatch<SetStateAction<boolean>>;
+  setIsModalLoginNecessary: Dispatch<SetStateAction<boolean>>;
 
   updateProfile: (data: UpdateProfileData) => void;
   updateAddress: (data: UpdateAddresData) => void;
@@ -44,6 +45,7 @@ export const ModalContext = createContext<ModalContextType>({
   isModelEditAddress: false,
   isModelEditAnnouncement: false,
   isModelDelete: false,
+  isModalLoginNecessary: false,
   announcementType: "sale",
   typeOfVehicle: "car",
   isModelPhoto: false,
@@ -57,6 +59,7 @@ export const ModalContext = createContext<ModalContextType>({
   setAnnouncementType: () => {},
   setTypeOfVehicle: () => {},
   setIsModelPhoto: () => {},
+  setIsModalLoginNecessary: () => {},
 
   updateProfile: () => {},
   updateAddress: () => {},
@@ -71,6 +74,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
   const [isModelEditAnnouncement, setIsModelEditAnnouncement] = useState(false);
   const [isModelDelete, setIsModelDelete] = useState(false);
   const [isModelPhoto, setIsModelPhoto] = useState(false);
+  const [isModalLoginNecessary, setIsModalLoginNecessary] = useState(false);
   const [photoInfo, setPhotoInfo] = useState("");
 
   const [announcementType, setAnnouncementType] = useState("sale");
@@ -130,6 +134,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
         isModelEditAnnouncement,
         isModelDelete,
         isModelPhoto,
+        isModalLoginNecessary,
 
         announcementType,
         typeOfVehicle,
@@ -142,6 +147,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
         setAnnouncementType,
         setTypeOfVehicle,
         setIsModelPhoto,
+        setIsModalLoginNecessary,
 
         updateProfile,
         updateAddress,

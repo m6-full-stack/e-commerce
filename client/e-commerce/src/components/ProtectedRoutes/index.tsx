@@ -3,15 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { UserContext } from "../../contexts/UserProvider/UserProvider";
 
 export const ProtectedRoutes = () => {
-  const { user, isLoaded } = useContext(UserContext);
+  const { isLoaded } = useContext(UserContext);
 
-  if (isLoaded) {
-    return (
-      <>
-        <h3>Carregando...</h3>
-      </>
-    );
-  }
-
-  return user ? <Outlet /> : <Navigate to="/" replace />    
+  return isLoaded ? <Outlet /> : <Navigate to="/" replace />    
 };

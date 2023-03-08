@@ -35,6 +35,7 @@ interface UserContextType {
   changePassword: (token: string, password: string) => void
   setAdvertiserOrBuyer: Dispatch<SetStateAction<boolean>>
   getProfile: () => Promise<UserRequest>
+  getUserProfile: (userId: string) => Promise<any>
   isLoaded: boolean
   setIsLoaded: Dispatch<SetStateAction<boolean>>
 }
@@ -65,10 +66,8 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
       const userId = decodedToken.id
       localStorage.setItem('@MOTORS-USER-ID', userId)
 
-      getUserProfile(storedToken, userId)
-        .then((user) => 
-          setUser(user)
-        )
+      getUserProfile( userId )
+        .then((user) => console.log(user))
         .catch((error) => console.error(error))
 
       setToken(storedToken)
@@ -89,7 +88,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         const decodedToken = decodeToken(token) as Record<string, any>
         const userId = decodedToken.id
         localStorage.setItem('@MOTORS-USER-ID', userId)
-        setIsLoaded(false)
+        setIsLoaded(true)
         toast.success('Login realizado com sucesso!')
         navigate('/', { replace: true })
 
@@ -105,7 +104,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
 
   function handleLogout() {
     localStorage.clear()
-    setUser(null)
+    setIsLoaded(false)
     navigate('/login', { replace: true })
     setToken('')
     setIsUserLoggedIn(false)
@@ -160,7 +159,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
 
   function changePassword(token: string, password: string) {
     api
-      .post('users/recoverPassword', { tokenResetPassword: token, password })
+      .post(`users/recoverPassword/${tokenRecoverPassword}`, { password })
       .then((response) => {
         toast.success('Faça login com a nova senha.')
         navigate('login')
@@ -171,7 +170,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
       })
   }
 
-  async function getUserProfile(token: string, userId: string) {
+  async function getUserProfile(userId: string) {
     return api
       .get(`/users/${userId}`)
       .then((res) => res.data)
@@ -214,6 +213,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         advertiserOrBuyer,
         setAdvertiserOrBuyer,
         getProfile,
+        getUserProfile,
         setUser,
       }}
     >

@@ -7,63 +7,64 @@ import { toast } from 'react-toastify'
 
 
 interface AnnouncementContextProviderProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 interface ImageData {
-  id: string
-  image_url: string
+  id: string;
+  image_url: string;
 }
 
 interface AddressAdvertiser {
-  id: string
-  cep: string
-  state: string
-  city: string
-  street: string
-  number: string
-  complement: string
+  id: string;
+  cep: string;
+  state: string;
+  city: string;
+  street: string;
+  number: string;
+  complement: string;
 }
 
 export interface AdvertiserData {
-  created_at: string
-  updated_at: string
-  id: string
-  name: string
-  email: string
-  phone: string
-  cpf: string
-  birthdate: string
-  description: string
-  is_seller: boolean
-  address: AddressAdvertiser
+  created_at: string;
+  updated_at: string;
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  cpf: string;
+  birthdate: string;
+  description: string;
+  is_seller: boolean;
+  address: AddressAdvertiser;
 }
 
 export interface AnnouncementRequest extends FieldValues {
-  title?: string
-  year?: string
-  mileage?: string
-  price?: string
-  description?: string
-  oneImage?: string | undefined
-  twoImage?: string | undefined
+  title?: string;
+  year?: string;
+  mileage?: string;
+  price?: string;
+  description?: string;
+  oneImage?: string | undefined;
+  twoImage?: string | undefined;
 }
 export interface AnnouncementData {
-  createdAt: string
-  id: string
-  type: string
-  title: string
-  year: string
-  mileage: string
-  price: string
-  description: string
-  vehicle_type: string
-  cover_image: string
-  is_sold: boolean
-  is_active: boolean
-  advertiserId: string
-  comments: CommentDataRecive[]
-  images_list: ImageData[]
+  createdAt: string;
+  id: string;
+  type: string;
+  title: string;
+  year: string;
+  mileage: string;
+  price: string;
+  description: string;
+  vehicle_type: string;
+  cover_image: string;
+  is_sold: boolean;
+  is_active: boolean;
+  advertiserId: string;
+  advertiser: AdvertiserData;
+  comments: CommentDataRecive[];
+  images_list: ImageData[];
 }
 
 export interface AnnouncementDataResponse {
@@ -85,14 +86,14 @@ export interface AnnouncementDataResponse {
 }
 
 interface AnnouncementContextType {
-  registerAnnouncement: (data: AnnouncementRequest) => void
+  registerAnnouncement: (data: AnnouncementRequest) => void;
   updateAnnouncement: (
     announcementId: string,
     data: AnnouncementRequest
-  ) => void
-  deleteAnnouncement: (announcementId: string) => void
-  getRetriveAnnouncement: (id: string) => void
-  announcementData: AnnouncementData[] | null
+  ) => void;
+  deleteAnnouncement: (announcementId: string) => void;
+  getRetriveAnnouncement: (id: string) => void;
+  announcementData: AnnouncementData[] | null;
   setAnnouncementData: React.Dispatch<
     React.SetStateAction<AnnouncementData[] | null>
   >
@@ -105,18 +106,19 @@ interface AnnouncementContextType {
   announcementId: string | null
   setAnnouncementId: React.Dispatch<React.SetStateAction<string | null>>
   advertiser: IUser
+
 }
 
 export const AnnouncementContext = createContext<AnnouncementContextType>(
   {} as AnnouncementContextType
-)
+);
 
 export function AnnouncementContextProvider({
   children,
 }: AnnouncementContextProviderProps) {
   const [announcementData, setAnnouncementData] = useState<
     AnnouncementData[] | null
-  >(null)
+  >(null);
   const [announcementInfo, setAnnouncementInfo] = useState<AnnouncementData>(
     {} as AnnouncementData
   )
@@ -127,13 +129,14 @@ export function AnnouncementContextProvider({
   const [announcementId, setAnnouncementId] = useState<string | null>(null)
   const [advertiser, setAdvertiser] = useState<IUser>({} as IUser)
 
+
   const token = () => {
-    const token = localStorage.getItem('@MOTORS-TOKEN')
-    return token
-  }
+    const token = localStorage.getItem("@MOTORS-TOKEN");
+    return token;
+  };
   const registerAnnouncement = (data: AnnouncementRequest) => {
-    const validToken: any = token()
-    const headers = { Authorization: `Bearer ${validToken}` }
+    const validToken: any = token();
+    const headers = { Authorization: `Bearer ${validToken}` };
     const newData = {
       ...data,
       type: typeAnnouncement,
@@ -145,9 +148,9 @@ export function AnnouncementContextProvider({
         : [] || (data.oneImage && data.twoImage)
         ? [data.oneImage, data.twoImage]
         : [],
-    }
+    };
     api
-      .post('/announcement', newData, {
+      .post("/announcement", newData, {
         headers,
       })
       .then((response) => {
@@ -163,8 +166,8 @@ export function AnnouncementContextProvider({
     announcementId: string,
     data: AnnouncementRequest
   ) => {
-    const validToken: any = token()
-    const headers = { Authorization: `Bearer ${validToken}` }
+    const validToken: any = token();
+    const headers = { Authorization: `Bearer ${validToken}` };
     const newData = {
       ...data,
       type: typeAnnouncement,
@@ -176,7 +179,7 @@ export function AnnouncementContextProvider({
         : [] || (data.oneImage && data.twoImage)
         ? [data.oneImage, data.twoImage]
         : null,
-    }
+    };
     api
       .patch(`/announcement/${announcementId}`, newData, {
         headers,
@@ -190,8 +193,8 @@ export function AnnouncementContextProvider({
         console.log(err)})
   }
   const deleteAnnouncement = (announcementId: string) => {
-    const validToken: any = token()
-    const headers = { Authorization: `Bearer ${validToken}` }
+    const validToken: any = token();
+    const headers = { Authorization: `Bearer ${validToken}` };
     api
       .delete(`/announcement/${announcementId}`, {
         headers,
@@ -204,7 +207,7 @@ export function AnnouncementContextProvider({
     }
 
     const retrieveAdvertise = async (userId: string) => {
-      api
+      await api
         .get(`/users/${userId}`)
         .then((res) => {
           setAdvertiser(res.data)
@@ -215,8 +218,8 @@ export function AnnouncementContextProvider({
         })
     }
 
-  const getRetriveAnnouncement = (id: string) => {
-    api
+  const getRetriveAnnouncement = async (id: string) => {
+    await api
       .get(`/announcement/${id}`, {
         headers: {
           Authorization: `Bearer ${token()}`,
@@ -225,9 +228,10 @@ export function AnnouncementContextProvider({
       .then((res) => {
         retrieveAdvertise(res.data.advertiserId)
         setAnnouncementInfo(res.data)
+
       })
-      .catch((err) => console.log(err))
-  }
+      .catch(err => console.log(err));
+  };
 
 
   return (
@@ -252,5 +256,5 @@ export function AnnouncementContextProvider({
     >
       {children}
     </AnnouncementContext.Provider>
-  )
+  );
 }

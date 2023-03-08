@@ -4,14 +4,17 @@ import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 import { Heading, Paragraph } from '../../styles/typography'
 import Button from '../../components/Button'
 import { AsideProductsStyleFinal } from './style'
+import { AnnouncementContext } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
+import { useNavigate } from 'react-router-dom'
 
 export const AsideProductsFinal = () => {
-  const { setIsModelPhoto } = useContext(ModalContext)
-  const [imageSmallUrl, setImageSmallUrl] = useState(car1)
+  const { modalPhoto } = useContext(ModalContext)
+  const { announcementInfo } = useContext(AnnouncementContext)
+  const navigate = useNavigate()
 
   return (
     <AsideProductsStyleFinal>
-      <aside >
+      <aside>
         {/* mini-fotos */}
         <figure>
           <Heading
@@ -25,60 +28,22 @@ export const AsideProductsFinal = () => {
           </Heading>
           <div className="content-small-photos-row1">
             <div className="content-small-img">
-              <img
-                src={imageSmallUrl}
-                alt="car"
-                onClick={() => {
-                  setIsModelPhoto(true)
-                }}
-              />
-            </div>
-            <div className="content-small-img">
-              <img
-                src={imageSmallUrl}
-                alt="car"
-                onClick={() => {
-                  setIsModelPhoto(true)
-                }}
-              />
-            </div>
-            <div className="content-small-img">
-              <img
-                src={imageSmallUrl}
-                alt="car"
-                onClick={() => {
-                  setIsModelPhoto(true)
-                }}
-              />
-            </div>
-          </div>
-          <div className="content-small-photos-row1">
-            <div className="content-small-img">
-              <img
-                src={imageSmallUrl}
-                alt="car"
-                onClick={() => {
-                  setIsModelPhoto(true)
-                }}
-              />
-            </div>
-            <div className="content-small-img">
-              <img
-                src={imageSmallUrl}
-                alt="car"
-                onClick={() => {
-                  setIsModelPhoto(true)
-                }}
-              />
-            </div>
-            <div className="content-small-img">
-              <img
-                src={imageSmallUrl}
-                alt="car"
-                onClick={() => {
-                  setIsModelPhoto(true)
-                }}
-              />
+              {announcementInfo.images_list &&
+                announcementInfo.images_list.map((elem, index) => {
+                  if (index < 6) {
+                    return (
+                      <img
+                        className="otherImages"
+                        src={elem.image_url}
+                        alt=""
+                        key={elem.id}
+                        onClick={() => {
+                          modalPhoto(elem.image_url)
+                        }}
+                      />
+                    )
+                  }
+                })}
             </div>
           </div>
         </figure>
@@ -87,7 +52,7 @@ export const AsideProductsFinal = () => {
         <article>
           <section className="content-card-user">
             <div className="content-initials">
-              <span>SL</span>
+              <span>{announcementInfo.advertiser && announcementInfo.advertiser.name[0]}</span>
             </div>
             <Heading
               fontWeight={600}
@@ -96,7 +61,7 @@ export const AsideProductsFinal = () => {
               color={'grey1'}
               lineHeight={'25px'}
             >
-              Samuel Leão
+              {announcementInfo.advertiser && announcementInfo.advertiser.name}
             </Heading>
 
             <Paragraph
@@ -105,10 +70,16 @@ export const AsideProductsFinal = () => {
               color={'grey2'}
               lineHeight={'1.75rem'}
             >
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's
+              {announcementInfo.advertiser &&
+                announcementInfo.advertiser.description}
             </Paragraph>
-            <Button variant="grey0" buttonSize="g0pvta">
+            <Button
+              variant="grey0"
+              buttonSize="g0pvta"
+              onClick={() =>
+                navigate(`/profileview/${announcementInfo.advertiserId}`)
+              }
+            >
               Ver todos os anúncios
             </Button>
           </section>

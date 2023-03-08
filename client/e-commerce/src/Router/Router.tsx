@@ -17,11 +17,11 @@ export const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route element={<ProtectedRoutes />}>
             <Route path="/product" element={<Product />}>
               <Route path=":id" element={<Product />} />
             </Route>
             <Route path="/recoverPassword" element={<RecoverPassword />} />
-          <Route element={<ProtectedRoutes />}>
             <Route path='/productfinal' element={<ProductFinal />} />
             <Route path="/profileview" element={<ProfileViewUser />} />
             <Route path="/profileviewAdm" element={<ProfileViewAdm />} />
@@ -31,7 +31,3 @@ export const Router = () => {
       </Routes>
   )
 }
-
-
-
-
