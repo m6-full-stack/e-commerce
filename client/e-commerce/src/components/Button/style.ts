@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
 
 type ButtonVariant =
   | 'transparent'
@@ -8,6 +9,7 @@ type ButtonVariant =
   | 'grey1'
   | 'grey4'
   | 'grey6'
+  | 'grey7'
   | 'grey10'
   | 'brand3'
   | 'brand4'
@@ -27,8 +29,39 @@ const buttonVariants = {
   grey1: '#212529',
   grey4: '#ADB5BD',
   grey6: '#DEE2E6',
+  grey7: '#E9ECEF',
   grey10: '#FDFDFD',
 }
+
+export const ButtonNavLogin = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 100%;
+
+  border-radius: 4px;
+
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+
+  line-height: 0;
+
+  height: 48px;
+  max-width: 315px;
+
+  padding: 12px 28px;
+  color: ${(props) => props.theme.grey0};
+  border: 1.5px solid ${(props) => props.theme.grey4};
+
+  &:hover {
+    color: ${(props) => props.theme.whiteFixed};
+    border: none;
+  }
+`
 
 export const ButtonContainer = styled.button<ButtonContainerProps>`
   display: flex;
@@ -74,16 +107,6 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
         return css`
           height: 48px;
           max-width: 133px;
-          padding: 12px 28px;
-          color: ${(props) => props.theme.grey0};
-          border: 1.5px solid ${(props) => props.theme.grey4};
-        `
-
-      // button login cadastrar
-      case 'g4c':
-        return css`
-          height: 48px;
-          max-width: 315px;
           padding: 12px 28px;
           color: ${(props) => props.theme.grey0};
           border: 1.5px solid ${(props) => props.theme.grey4};
@@ -165,11 +188,14 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
       // button product ver todos anuncios
       case 'g0pvta':
         return css`
-          height: 48px;
+          height: 24px;
           max-width: 240px;
           padding: 12px 28px;
           color: ${(props) => props.theme.whiteFixed};
           border: 1.5px solid ${(props) => props.theme.grey0};
+          @media (min-width: 1024px) {
+            height: 48px;
+          }
         `
 
       // button product comentar
@@ -192,12 +218,36 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           border: 1.5px solid ${(props) => props.theme.brand1};
         `
 
+      // button product emotions
+      case 'g7proem':
+        return css`
+          height: 24px;
+          
+          max-width: 218x;
+          padding: 0px 12px;
+          color: ${(props) => props.theme.grey3};
+          border-radius: 24px;
+          font-size: 12px;
+          line-height: 12px;
+        `
+      // button product emotions2
+      case 'g7proem2':
+        return css`
+          height: 24px;
+          
+          max-width: 218x;
+          padding: 0px 12px;
+          color: ${(props) => props.theme.grey3};
+          border-radius: 24px;
+          font-size: 12px;
+          line-height: 12px;
+        `
+
       // button profile editar
       case 'tprofe':
         return css`
           height: 38px;
-          max-width: 132px;
-          padding: 12px 20px;
+          padding: 0px 12px;
           font-size: 0.875rem;
           color: ${(props) => props.theme.whiteFixed};
           border: 1.5px solid ${(props) => props.theme.grey10};
@@ -214,8 +264,8 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           font-size: 0.875rem;
           color: ${(props) => props.theme.brand1};
           border: 1.5px solid ${(props) => props.theme.brand1};
-          :hover{
-            background: ${props => props.theme.brand4};
+          :hover {
+            background: ${(props) => props.theme.brand4};
           }
         `
 
@@ -243,8 +293,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           color: ${(props) => props.theme.grey1};
           border: 1.5px solid ${(props) => props.theme.grey1};
           :hover {
-            background: ${props => props.theme.brand2};
-
+            background: ${(props) => props.theme.brand2};
           }
         `
 
@@ -258,8 +307,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
           color: ${(props) => props.theme.grey1};
           border: 1.5px solid ${(props) => props.theme.grey1};
           :hover {
-            background: ${props => props.theme.brand2};
-
+            background: ${(props) => props.theme.brand2};
           }
         `
 
@@ -445,4 +493,46 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
     border: 1.5px solid ${(props) => props.theme.grey5};
     cursor: not-allowed;
   }
+`
+export const ButtonAuctionHomeStyle = styled.button`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding: 30px;
+align-items: center;
+min-width: 100%;
+height: 42px;
+background-color: var(--brand1);
+color: var(--whiteFixed);
+
+border-bottom-left-radius: 4px;
+border-bottom-right-radius: 4px;
+
+span {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+:hover {
+    cursor: pointer;
+}
+`
+
+export const ButtonBuy = styled.a`
+    height: 38px;
+    max-width: 100px;
+    padding: 12px 20px;
+    font-size: 0.875rem;
+    background-color: #4529E6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    color: ${(props) => props.theme.whiteFixed};
+    border: 1.5px solid ${(props) => props.theme.brand1};
+
+    :hover {
+      
+    }
+
 `

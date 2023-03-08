@@ -72,6 +72,7 @@ export const InputContainer = styled.div`
       font-weight: 400;
       font-size: 16px;
 
+
       resize: none;
       :focus {
         outline: transparent;

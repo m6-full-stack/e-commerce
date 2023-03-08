@@ -25,6 +25,10 @@ export const GlobalStyle = createGlobalStyle`
   textarea::-webkit-scrollbar {
     width: 0;
   }
+
+  time {
+    color: ${(props) => props.theme.black};
+  }
   
   ul, ol, li{
         list-style: none;
@@ -42,9 +46,17 @@ export const GlobalStyle = createGlobalStyle`
       box-shadow: none;
     }
 	}
+
   img {
         max-width: 100%;
     }
+  
+  .closeModal {
+    color: ${props => props.theme.grey4};
+    font-size: 20px;
+    cursor: pointer;
+  }
+
   section, aside, div{
         width: 100%;
         display: flex;

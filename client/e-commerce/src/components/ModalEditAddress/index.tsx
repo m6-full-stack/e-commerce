@@ -10,10 +10,11 @@ import { ModalContainer } from './style'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 
 export const ModalEditAddress = () => {
-  const { setIsModelEditAddress } = useContext(ModalContext)
+  const { setIsModelEditAddress, updateAddress } = useContext(ModalContext)
 
   const onSubmit = (data: FieldValues) => {
     console.log(data)
+    updateAddress(data)
   }
 
   const {
@@ -44,7 +45,7 @@ export const ModalEditAddress = () => {
           </p>
         </div>
 
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Paragraph
             fontWeight={500}
             size={'small'}

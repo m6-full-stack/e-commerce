@@ -5,6 +5,8 @@ export const CardContainer = styled.div`
   max-width: 312px;
   min-width: 312px;
 
+  cursor: pointer;
+
   section {
     gap: 16px;
     max-height: 347px;
@@ -14,20 +16,31 @@ export const CardContainer = styled.div`
     .content-img {
       border: 2px solid ${(props) => props.theme.brand1};
       border-radius: 4px;
+      overflow: hidden;
 
       & img {
         scale: 1.2;
+        
       }
+
+
     }
   }
 
+  
   .content-img {
-    padding: 0 25px;
     background: ${(props) => props.theme.grey7};
     position: relative;
     height: 150px;
+    overflow: hidden;
   }
 
+  img:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    cursor: pointer;
+  }
   .content-img span {
     font-weight: 500;
     font-size: 14px;
@@ -44,11 +57,24 @@ export const CardContainer = styled.div`
 
   .content-img img {
     transition: all 0.25s linear;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    object-fit: cover;
   }
 
   .content-description {
     width: 100%;
     gap: 16px;
+  }
+
+  .content-desc {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
   }
 
   .content-name {
@@ -84,6 +110,9 @@ export const CardContainer = styled.div`
     gap: 10px;
     background: ${(props) => props.theme.brand4};
     border-radius: 4px;
+  }
+  .border-mileage {
+    width: 95px;
   }
   .content-price {
     align-items: flex-end;

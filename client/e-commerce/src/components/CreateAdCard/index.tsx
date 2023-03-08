@@ -1,15 +1,31 @@
-import React, { useContext } from 'react'
-import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
-import { Heading, Paragraph } from '../../styles/typography'
-import Button from '../Button'
-import { CardContainer } from './style'
+import React, { useContext, useEffect, useState } from "react";
+import { ModalContext } from "../../contexts/ModalProvider/ModalProvider";
+import { UserContext } from "../../contexts/UserProvider/UserProvider";
+import { IUser, UserRequest } from "../../interfaces/LoginInterface";
+import { Heading, Paragraph } from "../../styles/typography";
+import Button from "../Button";
+import { CardContainer } from "./style";
 
 interface adCardProps {
-  isAdmin: Boolean
+  isAdmin: Boolean;
+  userId?: string;
 }
 
-export const CreateAdCard = ({ isAdmin }: adCardProps) => {
-  const { setIsModelCreate } = useContext(ModalContext)
+export const CreateAdCard = ({ isAdmin, userId }: adCardProps) => {
+  const { setIsModelCreate } = useContext(ModalContext);
+  const { getUserProfile, getProfile } = useContext(UserContext);
+  const [userInfo, setUserInfo] = useState<UserRequest>({} as UserRequest);
+
+  useEffect(() => {
+    userId
+      ? getUserProfile(userId)
+          .then(res => setUserInfo(res))
+          .catch(err => console.log(err))
+      : getProfile()
+          .then(res => setUserInfo(res))
+          .catch(err => console.log(err));
+  }, []);
+
   return (
     <CardContainer>
       <div className="content">
@@ -19,9 +35,9 @@ export const CreateAdCard = ({ isAdmin }: adCardProps) => {
               color="whiteFixed"
               size="xlarge"
               fontWeight={500}
-              lineHeight={'52.94px'}
+              lineHeight={"52.94px"}
             >
-              SL
+              {userInfo.name && userInfo.name.substring(0, 2).toUpperCase()}
             </Paragraph>
           </div>
 
@@ -29,18 +45,18 @@ export const CreateAdCard = ({ isAdmin }: adCardProps) => {
             <Heading
               size="plus"
               fontWeight={600}
-              lineHeight={'25px'}
+              lineHeight={"25px"}
               level={3}
-              color={'grey1'}
+              color={"grey1"}
             >
-              Samuel Leão
+              {userInfo?.name}
             </Heading>
             <div className="content-advertiser">
               <Paragraph
                 color="brand1"
                 size="small"
                 fontWeight={500}
-                lineHeight={'24px'}
+                lineHeight={"24px"}
               >
                 Anunciante
               </Paragraph>
@@ -51,11 +67,9 @@ export const CreateAdCard = ({ isAdmin }: adCardProps) => {
             color="grey2"
             size="normal"
             fontWeight={400}
-            lineHeight={'28px'}
+            lineHeight={"28px"}
           >
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
+            {userInfo?.description}
           </Paragraph>
         </div>
         {isAdmin && (
@@ -69,5 +83,5 @@ export const CreateAdCard = ({ isAdmin }: adCardProps) => {
         )}
       </div>
     </CardContainer>
-  )
-}
+  );
+};

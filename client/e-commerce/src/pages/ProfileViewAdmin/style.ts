@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const ProfileContainer = styled.div`
   width: 100%;
-    
 
   .blue {
     height: 411px;
@@ -21,6 +20,11 @@ export const ProfileContainer = styled.div`
   .title {
     display: none;
   }
+  .no-ads {
+    color: ${(props) => props.theme.grey2};
+    align-items: center;
+    margin-bottom: 40px;
+  }
 
   .title {
     @media (min-width: 1024px) {
@@ -33,11 +37,12 @@ export const ProfileContainer = styled.div`
     width: 100%;
     max-width: 1600px;
     min-width: 100%;
-    height: 500px;
+    max-height: 500px;
     flex-direction: row;
+    margin-left: 16px;
     gap: 16px;
-    margin-right: 16px;
     overflow-x: auto;
+    margin-bottom: 30px;
 
     @media (max-width: 360px) {
       flex-direction: column;

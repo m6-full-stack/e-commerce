@@ -12,25 +12,30 @@ import {
   IAddress,
   IloginData,
   IMail,
+  UserRequest,
 } from '../../interfaces/LoginInterface'
-
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
-
 import { decodeToken } from 'react-jwt'
+import { toast } from 'react-toastify'
 
 interface UserContextType {
   token: string | null
   isUserLoggedIn: boolean | null
   user: IUser | null // atualizado
+  advertiserOrBuyer: boolean | null
+  setUser: Dispatch<SetStateAction<IUser | null>>
+  tokenRecoverPassword: string | null
   setIsUserLoggedIn: Dispatch<SetStateAction<boolean>>
   handleLogin: (data: IloginData) => void
   handleLogout: () => void
   handleRegister: (data: IloginData) => void
   navigate: NavigateFunction
   sendMailRecoverPassword: (data: IMail) => void
-  tokenRecoverPassword: string | null
-  changePassword: (password: string) => void
+  changePassword: (token: string, password: string) => void
+  setAdvertiserOrBuyer: Dispatch<SetStateAction<boolean>>
+  getProfile: () => Promise<UserRequest>
+  getUserProfile: (idUser: string) => Promise<UserRequest>
 }
 
 export const UserContext = createContext({} as UserContextType)
@@ -46,25 +51,35 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
   >(null)
   const [user, setUser] = useState<IUser | null>(null)
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [advertiserOrBuyer, setAdvertiserOrBuyer] = useState<boolean>(false)
+
   const navigate = useNavigate()
 
   useEffect(() => {
     const storedToken = localStorage.getItem('@MOTORS-TOKEN')
+
     if (storedToken) {
-      setToken(storedToken)
-      setIsUserLoggedIn(true)
       const decodedToken = decodeToken(storedToken) as Record<string, any>
       const userId = decodedToken.id
       localStorage.setItem('@MOTORS-USER-ID', userId)
+
+      getUserProfile(userId)
+        .then(user => console.log(user))
+        .catch(error => console.error(error));
+
+      setToken(storedToken)
+      setIsUserLoggedIn(true)
     }
   }, [])
 
-  function handleLogin(data: IloginData): Promise<string> {
-    return api
+  async function handleLogin(data: IloginData): Promise<string> {
+    return await api
       .post('login', { ...data })
       .then((response) => {
         const token = response.data
         setToken(token)
+
         localStorage.setItem('@MOTORS-TOKEN', token)
         setIsUserLoggedIn(true)
 
@@ -72,11 +87,14 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         const userId = decodedToken.id
         localStorage.setItem('@MOTORS-USER-ID', userId)
 
+        toast.success('Login realizado com sucesso!')
         navigate('/', { replace: true })
 
         return token
       })
       .catch((error) => {
+
+        toast.error('Confira seu mail ou senha')
         console.log(error)
         throw error
       })
@@ -99,6 +117,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         phone: data.phone,
         description: data.description,
         birthdate: data.birthdate,
+
         cpf: data.cpf,
         address: {
           cep: data.cep,
@@ -109,11 +128,15 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
           number: data.number,
           complement: data.complement,
         },
+
+        is_seller: advertiserOrBuyer,
       })
       .then(() => {
+        toast.success('Sua conta foi criada com sucesso')
         navigate('login', { replace: true })
       })
       .catch((error) => {
+        toast.error('Ops algo deu errado!')
         console.log(error)
       })
   }
@@ -122,21 +145,49 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
     api
       .post('users/sendTokenPassword', data)
       .then((response) => {
+        toast.success('Token enviado')
         setTokenRecoverPassword(response.data.token)
       })
       .catch((error) => {
+        toast.error('Ops algo deu errado!')
         console.log(error)
       })
   }
 
-  function changePassword(password: string) {
+  function changePassword(token: string, password: string) {
     api
       .post(`users/recoverPassword/${tokenRecoverPassword}`, { password })
       .then((response) => {
+        toast.success('Faça login com a nova senha.')
         navigate('login')
       })
       .catch((error) => {
+        toast.error('Ops algo deu errado!')
         console.log(error)
+      })
+  }
+
+  async function getUserProfile(userId: string) {
+    return api
+      .get(`/users/${userId}`)
+      .then((res) => res.data)
+      .catch((error) => {
+        console.error(error)
+        throw error
+      })
+  }
+
+  async function getProfile() {
+    return api
+      .get('/profile', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('@MOTORS-TOKEN')}`,
+        },
+      })
+      .then((res) => res.data)
+      .catch((error) => {
+        console.error(error)
+        throw error
       })
   }
 
@@ -145,6 +196,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
       value={{
         token,
         tokenRecoverPassword,
+        sendMailRecoverPassword,
         user,
         changePassword,
         navigate,
@@ -153,7 +205,11 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         setIsUserLoggedIn,
         handleLogout,
         handleRegister,
-        sendMailRecoverPassword,
+        advertiserOrBuyer,
+        setAdvertiserOrBuyer,
+        getProfile,
+        getUserProfile,
+        setUser,
       }}
     >
       {children}
