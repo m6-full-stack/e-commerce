@@ -156,7 +156,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
 
   function changePassword(token: string, password: string) {
     api
-      .post('users/recoverPassword', { tokenResetPassword: token, password })
+      .post(`users/recoverPassword/${tokenRecoverPassword}`, { password })
       .then((response) => {
         toast.success('Faça login com a nova senha.')
         navigate('login')
