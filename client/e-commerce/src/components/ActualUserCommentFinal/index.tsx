@@ -41,8 +41,8 @@ export const ActualUserCommentFinal = () => {
 
   return (
     <UserCommentInputFinal>
-      <article className='content-post'>
-        <form className='content-form'>
+      <article className="content-post">
+        <form className="content-form" onSubmit={handleSubmit(onSubmit)}>
           <AvatarUser />
 
           <div className='content-text-area'>

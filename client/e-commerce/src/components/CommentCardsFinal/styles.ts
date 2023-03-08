@@ -3,8 +3,8 @@ import styled from 'styled-components'
 export const UserCommentCardFinal = styled.div`
   display: flex;
   width: 100%;
-  justify-content: center;
-  align-items: center;
+  /* align-items: center; */
+  background: ${(props) => props.theme.grey10};
 
   //INICIO CAR IMG
   .content-card-car {
@@ -22,7 +22,6 @@ export const UserCommentCardFinal = styled.div`
 
     padding: 24px;
 
-    background: ${(props) => props.theme.grey10};
     border-radius: 4px;
   }
 
@@ -148,8 +147,19 @@ export const UserCommentCardFinal = styled.div`
   /* fim cardUser */
 
   /* comment */
+  .content-title {
+
+    padding: 36px 44px 0px 44px;
+    gap: 8px;
+
+
+    @media (min-width: 1024px) {
+      padding: 0px 44px 0px 44px;
+      margin: 36px 0px 0px 0px;
+    }
+  }
   .content-comments {
-    background: ${(props) => props.theme.grey10};
+    /* background: ${(props) => props.theme.grey10}; */
 
     border-radius: 4px;
 
