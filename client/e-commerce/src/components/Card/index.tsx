@@ -12,12 +12,11 @@ interface AuctionCardProps {
 }
 
 export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) => {
-
   const navigate = useNavigate()
   
 
   return (
-    <CardContainer onClick={() => navigate(`/product/${vehicle.id}`)}>
+    <CardContainer onClick={() => navigate(`/product/${vehicle.id}}`)}>
       <div className="content-img">
         {isProfileView && (
           <span

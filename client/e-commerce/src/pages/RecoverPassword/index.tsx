@@ -46,10 +46,10 @@ export const RecoverPassword = () => {
         <RecoverContainer>
           <div>
             <h1>Recuperar senha:</h1>
-            <h2>
+            <p>
               Insira o e-mail da sua conta abaixo para receber o código de {''}
               <span>recuperação!</span>
-            </h2>
+            </p>
             <form
               onSubmit={handleSubmit((data) =>
                 sendMailRecoverPassword({ email: data.email })
