@@ -3,17 +3,17 @@ import { useContext, useState } from 'react'
 import { AnnouncementContext } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 import { Heading, Paragraph } from '../../styles/typography'
 import Button from '../Button'
+import { ButtonBuy } from '../Button/style'
 import { SectionProductsFinalStyle } from './style'
 
 export const SectionProductsFinal = () => {
-  const { announcementInfo } = useContext(AnnouncementContext)
-
+  const { announcementInfo, advertiser } = useContext(AnnouncementContext)
 
   return (
     <SectionProductsFinalStyle>
       {/* img car */}
       <figure className="content-card-car">
-        <img className='te' src={announcementInfo.cover_image} alt="car" />
+        <img className="te" src={announcementInfo.cover_image} alt="car" />
         {!announcementInfo.cover_image && <p>Carregando imagem...</p>}
       </figure>
       {/* fim img car */}
@@ -64,9 +64,12 @@ export const SectionProductsFinal = () => {
           </Heading>
         </div>
         <div className="content-button">
-          <Button variant="blue" buttonSize="b1pc">
+          <ButtonBuy
+            target="_blank"
+            href={`https://api.whatsapp.com/send?phone=+55+${advertiser.phone}&text=Olá, seu veículo ainda está disponível?`}
+          >
             Comprar
-          </Button>
+          </ButtonBuy>
         </div>
       </section>
       {/* fim info car */}
