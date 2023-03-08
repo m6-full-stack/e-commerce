@@ -28,7 +28,7 @@ export const AsideProductsFinal = () => {
           </Heading>
           <div className='content-small-photos-row1'>
             <div className='content-small-img'>
-              {announcementInfo.images_list.length > 0 &&
+              {announcementInfo.images_list &&
                 announcementInfo.images_list.map((elem, index) => {
                   if (index < 6) {
                     return (
