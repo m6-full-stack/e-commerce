@@ -51,7 +51,17 @@ export const CommentsCardsFinal = () => {
                   color={'grey2'}
                   lineHeight={'24px'}
                 >
-                  {elem.content}
+                  {elem.created_at?.split("T")[0].replace(/-/g, "/")}
+                  {elem.user?.id === info.id && (
+                    <span
+                      className="button-edit"
+                      onClick={() => modalComment(elem)}
+                    >
+                      Editar 
+                      
+                    </span>
+                  )}
+
                 </Paragraph>
               </article>
             </section>
