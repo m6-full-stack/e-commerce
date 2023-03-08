@@ -67,6 +67,24 @@ export interface AnnouncementData {
   images_list: ImageData[];
 }
 
+export interface AnnouncementDataResponse {
+  createdAt: string
+  id: string
+  type: string
+  title: string
+  year: string
+  mileage: string
+  price: string
+  description: string
+  vehicle_type: string
+  cover_image: string
+  is_sold: boolean
+  is_active: boolean
+  advertiser: IUser
+  comments: CommentDataRecive[]
+  images_list: ImageData[]
+}
+
 interface AnnouncementContextType {
   registerAnnouncement: (data: AnnouncementRequest) => void;
   updateAnnouncement: (
@@ -78,15 +96,17 @@ interface AnnouncementContextType {
   announcementData: AnnouncementData[] | null;
   setAnnouncementData: React.Dispatch<
     React.SetStateAction<AnnouncementData[] | null>
-  >;
-  announcementInfo: AnnouncementData;
-  setAnnouncementInfo: React.Dispatch<React.SetStateAction<AnnouncementData>>;
-  typeAnnouncement: "venda" | "leilão";
-  setTypeAnnouncement: React.Dispatch<React.SetStateAction<"venda" | "leilão">>;
-  typeVehicle: "carro" | "moto";
-  setTypeVehicle: React.Dispatch<React.SetStateAction<"carro" | "moto">>;
-  announcementId: string | null;
-  setAnnouncementId: React.Dispatch<React.SetStateAction<string | null>>;
+  >
+  announcementInfo: AnnouncementData
+  setAnnouncementInfo: React.Dispatch<React.SetStateAction<AnnouncementData>>
+  typeAnnouncement: 'venda' | 'leilão'
+  setTypeAnnouncement: React.Dispatch<React.SetStateAction<'venda' | 'leilão'>>
+  typeVehicle: 'carro' | 'moto'
+  setTypeVehicle: React.Dispatch<React.SetStateAction<'carro' | 'moto'>>
+  announcementId: string | null
+  setAnnouncementId: React.Dispatch<React.SetStateAction<string | null>>
+  advertiser: IUser
+
 }
 
 export const AnnouncementContext = createContext<AnnouncementContextType>(
@@ -101,12 +121,14 @@ export function AnnouncementContextProvider({
   >(null);
   const [announcementInfo, setAnnouncementInfo] = useState<AnnouncementData>(
     {} as AnnouncementData
-  );
-  const [typeAnnouncement, setTypeAnnouncement] = useState<"venda" | "leilão">(
-    "venda"
-  );
-  const [typeVehicle, setTypeVehicle] = useState<"carro" | "moto">("carro");
-  const [announcementId, setAnnouncementId] = useState<string | null>(null);
+  )
+  const [typeAnnouncement, setTypeAnnouncement] = useState<'venda' | 'leilão'>(
+    'venda'
+  )
+  const [typeVehicle, setTypeVehicle] = useState<'carro' | 'moto'>('carro')
+  const [announcementId, setAnnouncementId] = useState<string | null>(null)
+  const [advertiser, setAdvertiser] = useState<IUser>({} as IUser)
+
 
   const token = () => {
     const token = localStorage.getItem("@MOTORS-TOKEN");
@@ -181,8 +203,20 @@ export function AnnouncementContextProvider({
         toast.success('Anuncio removido com sucesso')
         console.log(response)
       })
-      .catch(err => console.log(err));
-  };
+      .catch((err) => console.log(err))
+    }
+
+    const retrieveAdvertise = async (userId: string) => {
+      api
+        .get(`/users/${userId}`)
+        .then((res) => {
+          setAdvertiser(res.data)
+        })
+        .catch((error) => {
+          console.error(error)
+          throw error
+        })
+    }
 
   const getRetriveAnnouncement = (id: string) => {
     api
@@ -191,15 +225,19 @@ export function AnnouncementContextProvider({
           Authorization: `Bearer ${token()}`,
         },
       })
-      .then(res => {
-        setAnnouncementInfo(res.data);
+      .then((res) => {
+        retrieveAdvertise(res.data.advertiserId)
+        setAnnouncementInfo(res.data)
+
       })
       .catch(err => console.log(err));
   };
 
+
   return (
     <AnnouncementContext.Provider
       value={{
+        advertiser,
         getRetriveAnnouncement,
         announcementData,
         setAnnouncementData,

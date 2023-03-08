@@ -517,3 +517,22 @@ span {
     cursor: pointer;
 }
 `
+
+export const ButtonBuy = styled.a`
+    height: 38px;
+    max-width: 100px;
+    padding: 12px 20px;
+    font-size: 0.875rem;
+    background-color: #4529E6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    color: ${(props) => props.theme.whiteFixed};
+    border: 1.5px solid ${(props) => props.theme.brand1};
+
+    :hover {
+      
+    }
+
+`

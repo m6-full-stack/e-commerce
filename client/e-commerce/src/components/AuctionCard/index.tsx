@@ -5,7 +5,7 @@ import Button from '../Button'
 import { Heading, Paragraph } from '../../styles/typography'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 import countDownTimer from '../../utils/countDown'
-import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
+import { AnnouncementDataResponse } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 import { string } from 'yup'
 import { ProductsContext } from '../../contexts/ProductsProvider/ProductsProvider'
 import { ButtonAuctionHomeStyle } from '../Button/style'
@@ -13,7 +13,7 @@ import { BsArrowRight } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 
 interface AuctionCardProps {
-  vehicle: AnnouncementData
+  vehicle: AnnouncementDataResponse
 }
 
 export const AuctionCard = ({ vehicle }: AuctionCardProps) => {

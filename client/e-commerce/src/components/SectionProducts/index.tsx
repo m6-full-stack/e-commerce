@@ -3,10 +3,11 @@ import car1 from "../../assets/images/car_1.svg";
 import { AnnouncementContext } from "../../contexts/AnnouncementProvider/AnnouncementProvide";
 import { Heading } from "../../styles/typography";
 import Button from "../Button";
+import { ButtonBuy } from "../Button/style";
 import { SectionProductsStyle } from "./style";
 
 export const SectionProducts = () => {
-  const { announcementInfo } = useContext(AnnouncementContext);
+  const { announcementInfo, advertiser } = useContext(AnnouncementContext);
 
   return (
     <SectionProductsStyle>
@@ -28,14 +29,12 @@ export const SectionProducts = () => {
             <p>{`R$ ${announcementInfo.price}`}</p>
           </div>
         </div>
-        <Button
-          buttonSize="b1pc"
-          onClick={() => {
-            console.log("Comprei");
-          }}
+        <ButtonBuy
+        target="_blank"
+        href={`https://api.whatsapp.com/send?phone=+55+${advertiser.phone}&text=Olá, seu veículo ainda está disponível?`}
         >
           Comprar
-        </Button>
+        </ButtonBuy>
       </div>
       <br />
       <div className="divDescriptionProduct description">
