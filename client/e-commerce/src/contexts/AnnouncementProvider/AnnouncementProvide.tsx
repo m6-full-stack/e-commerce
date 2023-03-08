@@ -207,7 +207,7 @@ export function AnnouncementContextProvider({
     }
 
     const retrieveAdvertise = async (userId: string) => {
-      api
+      await api
         .get(`/users/${userId}`)
         .then((res) => {
           setAdvertiser(res.data)
@@ -218,8 +218,8 @@ export function AnnouncementContextProvider({
         })
     }
 
-  const getRetriveAnnouncement = (id: string) => {
-    api
+  const getRetriveAnnouncement = async (id: string) => {
+    await api
       .get(`/announcement/${id}`, {
         headers: {
           Authorization: `Bearer ${token()}`,

@@ -2,7 +2,6 @@ import { useContext } from "react";
 
 import { AnnouncementContext } from "../../contexts/AnnouncementProvider/AnnouncementProvide";
 import { Heading } from "../../styles/typography";
-import Button from "../Button";
 import { ButtonBuy } from "../Button/style";
 import { SectionProductsStyle } from "./style";
 

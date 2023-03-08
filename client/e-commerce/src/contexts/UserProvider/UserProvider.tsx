@@ -35,7 +35,9 @@ interface UserContextType {
   changePassword: (token: string, password: string) => void
   setAdvertiserOrBuyer: Dispatch<SetStateAction<boolean>>
   getProfile: () => Promise<UserRequest>
-  getUserProfile: (idUser: string) => Promise<UserRequest>
+  getUserProfile: (userId: string) => Promise<any>
+  isLoaded: boolean
+  setIsLoaded: Dispatch<SetStateAction<boolean>>
 }
 
 export const UserContext = createContext({} as UserContextType)
@@ -64,9 +66,9 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
       const userId = decodedToken.id
       localStorage.setItem('@MOTORS-USER-ID', userId)
 
-      getUserProfile(userId)
-        .then(user => console.log(user))
-        .catch(error => console.error(error));
+      getUserProfile( userId )
+        .then((user) => console.log(user))
+        .catch((error) => console.error(error))
 
       setToken(storedToken)
       setIsUserLoggedIn(true)
@@ -86,7 +88,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         const decodedToken = decodeToken(token) as Record<string, any>
         const userId = decodedToken.id
         localStorage.setItem('@MOTORS-USER-ID', userId)
-
+        setIsLoaded(true)
         toast.success('Login realizado com sucesso!')
         navigate('/', { replace: true })
 
@@ -102,6 +104,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
 
   function handleLogout() {
     localStorage.clear()
+    setIsLoaded(false)
     navigate('/login', { replace: true })
     setToken('')
     setIsUserLoggedIn(false)
@@ -195,6 +198,8 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
     <UserContext.Provider
       value={{
         token,
+        isLoaded, 
+        setIsLoaded,
         tokenRecoverPassword,
         sendMailRecoverPassword,
         user,
