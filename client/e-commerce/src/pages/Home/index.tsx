@@ -1,7 +1,7 @@
 import { ContainerHome } from './style'
 import { Card } from '../../components/Card'
 import { Heading } from '../../styles/typography'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { AuctionCard } from '../../components/AuctionCard'
 import { ProductsContext } from '../../contexts/ProductsProvider/ProductsProvider'
 import { AnnouncementDataResponse } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
