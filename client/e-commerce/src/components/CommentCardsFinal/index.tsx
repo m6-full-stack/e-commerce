@@ -36,23 +36,31 @@ export const CommentsCardsFinal = () => {
                   <div className="border-initials">
                     <span>{elem.user?.name.substring(0, 2).toUpperCase()}</span>
                   </div>
+                  <Paragraph
+                    fontWeight={500}
+                    size={'small'}
+                    color={'grey1'}
+                    lineHeight={'24px'}
+                  >
+                    {elem.user?.name}
+                  </Paragraph>
+                  <Paragraph
+                    fontWeight={400}
+                    size={'small'}
+                    color={'grey2'}
+                    lineHeight={'24px'}
+                  >
+                    {elem.created_at?.split('T')[0].replace(/-/g, '/')}
+                    {elem.user?.id === info.id && (
+                      <span
+                        className="button-edit"
+                        onClick={() => modalComment(elem)}
+                      >
+                        Editar
+                      </span>
+                    )}
+                  </Paragraph>
                 </div>
-                <Paragraph
-                  fontWeight={400}
-                  size={'small'}
-                  color={'grey2'}
-                  lineHeight={'24px'}
-                >
-                  {elem.created_at?.split('T')[0].replace(/-/g, '/')}
-                  {elem.user?.id === info.id && (
-                    <span
-                      className="button-edit"
-                      onClick={() => modalComment(elem)}
-                    >
-                      Editar
-                    </span>
-                  )}
-                </Paragraph>
                 <Paragraph
                   fontWeight={400}
                   size={'small'}
