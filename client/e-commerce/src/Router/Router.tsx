@@ -16,10 +16,13 @@ export const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/product" element={<Product />}>
+        {/* <Route path="/product" element={<Product />}>
           <Route path=":id" element={<Product />} />
+        </Route> */}
+        <Route path="/product" element={<ProductFinal />}>
+          <Route path=":id" element={<ProductFinal />} />
         </Route>
-        <Route path='/productfinal' element={<ProductFinal />} />
+        
         <Route path="/profileview" element={<ProfileViewUser />}>
           <Route path=":id" element={<ProfileViewUser />} />
         </Route>
