@@ -59,7 +59,8 @@ export const CommentsCardsFinal = () => {
                       className="button-edit"
                       onClick={() => modalComment(elem)}
                     >
-                      Editar
+                      Editar 
+                      
                     </span>
                   )}
                 </Paragraph>
