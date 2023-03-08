@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { AnnouncementContext } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 import { Heading, Paragraph } from '../../styles/typography'
+import { Card } from '../Card'
 import { UserCommentCardFinal } from './styles'
 
 export const CommentsCardsFinal = () => {
@@ -18,7 +19,7 @@ export const CommentsCardsFinal = () => {
         >
           Comentários
         </Heading>
-        {announcementInfo.comments &&
+        {announcementInfo.comments?.length > 0 ? (
           announcementInfo.comments.map((elem) => (
             <section className="content-comments" key={elem.id}>
               <article className="content-comment">
@@ -54,7 +55,21 @@ export const CommentsCardsFinal = () => {
                 </Paragraph>
               </article>
             </section>
-          ))}
+          ))
+        ) : (
+          <>
+          <Heading
+            className="no-ads"
+            level={2}
+            fontWeight={600}
+            size={"plus"}
+            color={"grey3"}
+            lineHeight={"30px"}
+          >
+            Não há comentários...
+          </Heading>
+        </>
+        )}
       </div>
     </UserCommentCardFinal>
   )
