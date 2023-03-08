@@ -99,10 +99,10 @@ interface AnnouncementContextType {
   >;
   announcementInfo: AnnouncementData;
   setAnnouncementInfo: React.Dispatch<React.SetStateAction<AnnouncementData>>;
-  typeAnnouncement: "venda" | "leilão";
-  setTypeAnnouncement: React.Dispatch<React.SetStateAction<"venda" | "leilão">>;
-  typeVehicle: "carro" | "moto";
-  setTypeVehicle: React.Dispatch<React.SetStateAction<"carro" | "moto">>;
+  typeAnnouncement: "Venda" | "Leilão";
+  setTypeAnnouncement: React.Dispatch<React.SetStateAction<"Venda" | "Leilão">>;
+  typeVehicle: "Carro" | "Moto";
+  setTypeVehicle: React.Dispatch<React.SetStateAction<"Carro" | "Moto">>;
   announcementId: string | null;
   setAnnouncementId: React.Dispatch<React.SetStateAction<string | null>>;
   advertiser: IUser;
@@ -121,10 +121,10 @@ export function AnnouncementContextProvider({
   const [announcementInfo, setAnnouncementInfo] = useState<AnnouncementData>(
     {} as AnnouncementData
   );
-  const [typeAnnouncement, setTypeAnnouncement] = useState<"venda" | "leilão">(
-    "venda"
+  const [typeAnnouncement, setTypeAnnouncement] = useState<"Venda" | "Leilão">(
+    "Venda"
   );
-  const [typeVehicle, setTypeVehicle] = useState<"carro" | "moto">("carro");
+  const [typeVehicle, setTypeVehicle] = useState<"Carro" | "Moto">("Carro");
   const [announcementId, setAnnouncementId] = useState<string | null>(null);
   const [advertiser, setAdvertiser] = useState<IUser>({} as IUser);
   const navigate = useNavigate();
