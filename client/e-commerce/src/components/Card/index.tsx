@@ -2,19 +2,28 @@ import { CardContainer } from './style'
 import { useNavigate } from 'react-router-dom'
 import { Heading, Paragraph } from '../../styles/typography'
 import { AnnouncementDataResponse } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
+import { UserContext } from '../../contexts/UserProvider/UserProvider'
+import { useContext } from 'react'
+import { toast } from 'react-toastify'
+
 
 interface CardProps {
-  isProfileView?: Boolean;
-  vehicle: AnnouncementData;
+  isProfileView?: Boolean
+  vehicle: AnnouncementDataResponse
 }
 
-export const Card = ({vehicle, isProfileView }:CardProps) => {
+export const Card = ({vehicle, isProfileView }: CardProps) => {
+  const { isLoaded } = useContext(UserContext);
 
   const navigate = useNavigate()
-  console.log(vehicle)
 
   return (
-    <CardContainer onClick={() => navigate(`/product/${vehicle.id}`)}>
+    <CardContainer onClick={() => {
+      if (!isLoaded){
+        toast.error('Faça seu login')
+      }
+      navigate(`/product/${vehicle.id}`)
+    }}>
       <div className="content-img">
         {isProfileView && (
           <span

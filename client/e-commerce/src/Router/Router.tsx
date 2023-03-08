@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom'
 import { Register } from '../pages/Register'
 import { RecoverPassword } from '../pages/RecoverPassword'
 import { ProductFinal } from '../pages/ProductFinal'
+import { ProtectedRoutes } from '../components/ProtectedRoutes'
 
 export const Router = () => {
   return (
@@ -16,23 +17,15 @@ export const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/product" element={<Product />}>
-          <Route path=":id" element={<Product />} />
-        </Route> */}
-        <Route path="/product" element={<ProductFinal />}>
-          <Route path=":id" element={<ProductFinal />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/product" element={<ProductFinal />}>
+            <Route path=":id" element={<ProductFinal />} />
+          </Route>
+          <Route path="/recoverPassword" element={<RecoverPassword />} />
+          <Route path="/profileview" element={<ProfileViewUser />} />
+          <Route path="/profileviewAdm" element={<ProfileViewAdm />} />
         </Route>
-        
-        <Route path="/profileview" element={<ProfileViewUser />}>
-          <Route path=":id" element={<ProfileViewUser />} />
-        </Route>
-        <Route path="/profileviewAdm" element={<ProfileViewAdm />} />
-        <Route path="/recoverPassword" element={<RecoverPassword />} />
       </Route>
     </Routes>
   )
 }
-
-
-
-

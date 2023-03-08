@@ -11,16 +11,19 @@ import { ProductsContext } from '../../contexts/ProductsProvider/ProductsProvide
 import { ButtonAuctionHomeStyle } from '../Button/style'
 import { BsArrowRight } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../../contexts/UserProvider/UserProvider'
+import { toast } from 'react-toastify'
 
 interface AuctionCardProps {
   vehicle: AnnouncementDataResponse
 }
 
 export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
-  const { setIsModelEditAnnouncement } = useContext(ModalContext)
+  const { setIsModelEditAnnouncement, setIsModalLoginNecessary } = useContext(ModalContext)
   const { actualPage } = useContext(ProductsContext)
-  const [ actualImageBackground, setActualImageBackground ] = useState(string)
+  const { isLoaded } = useContext(UserContext);
   const navigate = useNavigate()
+
 
 
   return (
@@ -67,7 +70,12 @@ export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
           {actualPage === 'home' ? (
             <>
               <ButtonAuctionHomeStyle
-                onClick={() => navigate(`/product/${vehicle.id}`)}
+                onClick={() => {
+                  if (!isLoaded){
+                    toast.error('Faça seu login')
+                  }
+                  navigate(`/product/${vehicle.id}`)
+                }}
               >
                 <span>Acessar página do leilão</span>
                 <BsArrowRight size={25}></BsArrowRight>
