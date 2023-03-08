@@ -1,10 +1,10 @@
 import { ContainerHome } from './style'
 import { Card } from '../../components/Card'
+import { Heading } from '../../styles/typography'
 import { useContext, useEffect, useState } from 'react'
 import { AuctionCard } from '../../components/AuctionCard'
 import { ProductsContext } from '../../contexts/ProductsProvider/ProductsProvider'
-import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
-import { Heading } from '../../styles/typography'
+import { AnnouncementDataResponse } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 
 export const Home = () => {
 
@@ -36,7 +36,7 @@ export const Home = () => {
         <h1>Leilão</h1>
         <div className="content-carrossel">
           {auctionsList?.length > 0 ? (
-            auctionsList?.map((elem: AnnouncementData, ind: number) => (
+            auctionsList?.map((elem: AnnouncementDataResponse, ind: number) => (
               <AuctionCard 
                 key={ind}
                 vehicle={elem}
@@ -60,7 +60,7 @@ export const Home = () => {
           <h1>Carros</h1>
           <div className='carrossel'>
             {carsList?.length > 0 ? (
-              carsList?.map((elem: AnnouncementData, ind: number)=> (
+              carsList?.map((elem: AnnouncementDataResponse, ind: number)=> (
                 <Card 
                   key={ind}
                   vehicle={elem}
@@ -85,7 +85,7 @@ export const Home = () => {
           <h1>Motos</h1>
           <div className='carrossel'>
           {motosList?.length > 0 ? (
-              motosList?.map((elem: AnnouncementData, ind: number)=> (
+              motosList?.map((elem: AnnouncementDataResponse, ind: number)=> (
                 <Card 
                   key={ind}
                   vehicle={elem}

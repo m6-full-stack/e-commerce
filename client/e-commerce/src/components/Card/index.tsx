@@ -1,14 +1,14 @@
-import { useNavigate } from 'react-router-dom'
-import { AnnouncementData } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
-import { Heading, Paragraph } from '../../styles/typography'
 import { CardContainer } from './style'
+import { useNavigate } from 'react-router-dom'
+import { Heading, Paragraph } from '../../styles/typography'
+import { AnnouncementDataResponse } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 
 interface CardProps {
   isProfileView?: Boolean
 }
 
 interface AuctionCardProps {
-  vehicle: AnnouncementData
+  vehicle: AnnouncementDataResponse
 }
 
 export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) => {
