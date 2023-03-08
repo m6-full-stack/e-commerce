@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 
-export const ModalContainer = styled.div`
+interface typeVehicle {
+  typeAnnouncement: string
+  typeVehicle: string
+  publishedYesOrNo: string
+}
+
+export const ModalContainer = styled.div<typeVehicle>`
   position: absolute;
 
   display: flex;
@@ -62,5 +68,17 @@ export const ModalContainer = styled.div`
 
   .content::-webkit-scrollbar {
     width: 0;
+  }
+  .auction {
+    background-color: ${(props) =>
+      props.typeAnnouncement === 'leilão' ? props.theme.grey2 : ''};
+  }
+  .motorcycle {
+    background-color: ${(props) =>
+      props.typeVehicle === 'moto' ? props.theme.grey2 : ''};
+  }
+  .publishedYesOrNo {
+    background-color: ${(props) =>
+      props.publishedYesOrNo === 'yes' ? props.theme.grey2 : ''};
   }
 `
