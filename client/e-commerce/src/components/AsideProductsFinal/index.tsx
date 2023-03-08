@@ -26,32 +26,42 @@ export const AsideProductsFinal = () => {
           >
             Fotos
           </Heading>
-          <div className='content-small-photos-row1'>
-            <div className='content-small-img'>
-              {announcementInfo.images_list &&
-                announcementInfo.images_list.map((elem, index) => {
-                  if (index < 6) {
-                    return (
-                      <img
-                        className='otherImages'
-                        src={elem.image_url}
-                        alt=''
-                        key={elem.id}
-                        onClick={() => {
-                          modalPhoto(elem.image_url)
-                        }}
-                      />
-                    )
-                  }
-                })}
+          <div className="content-small-photos-row1">
+            <div className="content-small-img">
+              {announcementInfo.images_list?.length > 1 ? (
+                announcementInfo.images_list.slice(0, 6).map((elem) => (
+                  <img
+                    className="otherImages"
+                    src={elem.image_url}
+                    alt=""
+                    key={elem.id}
+                    onClick={() => {
+                      modalPhoto(elem.image_url)
+                    }}
+                  />
+                ))
+              ) : (
+                <>
+                  <Heading
+                    className="no-ads"
+                    level={2}
+                    fontWeight={600}
+                    size={"plus"}
+                    color={"grey3"}
+                    lineHeight={"30px"}
+                  >
+                    Não há Foto...
+                  </Heading>
+                </>
+              )}
             </div>
           </div>
         </figure>
 
         {/* cardUser */}
         <article>
-          <section className='content-card-user'>
-            <div className='content-initials'>
+          <section className="content-card-user">
+            <div className="content-initials">
               <span>
                 {announcementInfo.advertiser &&
                   announcementInfo.advertiser.name[0]}
@@ -77,8 +87,8 @@ export const AsideProductsFinal = () => {
                 announcementInfo.advertiser.description}
             </Paragraph>
             <Button
-              variant='grey0'
-              buttonSize='g0pvta'
+              variant="grey0"
+              buttonSize="g0pvta"
               onClick={() =>
                 navigate(`/profileview/${announcementInfo.advertiserId}`)
               }
