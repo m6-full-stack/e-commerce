@@ -82,8 +82,8 @@ export const ProductContainerFinal = styled.div`
   @media (min-width:1024px) {
     background: linear-gradient(
     180deg,
-    #4529e6 31.625%,
-    #f1f3f5 31.626%,
+    #4529e6 41.625%,
+    #f1f3f5 41.626%,
     #f1f3f5 100%
   );
   }

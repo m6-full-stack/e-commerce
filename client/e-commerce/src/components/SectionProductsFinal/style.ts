@@ -6,6 +6,7 @@ export const SectionProductsFinalStyle = styled.div`
   justify-content: center;
   align-items: center;
   gap: 16px;
+  overflow: hidden;
 
   //INICIO CAR IMG
   .content-card-car {
@@ -25,11 +26,13 @@ export const SectionProductsFinalStyle = styled.div`
 
     background: ${(props) => props.theme.grey10};
     border-radius: 4px;
+    overflow: hidden;
   }
 
   .content-card-car img {
     width: 100%;
-    height: 100%;
+    
+    object-fit: cover;
     
     @media (min-width: 820px) {
         scale: 0.75;

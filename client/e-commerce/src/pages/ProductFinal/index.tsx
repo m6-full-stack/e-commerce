@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Card } from '../../components/Card'
 import { ProductContainerFinal } from './style'
 
@@ -18,25 +18,16 @@ import { AsideProductsFinal } from '../../components/AsideProductsFinal'
 import { CommentsCardsFinal } from '../../components/CommentCardsFinal'
 
 import { ActualUserCommentFinal } from '../../components/ActualUserCommentFinal'
+import { useParams } from 'react-router-dom'
+import { AnnouncementContext } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 
 export const ProductFinal = () => {
-  const { createComment } = useContext(CommentContext)
-
-  const [imageUrl, setImageUrl] = useState(car1)
-  const [imageSmallUrl, setImageSmallUrl] = useState(car1)
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FieldValues>({
-    resolver: yupResolver(validationUserComment),
-  })
-
-  const onSubmit = (data: CommentData) => {
-    console.log('teste')
-    createComment(data, 'c9953fe0-5728-41a7-a0f7-8abfdddf625b')
-  }
+  const { getRetriveAnnouncement } = useContext(AnnouncementContext);
+  const { id } = useParams();
+  
+  useEffect(() => {
+    id && getRetriveAnnouncement(id);
+  }, []);
 
   return (
     <ProductContainerFinal>

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import car1 from "../../assets/images/car_1.svg";
+
 import { AnnouncementContext } from "../../contexts/AnnouncementProvider/AnnouncementProvide";
 import { Heading } from "../../styles/typography";
 import Button from "../Button";
