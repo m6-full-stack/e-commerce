@@ -16,12 +16,13 @@ interface ModalContextType {
   isModelPhoto: boolean;
   isModelEditComment: boolean;
   isModelDeleteComment: boolean;
-  isModalLoginNecessary: boolean,
+  isModalLoginNecessary: boolean;
 
   announcementType: string;
   typeOfVehicle: string;
   photoInfo: string;
   commentInfo: CommentDataRecive;
+  commentDeleteInfo: string | undefined;
 
   setIsModelCreate: Dispatch<SetStateAction<boolean>>;
   setIsModelEdit: Dispatch<SetStateAction<boolean>>;
@@ -33,6 +34,7 @@ interface ModalContextType {
   setIsModelPhoto: Dispatch<SetStateAction<boolean>>;
   setIsModelEditComment: Dispatch<SetStateAction<boolean>>;
   setIsModalLoginNecessary: Dispatch<SetStateAction<boolean>>;
+  setIsModelDeleteComment: Dispatch<SetStateAction<boolean>>;
 
   updateProfile: (data: UpdateProfileData) => void;
   updateAddress: (data: UpdateAddresData) => void;
@@ -60,6 +62,7 @@ export const ModalContext = createContext<ModalContextType>({
   isModelEditComment: false,
   commentInfo: {},
   isModelDeleteComment: false,
+  commentDeleteInfo: "",
 
   setIsModelCreate: () => {},
   setIsModelEdit: () => {},
@@ -71,6 +74,7 @@ export const ModalContext = createContext<ModalContextType>({
   setIsModelPhoto: () => {},
   setIsModelEditComment: () => {},
   setIsModalLoginNecessary: () => {},
+  setIsModelDeleteComment: () => {},
 
   updateProfile: () => {},
   updateAddress: () => {},
@@ -89,7 +93,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
   const [isModelPhoto, setIsModelPhoto] = useState(false);
   const [isModalLoginNecessary, setIsModalLoginNecessary] = useState(false);
   const [photoInfo, setPhotoInfo] = useState("");
-  const [isModelEditComment, setIsModelEditComment] = useState(true);
+  const [isModelEditComment, setIsModelEditComment] = useState(false);
   const [commentInfo, setCommentInfo] = useState<CommentDataRecive>(
     {} as CommentDataRecive
   );
@@ -182,6 +186,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
         setIsModelPhoto,
         setIsModelEditComment,
         setIsModalLoginNecessary,
+        setIsModelDeleteComment,
 
         updateProfile,
         updateAddress,
@@ -190,6 +195,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
         commentInfo,
         modalComment,
         modalDeleteComment,
+        commentDeleteInfo,
       }}
     >
       {children}

@@ -72,6 +72,7 @@ export const TextArea = ({
   label,
   register,
   errosMessage,
+  defaultValue
 }: IPropsInput) => {
   return (
     <InputContainer>
@@ -83,6 +84,7 @@ export const TextArea = ({
           id={name.toLowerCase()}
           placeholder={placeholder}
           {...register(name)}
+          defaultValue={defaultValue}
         />
       </div>
       <p className="error__message">{errosMessage}</p>

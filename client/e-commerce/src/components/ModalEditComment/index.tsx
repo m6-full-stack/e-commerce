@@ -9,13 +9,16 @@ import Input, { TextArea } from "../Input";
 import { ModalContainer } from "./style";
 import { ModalContext } from "../../contexts/ModalProvider/ModalProvider";
 import { AnnouncementContext } from "../../contexts/AnnouncementProvider/AnnouncementProvide";
+import { CommentContext } from "../../contexts/CommentProvider/CommentProvider";
 
 export const ModalEditComment = () => {
   const { commentInfo, setIsModelEditComment, modalDeleteComment } =
     useContext(ModalContext);
+  const { updateComment } = useContext(CommentContext);
+  const [comment, setComment] = useState(commentInfo.content)
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
+    updateComment(data, commentInfo.id);
   };
 
   const {
@@ -51,7 +54,7 @@ export const ModalEditComment = () => {
             label="Comentário"
             placeholder=""
             name="content"
-            defaultValue={commentInfo.content}
+            defaultValue={comment}
             register={register}
             errosMessage={errors.content?.message?.toString()}
           />
@@ -66,7 +69,7 @@ export const ModalEditComment = () => {
                 setIsModelEditComment(false);
               }}
             >
-              Excluir anúncio
+              Excluir comentário
             </Button>
             <Button type="submit" variant="brand3" buttonSize="b3profmodsa">
               Salvar alterações

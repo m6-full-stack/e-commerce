@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const ModalContainer = styled.div`
-  position: absolute;
+  position: fixed;
 
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 200vh;
+  height: 100vh;
 
   background: rgba(0, 0, 0, 0.5);
 

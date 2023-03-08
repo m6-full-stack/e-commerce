@@ -31,7 +31,7 @@ export const ModalContainer = styled.div`
     flex-direction: row;
   }
 
-  form {
+  .container-content {
     display: flex;
     flex-direction: column;
     width: 100%;
