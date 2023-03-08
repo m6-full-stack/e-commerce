@@ -4,17 +4,14 @@ import { Heading, Paragraph } from '../../styles/typography'
 import { AnnouncementDataResponse } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
 
 interface CardProps {
-  isProfileView?: Boolean
+  isProfileView?: Boolean;
+  vehicle: AnnouncementData;
 }
 
-interface AuctionCardProps {
-  vehicle: AnnouncementDataResponse
-}
-
-export const Card = ({vehicle }:AuctionCardProps, { isProfileView }: CardProps) => {
+export const Card = ({vehicle, isProfileView }:CardProps) => {
 
   const navigate = useNavigate()
-  
+  console.log(vehicle)
 
   return (
     <CardContainer onClick={() => navigate(`/product/${vehicle.id}`)}>

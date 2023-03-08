@@ -9,6 +9,12 @@ export const ProfileContainer = styled.div`
     background: ${(props) => props.theme.brand1};
   }
 
+  .no-ads {
+    color: ${(props) => props.theme.grey2};
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
   .content {
     margin: 0 auto;
     height: auto;
@@ -23,6 +29,7 @@ export const ProfileContainer = styled.div`
     min-width: 100%;
     height: 500px;
     flex-direction: row;
+    margin-left: 16px;
     gap: 16px;
     margin-right: 16px;
     overflow-x: auto;

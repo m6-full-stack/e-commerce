@@ -35,6 +35,7 @@ interface UserContextType {
   changePassword: (token: string, password: string) => void
   setAdvertiserOrBuyer: Dispatch<SetStateAction<boolean>>
   getProfile: () => Promise<UserRequest>
+  getUserProfile: (idUser: string) => Promise<UserRequest>
 }
 
 export const UserContext = createContext({} as UserContextType)
@@ -63,9 +64,9 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
       const userId = decodedToken.id
       localStorage.setItem('@MOTORS-USER-ID', userId)
 
-      getUserProfile(storedToken, userId)
-        .then((user) => console.log(user))
-        .catch((error) => console.error(error))
+      getUserProfile(userId)
+        .then(user => console.log(user))
+        .catch(error => console.error(error));
 
       setToken(storedToken)
       setIsUserLoggedIn(true)
@@ -166,7 +167,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
       })
   }
 
-  async function getUserProfile(token: string, userId: string) {
+  async function getUserProfile(userId: string) {
     return api
       .get(`/users/${userId}`)
       .then((res) => res.data)
@@ -207,6 +208,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         advertiserOrBuyer,
         setAdvertiserOrBuyer,
         getProfile,
+        getUserProfile,
         setUser,
       }}
     >
