@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { AuctionCardContainer } from './style'
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import Button from '../Button'
@@ -6,12 +6,10 @@ import { Heading, Paragraph } from '../../styles/typography'
 import { ModalContext } from '../../contexts/ModalProvider/ModalProvider'
 import countDownTimer from '../../utils/countDown'
 import { AnnouncementDataResponse } from '../../contexts/AnnouncementProvider/AnnouncementProvide'
-import { string } from 'yup'
 import { ProductsContext } from '../../contexts/ProductsProvider/ProductsProvider'
 import { ButtonAuctionHomeStyle } from '../Button/style'
 import { BsArrowRight } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
-import { UserContext } from '../../contexts/UserProvider/UserProvider'
 import { toast } from 'react-toastify'
 
 interface AuctionCardProps {
@@ -19,11 +17,10 @@ interface AuctionCardProps {
 }
 
 export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
-  const { setIsModelEditAnnouncement, setIsModalLoginNecessary } = useContext(ModalContext)
+  const { setIsModelEditAnnouncement } = useContext(ModalContext)
   const { actualPage } = useContext(ProductsContext)
-  const { isLoaded } = useContext(UserContext);
   const navigate = useNavigate()
-
+  const token = localStorage.getItem('@MOTORS-TOKEN')
 
 
   return (
@@ -71,7 +68,7 @@ export const AuctionCard = ({ vehicle }: AuctionCardProps) => {
             <>
               <ButtonAuctionHomeStyle
                 onClick={() => {
-                  if (!isLoaded){
+                  if (!token){
                     toast.error('Faça seu login')
                   }
                   navigate(`/product/${vehicle.id}`)
