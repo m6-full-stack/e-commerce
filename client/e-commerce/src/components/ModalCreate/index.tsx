@@ -66,7 +66,7 @@ export const ModalCreate = () => {
               type='button'
               variant='blue'
               buttonSize='b1profmodv'
-              onClick={() => setTypeAnnouncement('venda')}
+              onClick={() => setTypeAnnouncement('Venda')}
             >
               Venda
             </Button>
@@ -74,7 +74,7 @@ export const ModalCreate = () => {
               type='button'
               variant='transparent'
               buttonSize='tprofmodl'
-              onClick={() => setTypeAnnouncement('leilão')}
+              onClick={() => setTypeAnnouncement('Leilão')}
             >
               Leilão
             </Button>
@@ -141,7 +141,7 @@ export const ModalCreate = () => {
               type='button'
               variant='blue'
               buttonSize='b1profmodv'
-              onClick={() => setTypeVehicle('carro')}
+              onClick={() => setTypeVehicle('Carro')}
             >
               Carro
             </Button>
@@ -149,7 +149,7 @@ export const ModalCreate = () => {
               type='button'
               variant='transparent'
               buttonSize='tprofmodl'
-              onClick={() => setTypeVehicle('moto')}
+              onClick={() => setTypeVehicle('Moto')}
             >
               Moto
             </Button>
