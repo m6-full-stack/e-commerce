@@ -66,7 +66,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
       const userId = decodedToken.id
       localStorage.setItem('@MOTORS-USER-ID', userId)
 
-      getUserProfile( userId )
+      getUserProfile(userId)
         .then((user) => console.log(user))
         .catch((error) => console.error(error))
 
@@ -95,7 +95,6 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         return token
       })
       .catch((error) => {
-
         toast.error('Confira seu mail ou senha')
         console.log(error)
         throw error
@@ -159,7 +158,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
 
   function changePassword(token: string, password: string) {
     api
-      .post(`users/recoverPassword/${tokenRecoverPassword}`, { password })
+      .post(`users/recoverPassword/${token}`, { password })
       .then((response) => {
         toast.success('Faça login com a nova senha.')
         navigate('login')
@@ -176,7 +175,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
       .then((res) => res.data)
       .catch((error) => {
         console.error(error)
-        navigate("/error")
+        navigate('/error')
       })
   }
 
@@ -198,7 +197,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
     <UserContext.Provider
       value={{
         token,
-        isLoaded, 
+        isLoaded,
         setIsLoaded,
         tokenRecoverPassword,
         sendMailRecoverPassword,

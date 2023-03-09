@@ -23,6 +23,7 @@ export const CardContainer = styled.div`
   .content-img {
     padding: 0 25px;
     background: ${(props) => props.theme.grey7};
+    height: 150px;
   }
 
   .content-img img {
@@ -32,6 +33,7 @@ export const CardContainer = styled.div`
   .content-description {
     width: 100%;
     gap: 16px;
+    max-height: 200px;
   }
 
   .content-name {
