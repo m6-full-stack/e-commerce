@@ -50,7 +50,6 @@ export const ProfileContainer = styled.div`
 
   .carousel {
     width: 100%;
-    max-width: 1600px;
     min-width: 100%;
     flex-direction: row;
     margin-left: 16px;
