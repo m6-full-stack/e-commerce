@@ -20,14 +20,10 @@ export const CardContainer = styled.div`
 
       & img {
         scale: 1.2;
-        
       }
-
-
     }
   }
 
-  
   .content-img {
     background: ${(props) => props.theme.grey7};
     position: relative;
@@ -65,10 +61,12 @@ export const CardContainer = styled.div`
 
   .content-description {
     width: 100%;
+    max-height: 200px;
     gap: 16px;
   }
 
   .content-desc {
+    height: 200px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;

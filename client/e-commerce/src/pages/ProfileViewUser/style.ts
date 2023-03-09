@@ -23,14 +23,39 @@ export const ProfileContainer = styled.div`
     padding-bottom: 40px;
   }
 
+  .carousel::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  .carousel::-webkit-scrollbar-thumb {
+    width: 80px;
+    background: ${(props) => props.theme.grey5};
+    border: 0px none #ffffff;
+    border-radius: 0px;
+  }
+  .carousel::-webkit-scrollbar-thumb:hover {
+    background: ${(props) => props.theme.grey4};
+  }
+  .carousel::-webkit-scrollbar-thumb:active {
+    background: ${(props) => props.theme.grey4};
+  }
+  .carousel ::-webkit-scrollbar-track {
+    border: 0px none #ffffff;
+    border-radius: 7px;
+  }
+
+  .carousel::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
   .carousel {
     width: 100%;
     max-width: 1600px;
     min-width: 100%;
-    height: 500px;
     flex-direction: row;
     margin-left: 16px;
     gap: 16px;
+    padding-bottom: 20px;
     margin-right: 16px;
     overflow-x: auto;
 

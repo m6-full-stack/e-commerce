@@ -60,14 +60,13 @@ export const ContainerHome = styled.main`
     gap: 80px;
   }
 
-  .list-auction{
+  .list-auction {
     padding-left: 20px;
     padding-right: 20px;
   }
   .list-auction h1 {
     user-select: none;
     color: black;
-    
   }
   .list-car h1 {
     user-select: none;
@@ -89,9 +88,6 @@ export const ContainerHome = styled.main`
 
     scroll-snap-align: start;
   }
-  .content-carrossel::-webkit-scrollbar {
-    width: 0px;
-  }
   .carrossel {
     display: -webkit-box;
     overflow-x: scroll;
@@ -101,25 +97,34 @@ export const ContainerHome = styled.main`
 
     scroll-snap-align: start;
   }
-  .carrossel::-webkit-scrollbar {
-    width: 0px;
-  }
-  /* 
-  .carrossel::-webkit-scrollbar-track {
-    background: #ffffff;
+  .content-carrossel::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
   }
 
-  .carrossel::-webkit-scrollbar-thumb {
-    background-color: ${(props) => props.theme.grey2};
-    border-radius: 10px;
-    border: 3px solid #ffffff;
+  .content-carrossel::-webkit-scrollbar-thumb {
+    width: 80px;
+    background: ${(props) => props.theme.grey5};
+    border: 0px none #ffffff;
+    border-radius: 0px;
   }
-  .carrossel::-webkit-scrollbar-thumb {
-    background-color: ${(props) => props.theme.grey2};
-    border-radius: 10px;
-    border: 3px solid #ffffff;
-  } */
+  .content-carrossel::-webkit-scrollbar-thumb:hover {
+    background: ${(props) => props.theme.grey4};
+  }
+  .content-carrossel::-webkit-scrollbar-thumb:active {
+    background: ${(props) => props.theme.grey4};
+  }
+  .content-carrossel ::-webkit-scrollbar-track {
+    border: 0px none #ffffff;
+    border-radius: 7px;
+  }
 
+  .carrossel::-webkit-scrollbar-track:active {
+    background: #525252;
+  }
+  .content-carrossel::-webkit-scrollbar-corner {
+    background: transparent;
+  }
   .swiper-slide {
     display: flex;
     justify-content: center;
