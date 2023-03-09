@@ -35,11 +35,6 @@ export const RecoverPassword = () => {
   })
   useEffect(() => {}, [tokenRecoverPassword])
 
-  const onSubmit = (data: any) => {
-    if (data.code === tokenRecoverPassword) {
-      setHaveAccess(true)
-    }
-  }
   return (
     <>
       {tokenRecoverPassword === null ? (
@@ -110,7 +105,7 @@ export const RecoverPassword = () => {
             <h2>
               Insira o <span>código de recuperação!</span>
             </h2>
-            <form onSubmit={handleSubmit((data) => onSubmit(data))}>
+            <form onSubmit={handleSubmit((data) => setHaveAccess(true))}>
               <Input
                 label=''
                 placeholder='Digite o código de verificação'

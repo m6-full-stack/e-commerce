@@ -87,6 +87,10 @@ export const ContainerHome = styled.main`
     gap: 20px;
 
     scroll-snap-align: start;
+
+    @media (max-width: 370px) {
+      flex-direction: column;
+    }
   }
   .carrossel {
     display: -webkit-box;
