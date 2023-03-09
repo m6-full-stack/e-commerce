@@ -357,7 +357,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
         return css`
           height: 48px;
           padding: 12px 28px;
-
+          line-height: 20px;
           color: ${(props) => props.theme.grey2};
           border: 1.5px solid ${(props) => props.theme.grey6};
           @media (min-width: 1024px) {
